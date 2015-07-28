@@ -16,9 +16,7 @@ class HomePage(Page):
     ]
 
 
-
-
-class BlogPage:
+class BlogPage(Page):
     date = models.DateField('Post date')
     intro = models.CharField(max_length=250)
 
