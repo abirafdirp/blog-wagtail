@@ -64,6 +64,7 @@ LOCAL_APPS = (
     'blog-wagtail.users',  # custom users app
     'search',  # search app
     'home',  # front page
+    'blog',
 )
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
