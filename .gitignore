@@ -57,3 +57,7 @@ node_modules/
 
 # media
 */media/
+**/migrations/*.*
+!__init__.py
+
+
