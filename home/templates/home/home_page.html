@@ -4,7 +4,9 @@
 {% block body_class %}template-homepage{% endblock %}
 
 {% block content %}
-  <div class="col-xs-12">
-    {{ self.overview|richtext }}
+  <div class="row">
+    <div class="col-xs-12">
+      {{ self.overview|richtext }}
+    </div>
   </div>
 {% endblock %}

@@ -16,8 +16,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
   {# Global stylesheets #}
-  <link rel="stylesheet" type="text/css" href="{% static 'css/project.css' %}">
   <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
 
 
   {% block extra_css %}
@@ -27,11 +27,24 @@
 
 <body class="{% block body_class %}{% endblock %}">
   {% wagtailuserbar %}
+  <div class="col-xs-12 no-padding">
+    <div class="menubar">
+      <div class="brand">
+        <a href="#">Pythonified</a>
+      </div>
+      <div class="nav">
+        <a href="#">Home</a>
+        <a href="#">Blog</a>
+        <a href="#">Projects</a>
+        <a href="#">About</a>
+      </div>
+    </div>
+  </div>
 
   {% block content %}{% endblock %}
 
   {# Global javascript #}
-  <script type="text/javascript" src="{% static 'js/blog.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
 
   {% block extra_js %}
     {# Override this in templates to add extra javascript #}

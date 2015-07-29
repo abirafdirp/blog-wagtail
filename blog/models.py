@@ -12,56 +12,33 @@ from wagtail.wagtailimages.blocks import ImageChooserBlock
 from wagtail.wagtailsearch import index
 
 
-class MainHeadingBlock(blocks.StructBlock):
-    title = blocks.CharBlock()
-    date = models.DateField('Post date')
-    image = ImageChooserBlock(required=False)
-    intro = blocks.TextBlock()
-
-
 class ContentBlock(blocks.StreamBlock):
-    heading = blocks.CharBlock()
-    image = ImageChooserBlock(required=False)
+    subheading = blocks.CharBlock(help_text='Subheading')
+    heading_image = ImageChooserBlock(required=False,
+                                      help_text='Subheading Image')
     content = blocks.RichTextBlock()
 
 
-class BlogPostBlockPage(Page):
-    main_heading = fields.StreamField(MainHeadingBlock())
-    content = fields.StreamBlock(ContentBlock())
-
-    class Meta:
-        verbose_name = 'Blog Post Block'
-
-
 class BlogPostPage(Page):
-    date = models.DateField('Post date')
-    main_heading = fields.StreamField([
-        ('text', blocks.CharBlock()),
-        ('image', ImageChooserBlock()),
-    ])
-    intro = models.CharField(max_length=250)
-
-    headings = fields.StreamField([
-        ('text', blocks.CharBlock()),
-        ('image', ImageChooserBlock(required=False))
-    ])
-    body = fields.RichTextField(blank=True)
-
-    search_fields = Page.search_fields + (
-        index.FilterField('date'),
-        index.SearchField('main_heading'),
-        index.SearchField('body'),
-        index.SearchField('intro'),
+    title_extended = models.CharField(max_length=60, blank=True, null=True)
+    author = models.CharField(max_length=50)
+    date = models.DateField()
+    main_image = models.ForeignKey(
+        'wagtailimages.Image',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+',
     )
+    intro = models.TextField(blank=True, null=True)
+    content = fields.StreamField(ContentBlock())
 
     content_panels = Page.content_panels + [
+        FieldPanel('title_extended'),
         FieldPanel('date'),
-        StreamFieldPanel('main_heading'),
+        ImageChooserPanel('main_image'),
         FieldPanel('intro'),
-
-        StreamFieldPanel('headings'),
-
-        FieldPanel('body')
+        StreamFieldPanel('content'),
     ]
 
     class Meta:
