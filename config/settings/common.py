@@ -282,5 +282,15 @@ LOGGING = {
 # Your common stuff: Below this line define 3rd party library settings
 
 # Wagtail settings
-
 WAGTAIL_SITE_NAME = "abiraf"
+
+
+# ElasticSearch backend settings for Wagtail
+WAGTAILSEARCH_BACKENDS = {
+    'default': {
+        'BACKEND': 'wagtail.wagtailsearch.backends.elasticsearch.ElasticSearch',
+        'URLS': ['http://localhost:9200'],
+        'INDEX': 'blog',
+        'TIMEOUT': 5,
+    }
+}
