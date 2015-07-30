@@ -58,6 +58,7 @@ WAGTAIL = (
     'wagtail.wagtailembeds',
     'wagtail.wagtailredirects',
     'wagtail.wagtailforms',
+    'wagtail.contrib.wagtailapi',
 )
 # Apps specific for this project go here.
 LOCAL_APPS = (
@@ -284,6 +285,8 @@ LOGGING = {
 # Wagtail settings
 WAGTAIL_SITE_NAME = "abiraf"
 
+# Wagtail API settings
+
 
 # ElasticSearch backend settings for Wagtail
 WAGTAILSEARCH_BACKENDS = {
@@ -294,3 +297,4 @@ WAGTAILSEARCH_BACKENDS = {
         'TIMEOUT': 5,
     }
 }
+

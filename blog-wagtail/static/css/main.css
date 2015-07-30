@@ -40,15 +40,24 @@ a:hover {
   padding-left: 0;
   padding-right: 0;
 }
-.background {
+/* backgrounds and images */
+.main-background {
   z-index: -2;
   position: fixed;
   top: 0;
   left: 0;
   background-position: center center;
 }
+.main-image {
+  margin-left: 160px;
+  margin-right: 160px;
+}
+.full-image {
+  margin-left: 160px;
+  margin-right: 160px;
+}
 .subheading-background {
-  position: absolute;
+  position: fixed;
   z-index: -1;
   top: 0;
   left: 0;
@@ -114,19 +123,29 @@ a:hover {
   line-height: 36px;
 }
 /* content */
+.intro {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  background: #ffffff;
+  color: #202020;
+  margin-left: 160px;
+  margin-right: 160px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+}
 .content {
   padding-top: 15px;
   padding-bottom: 15px;
   background: #ffffff;
   color: #202020;
-  margin-top: 25px;
-  margin-bottom: 25px;
-  margin-left: 80px;
-  margin-right: 80px;
+  margin-left: 160px;
+  margin-right: 160px;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
 }
 .subheading {
   text-align: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 .subheading h2 span {
   color: #43b1b0;

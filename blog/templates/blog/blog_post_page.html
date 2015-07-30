@@ -4,35 +4,53 @@
 {% block body_class %}template-blogpost{% endblock %}
 
 {% block content %}
-  <div class="container-fluid container-content" ng-app="blogpost" ng-init="index = -100">
-  {% image self.main_image original class="img-responsive center-block background no-padding" %}
+  <div class="container-fluid container-content" ng-init="index = -100">
     <div class="row">
       <div class="col-xs-12 main-heading no-padding">
         <h1><span>{{ self.title }}</span></h1>
         <h2><span>{{ self.date }}</span></h2>
       </div>
     </div>
-    {% for block in self.content %}
-      {% if block.block_type == 'content' %}
-       <div class="row content">
-            <div class="col-xs-8 col-xs-offset-2">
-              {{ block }}
-            </div>
-        </div>
-      {% endif %}
-      {% if block.block_type == 'subheading' %}
-        <div class="row subheading">
+
+  {% if self.main_image %}
+    <div class="row main-image">
+      {% image self.main_image original class="img-responsive" %}
+    </div>
+  {% endif %}
+
+  {% if self.intro %}
+    <div class="row intro">
+      <div class="col-xs-8 col-xs-offset-2">
+        {{ self.intro|richtext }}
+      </div>
+    </div>
+  {% endif %}
+
+  {% for block in self.content %}
+
+    {% if block.block_type == 'content' %}
+     <div class="row content">
           <div class="col-xs-8 col-xs-offset-2">
-            <h2><span>{{ block }}</span></h2>
+            {{ block }}
           </div>
+      </div>
+    {% endif %}
+
+    {% if block.block_type == 'subheading' %}
+      <div class="row subheading">
+        <div class="col-xs-8 col-xs-offset-2">
+          <h2><span>{{ block }}</span></h2>
         </div>
-      {% endif %}
-      {% if block.block_type == 'heading_image' %}
-        <div class="row subheading-background">>
-            {% image block.value original class="img-responsive center-block subheading-background no-padding" %}
-        </div>
-      {% endif %}
-    {% endfor %}
+      </div>
+    {% endif %}
+
+    {% if block.block_type == 'subheading_background' %}
+      <div class="row subheading-background">>
+          {% image block.value original class="img-responsive center-block subheading-background no-padding" %}
+      </div>
+    {% endif %}
+
+  {% endfor %}
   </div>
 {% endblock %}
 

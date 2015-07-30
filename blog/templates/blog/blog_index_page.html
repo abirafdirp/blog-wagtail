@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{% block body_class %}template-blogindexpage{% endblock %}
+
+{% block content %}
+  <div class="container-fluid no-padding" ng-controller="blogIndexCtrl">
+    <div class="col-xs-12">
+      <div ng-repeat="blogpost in blogposts.pages">
+        {$ blogpost.title $}
+      </div>
+
+    </div>
+  </div>
+{% endblock %}

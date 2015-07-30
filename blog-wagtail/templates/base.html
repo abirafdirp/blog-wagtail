@@ -5,7 +5,7 @@
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!-->
-<html class="no-js"> <!--<![endif]-->
+<html class="no-js" ng-app="blog"> <!--<![endif]-->
 <head>
   <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
   <meta charset="utf-8"/>
@@ -50,8 +50,10 @@
   {# Global javascript #}
   <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
   <script type="text/javascript" src="{% static 'js/angular.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/angular-resource.js' %}"></script>
   <script type="text/javascript" src="{% static 'js/app.js' %}"></script>
   <script type="text/javascript" src="{% static 'js/controllers.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/services.js' %}"></script>
 
   {% block extra_js %}
     {# Override this in templates to add extra javascript #}
