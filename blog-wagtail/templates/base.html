@@ -7,6 +7,7 @@
 <!--[if gt IE 8]><!-->
 <html class="no-js"> <!--<![endif]-->
 <head>
+  <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
   <meta charset="utf-8"/>
   <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
   <title>{% block title %}{% if self.seo_title %}{{ self.seo_title }}{% else %}
@@ -19,7 +20,6 @@
   <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}">
   <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
 
-
   {% block extra_css %}
     {# Override this in templates to add extra stylesheets #}
   {% endblock %}
@@ -29,22 +29,29 @@
   {% wagtailuserbar %}
   <div class="col-xs-12 no-padding">
     <div class="menubar">
-      <div class="brand">
-        <a href="#">Pythonified</a>
+      <div class="col-xs-12 col-sm-2">
+        <div class="brand">
+          <a href="#">Pythonified</a>
+        </div>
       </div>
-      <div class="nav">
-        <a href="#">Home</a>
-        <a href="#">Blog</a>
-        <a href="#">Projects</a>
-        <a href="#">About</a>
+      <div class="col-xs-12 col-sm-7 col-sm-offset-3">
+        <div class="nav">
+          <a href="#">Home</a>
+          <a href="#">Blog</a>
+          <a href="#">Projects</a>
+          <a href="#">About</a>
+          </div>
+        </div>
       </div>
-    </div>
   </div>
 
   {% block content %}{% endblock %}
 
   {# Global javascript #}
   <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/angular.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/app.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/controllers.js' %}"></script>
 
   {% block extra_js %}
     {# Override this in templates to add extra javascript #}

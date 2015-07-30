@@ -35,6 +35,7 @@ class BlogPostPage(Page):
 
     content_panels = Page.content_panels + [
         FieldPanel('title_extended'),
+        FieldPanel('author'),
         FieldPanel('date'),
         ImageChooserPanel('main_image'),
         FieldPanel('intro'),

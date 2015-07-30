@@ -4,13 +4,35 @@
 {% block body_class %}template-blogpost{% endblock %}
 
 {% block content %}
-  <div class="container-fluid">
+  <div class="container-fluid container-content" ng-app="blogpost" ng-init="index = -100">
+  {% image self.main_image original class="img-responsive center-block background no-padding" %}
     <div class="row">
-      <h1><span>{{ self.title }}</span></h1><br />
-      <h2><span>{{ self.date }}</span></h2>
       <div class="col-xs-12 main-heading no-padding">
-        {% image self.main_image original class="img-responsive center-block" %}
+        <h1><span>{{ self.title }}</span></h1>
+        <h2><span>{{ self.date }}</span></h2>
       </div>
     </div>
+    {% for block in self.content %}
+      {% if block.block_type == 'content' %}
+       <div class="row content">
+            <div class="col-xs-8 col-xs-offset-2">
+              {{ block }}
+            </div>
+        </div>
+      {% endif %}
+      {% if block.block_type == 'subheading' %}
+        <div class="row subheading">
+          <div class="col-xs-8 col-xs-offset-2">
+            <h2><span>{{ block }}</span></h2>
+          </div>
+        </div>
+      {% endif %}
+      {% if block.block_type == 'heading_image' %}
+        <div class="row subheading-background">>
+            {% image block.value original class="img-responsive center-block subheading-background no-padding" %}
+        </div>
+      {% endif %}
+    {% endfor %}
   </div>
 {% endblock %}
+

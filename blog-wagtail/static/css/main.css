@@ -1,74 +1,82 @@
 /* Typography */
 h1 {
-  color: #ffffff;
-  font-family: 'Raleway',sans-serif;
-  font-size: 62px; font-weight: 800;
-  line-height: 72px; margin: 0 0 24px;
-  text-align: center;
-  text-transform: uppercase;
+  font-family: 'Roboto', sans-serif;
 }
-h2 { color: #ffffff;
-  font-family: 'Raleway',sans-serif;
-  font-size: 30px;
-  font-weight: 800;
-  line-height: 36px;
-  margin: 0 0 24px;
-  text-align: center;
+h2 {
+  font-family: 'Roboto', sans-serif;
 }
-p { color: #f8f8f8;
-  font-family: 'Raleway',sans-serif;
+p {
+  font-family: 'Roboto', sans-serif;
   font-size: 18px;
-  font-weight: 500;
-  line-height: 32px;
-  margin: 0 0 24px;
+  font-weight: 200;
+  line-height: 200%;
+
 }
-a { color: #c8c8c8;
+li {
+  font-family: 'Roboto', sans-serif;
+  font-size: 18px;
+  font-weight: 200;
+  line-height: 200%;
+}
+a {
+  color: #202020;
   text-decoration: underline;
+  font-family: 'Roboto', sans-serif;
+  font-size: 18px;
+  font-weight: 200;
+  line-height: 200%;
 }
-a:hover { color: #1c1c1c; text-decoration: underline; }
+a:hover {
+  color: #1c1c1c;
+  text-decoration: underline;
+  font-family: 'Roboto', sans-serif;
+  font-size: 18px;
+  font-weight: 200;
+  line-height: 200%;
+}
 
 /* no padding */
 .no-padding {
   padding-left: 0;
   padding-right: 0;
 }
-/* main heading */
-.main-heading {
+.background {
+  z-index: -2;
   position: fixed;
   top: 0;
   left: 0;
   background-position: center center;
-  background-size: 100% auto;
-  min-width: 100%;
-  min-height: 100%;
+}
+.subheading-background {
+  position: absolute;
   z-index: -1;
+  top: 0;
+  left: 0;
+  background-position: center center;
+}
+/* main heading */
+.main-heading {
+  text-align: center;
 }
 .main-heading h1 {
-  position: relative;
-  top: 60px;
-  text-align: center;
-  width: 100%;
+  margin-top: 30px;
 }
 .main-heading h1 span {
-  color: white;
-  font: bold 24px/45px Helvetica, Sans-Serif;
+
+  color: #43b1b0;
   letter-spacing: -1px;
   background: rgb(0, 0, 0); /* fallback color */
-  background: rgba(0, 0, 0, 0.3);
+  background: rgba(255, 255, 255, 0.8);
   padding: 10px;
 }
 .main-heading h2 {
-  position: relative;
-  top: 60px;
-  text-align: center;
-  width: 100%;
 }
 .main-heading h2 span {
-  color: white;
-  font: bold 24px/45px Helvetica, Sans-Serif;
+
+  color: #43b1b0;
   letter-spacing: -1px;
   background: rgb(0, 0, 0); /* fallback color */
-  background: rgba(0, 0, 0, 0.3);
+  background: rgba(255, 255, 255, 0.8);
   padding: 10px;
 }
 /* Menu Bar */
@@ -76,18 +84,16 @@ a:hover { color: #1c1c1c; text-decoration: underline; }
   background: #ffffff;
   padding: 5px 150px 5px 30px;
   height: 50px;
-  border-bottom: solid;
-  border-color: silver;
-  border-width: 1px;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
 }
 .menubar .brand {
   float: left;
   text-align: left;
   display: inline;
+  margin-left: -20px
 }
 .menubar .brand > a {
   text-decoration: none;
-  font-family: 'Raleway',sans-serif;
   font-size: 27px;
   font-weight: 800;
   line-height: 36px;
@@ -103,15 +109,32 @@ a:hover { color: #1c1c1c; text-decoration: underline; }
   text-decoration: none;
   padding-left: 20px;
   padding-right: 20px;
-  font-family: 'Raleway',sans-serif;
   font-size: 18px;
   font-weight: 700;
   line-height: 36px;
 }
 /* content */
 .content {
+  padding-top: 15px;
+  padding-bottom: 15px;
   background: #ffffff;
   color: #202020;
+  margin-top: 25px;
+  margin-bottom: 25px;
+  margin-left: 80px;
+  margin-right: 80px;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+}
+.subheading {
+  text-align: center;
+}
+.subheading h2 span {
+  color: #43b1b0;
+  font: bold 20px Helvetica, Sans-Serif;
+  letter-spacing: -1px;
+  background: rgb(0, 0, 0); /* fallback color */
+  background: rgba(255, 255, 255, 0.8);
+  padding: 20px;
 }
 /* no padding for col */
 .no-padding {
