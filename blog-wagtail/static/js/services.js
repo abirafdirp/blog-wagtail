@@ -2,18 +2,13 @@ var blogServices = angular.module('blogServices', ['ngResource']);
 
 blogServices.factory('BlogIndex', ['$resource',
   function($resource) {
-    var imageID;
-
     return {
-      getPosts : $resource('/api/v1/pages/?type=blog.BlogPostPage&fields=title,date,main_image', {}, {
+      posts : $resource('/api/v1/pages/?type=blog.BlogPostPage&fields=title,date,main_image', {}, {
         query: {method: 'GET', isArray: false}
       }),
-      getImage : $resource('/api/v1/images/'+imageID, {}, {
+      image : $resource('/api/v1/images/:id/?fields=file', {id:'@id'}, {
         query: {method: 'GET', isArray: false}
-      }),
-      setImageID : function(ID) {
-        imageID = ID;
-      }
+      })
     }
   }
 ]);

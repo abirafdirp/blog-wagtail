@@ -76,6 +76,10 @@ You can now run the ``runserver_plus`` command::
 
 Open up your browser to http://127.0.0.1:8000/ to see the site running locally.
 
+for linux
+sudo apt-get install $(grep -vE "^\s*#" requirements.apt  | tr "\n" " ")
+pip install -I --no-cache-dir -v Pillow
+
 Setting Up Your Users
 ^^^^^^^^^^^^^^^^^^^^^
 

@@ -2,10 +2,13 @@ var blogControllers = angular.module('blogControllers', []);
 
 blogControllers.controller('blogIndexCtrl', ['$scope', 'BlogIndex',
   function($scope, BlogIndex) {
-    $scope.blogposts = BlogIndex.getPosts.query();
-    console.log($scope.blogposts);
-    for(i in BlogIndex.getPosts.query()){
-      console.log(i);
+    $scope.blogposts = BlogIndex.posts.query();
+    $scope.setImageID = function(ID) {
+    	$scope.imageID = ID;
     }
+    $scope.getImage = function() {
+    	$scope.image = BlogIndex.image.query({id:$scope.imageID});
+    }
+    
   }
 ]);

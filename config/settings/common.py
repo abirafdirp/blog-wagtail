@@ -90,9 +90,9 @@ MIDDLEWARE_CLASSES = (
 
 # MIGRATIONS CONFIGURATION
 # ------------------------------------------------------------------------------
-MIGRATION_MODULES = {
-    'sites': 'blog-wagtail.contrib.sites.migrations'
-}
+# MIGRATION_MODULES = {
+#     'sites': 'blog-wagtail.contrib.sites.migrations'
+# }
 
 # DEBUG
 # ------------------------------------------------------------------------------

@@ -18,6 +18,8 @@ libjpeg8-dev
 libfreetype6-dev
 liblcms1-dev
 libwebp-dev
+libjpeg-dev
+libpng12-dev
 
 
 ##django-extensions
