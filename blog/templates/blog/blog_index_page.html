@@ -9,8 +9,9 @@
     <div class="col-xs-12">
       <div ng-repeat="blogpost in blogposts.pages">
         {$ blogpost.title $}
-        {$ setImageID(blopost.main_image.id) $}
-        {$ getImage() $}
+        <div ng-if="blogpost.main_image">
+          {$ setImageID(blogpost.main_image.id) $}
+        </div>
         {$ image.file $}
  		<img ng-src="{$ image.file $}"><img>
       </div>
