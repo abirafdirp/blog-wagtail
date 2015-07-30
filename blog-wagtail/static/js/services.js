@@ -14,7 +14,6 @@ blogServices.factory('BlogIndex', ['$resource',
       setImageID : function(ID) {
         imageID = ID;
       }
-
     }
   }
 ]);
