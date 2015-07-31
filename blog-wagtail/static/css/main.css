@@ -49,8 +49,16 @@ a:hover {
   background-position: center center;
 }
 .main-image {
-  margin-left: 160px;
-  margin-right: 160px;
+  background: #ffffff;
+  padding-top: 20px;
+  padding-bottom: 20px;   
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+  margin-bottom: 20px;
+}
+.main-image-plus {
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+  margin-left: auto;
+  margin-right: auto;
 }
 .full-image {
   margin-left: 160px;
@@ -66,6 +74,8 @@ a:hover {
 /* main heading */
 .main-heading {
   text-align: center;
+  margin-bottom: 20px;
+  margin-top: 20px;
 }
 .main-heading h1 {
   margin-top: 30px;
@@ -91,9 +101,17 @@ a:hover {
 /* Menu Bar */
 .menubar {
   background: #ffffff;
-  padding: 5px 150px 5px 30px;
+  padding: 5px 150px 5px 10px;
   height: 50px;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+}
+@media (max-width: 900px){
+  .menubar {
+  background: #ffffff;
+  padding: 5px 0 5px 10px;
+  height: 50px;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+  }
 }
 .menubar .brand {
   float: left;
@@ -109,18 +127,29 @@ a:hover {
   color: #43b1b0;
 }
 .menubar .nav {
-  float: right;
-  text-align: right;
+  float: left;
+  text-align: left;
   display: inline;
 }
 .menubar .nav a {
   color: #202020;
   text-decoration: none;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-left: 30px;
+  padding-right: 30px;
   font-size: 18px;
   font-weight: 700;
   line-height: 36px;
+}
+@media (max-width: 600px){
+  .menubar .nav a {
+  color: #202020;
+  text-decoration: none;
+  padding-left: 10px;
+  padding-right: 10px;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 36px;
+  }
 }
 /* content */
 .intro {
@@ -133,18 +162,33 @@ a:hover {
   margin-bottom: 20px;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
 }
+.box {
+  margin-left: 220px;
+  margin-right: 220px;
+}
+@media (max-width: 1365px){
+  .box {
+  margin-left: 160px;
+  margin-right: 160px;
+  }
+}
+@media (max-width: 900px){
+  .box {
+  margin-left: 40px;
+  margin-right: 40px;
+  }
+}
 .content {
   padding-top: 15px;
   padding-bottom: 15px;
   background: #ffffff;
   color: #202020;
-  margin-left: 160px;
-  margin-right: 160px;
+  margin-bottom: 15px;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
 }
 .subheading {
   text-align: center;
-  margin-top: 20px;
+  margin-top: 5px;
   margin-bottom: 20px;
 }
 .subheading h2 span {

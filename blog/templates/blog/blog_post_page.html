@@ -4,7 +4,7 @@
 {% block body_class %}template-blogpost{% endblock %}
 
 {% block content %}
-  <div class="container-fluid container-content" ng-init="index = -100">
+  <div class="container-fluid container-content">
     <div class="row">
       <div class="col-xs-12 main-heading no-padding">
         <h1><span>{{ self.title }}</span></h1>
@@ -13,14 +13,16 @@
     </div>
 
   {% if self.main_image %}
-    <div class="row main-image">
-      {% image self.main_image original class="img-responsive" %}
+    <div class="row main-image box">
+      <div class="col-xs-8 col-xs-offset-2">
+        {% image self.main_image original class="img-responsive main-image-plus" %}
+      </div>
     </div>
   {% endif %}
 
   {% if self.intro %}
-    <div class="row intro">
-      <div class="col-xs-8 col-xs-offset-2">
+    <div class="row content box">
+      <div class="col-xs-10 col-xs-offset-1">
         {{ self.intro|richtext }}
       </div>
     </div>
@@ -29,8 +31,8 @@
   {% for block in self.content %}
 
     {% if block.block_type == 'content' %}
-     <div class="row content">
-          <div class="col-xs-8 col-xs-offset-2">
+     <div class="row content box">
+          <div class="col-xs-10 col-xs-offset-1">
             {{ block }}
           </div>
       </div>
