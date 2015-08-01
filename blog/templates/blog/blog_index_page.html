@@ -1,16 +1,9 @@
-{% extends 'base.html' %}
 
-{% load wagtailcore_tags wagtailimages_tags %}
-
-{% block body_class %}template-blogindexpage{% endblock %}
-
-{% block content %}
-  <div class="container-fluid no-padding" ng-controller="blogIndexCtrl">
+  <div class="container-fluid no-padding" ng-controller="BlogIndexCtrl">
     <div class="col-xs-12">
       <div ng-repeat="post in posts.pages" ng-cloak>
-        {$ post.title $}
+        <a href="{$ '#/blog/' + slugify(post.title) $}">{$ post.title $}<a>
           <img ng-src="{$ getImage(post.main_image.id) $}"><img>
       </div>
     </div>
   </div>
-{% endblock %}

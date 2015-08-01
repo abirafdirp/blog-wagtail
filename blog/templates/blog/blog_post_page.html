@@ -4,7 +4,7 @@
 {% block body_class %}template-blogpost{% endblock %}
 
 {% block content %}
-  <div class="container-fluid container-content">
+  <div class="container-fluid container-content" ng-controller="PostCtrl">
     <div class="row">
       <div class="col-xs-12 main-heading no-padding">
         <h1><span>{{ self.title }}</span></h1>

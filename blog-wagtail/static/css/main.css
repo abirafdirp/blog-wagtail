@@ -140,16 +140,23 @@ a:hover {
   font-weight: 700;
   line-height: 36px;
 }
-@media (max-width: 600px){
-  .menubar .nav a {
-  color: #202020;
+.menubar .nav .active {
+  color: #43b1b0;
   text-decoration: none;
-  padding-left: 10px;
-  padding-right: 10px;
+  padding-left: 30px;
+  padding-right: 30px;
   font-size: 18px;
   font-weight: 700;
   line-height: 36px;
-  }
+}
+.menubar .nav a:hover {
+  color: #43b1b0;
+  text-decoration: none;
+  padding-left: 30px;
+  padding-right: 30px;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 36px;
 }
 /* content */
 .intro {

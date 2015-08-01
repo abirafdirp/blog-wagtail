@@ -1,12 +1,12 @@
 from django.conf.urls import include, url
 from django.conf import settings
 from django.contrib import admin
+from django.views.generic import TemplateView
 
 from wagtail.wagtailadmin import urls as wagtailadmin_urls
 from wagtail.wagtaildocs import urls as wagtaildocs_urls
 from wagtail.wagtailcore import urls as wagtail_urls
 from wagtail.contrib.wagtailapi import urls as wagtailapi_urls
-
 
 urlpatterns = [
     url(r'^django-admin/', include(admin.site.urls)),
@@ -17,7 +17,14 @@ urlpatterns = [
     url(r'^search/$', 'search.views.search', name='search'),
 
     url(r'^api/', include(wagtailapi_urls)),
+
+    # partials initilization
+    url(r'^home-page/$',  TemplateView.as_view(template_name='home/home_page.html'), name='home'),
+    url(r'^$',  TemplateView.as_view(template_name='base.html'), name='base'),
+
     url(r'', include(wagtail_urls)),
+
+
 ]
 
 

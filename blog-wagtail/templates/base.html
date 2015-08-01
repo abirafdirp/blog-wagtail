@@ -28,11 +28,11 @@
 <body class="{% block body_class %}{% endblock %}">
   {% wagtailuserbar %}
   <div class="col-xs-12 no-padding">
-    <div class="menubar">
+    <div class="menubar" ng-controller="NavCtrl">
       <div class="col-xs-10 col-sm-10">
         <div class="nav">
-          <a href="#">Home</a>
-          <a href="#">Blog</a>
+          <a href="/#/home" ng-class="{active:$route.current.activetab == 'home'}">Home</a>
+          <a href="/#/blog" ng-class="{active:$route.current.activetab == 'blog-index'}">Blog</a>
           <a href="#">Projects</a>
           <a href="#">About</a>
           </div>
@@ -40,12 +40,13 @@
       </div>
   </div>
 
-  {% block content %}{% endblock %}
+  <div ng-view></div>
 
   {# Global javascript #}
   <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
   <script type="text/javascript" src="{% static 'js/angular.js' %}"></script>
   <script type="text/javascript" src="{% static 'js/angular-resource.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/angular-route.min.js' %}"></script>
   <script type="text/javascript" src="{% static 'js/app.js' %}"></script>
   <script type="text/javascript" src="{% static 'js/controllers.js' %}"></script>
   <script type="text/javascript" src="{% static 'js/services.js' %}"></script>

@@ -12,3 +12,12 @@ blogServices.factory('BlogIndex', ['$resource',
     }
   }
 ]);
+blogServices.factory('Post', ['$resource',
+  function($resource) {
+    return {
+      post : $resource('api/v1/pages/:id', {id:'@id'}, {
+        query : {method: 'GET', isArray: false}
+      })
+    }
+  }
+]);
