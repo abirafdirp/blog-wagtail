@@ -10,6 +10,9 @@ blogControllers.controller('BlogIndexCtrl', ['$scope', 'BlogIndex',
   function($scope, BlogIndex) {
     $scope.images = BlogIndex.images.query();
     $scope.posts = BlogIndex.posts.query();
+    $scope.setPostTitle = function(title){
+
+    }
     // for loop is the fastest among filter and for each
     $scope.getImage = function(id) {
       for(var i = 0; i < $scope.images.images.length; i++){
@@ -17,14 +20,14 @@ blogControllers.controller('BlogIndexCtrl', ['$scope', 'BlogIndex',
           return $scope.images.images[i].file;
         }
       }
-    }
+    };
     $scope.slugify = function(url) {
         return url
         .toLowerCase()
         .replace(/ /g,'-')
         .replace(/[^\w-]+/g,'')
         ;
-    }
+    };
   }
 ]);
 
@@ -34,13 +37,21 @@ blogControllers.controller('PostCtrl', ['$scope', '$route', '$routeParams', 'Pos
       var str = title.replace(/\w\S*/g, function(txt){
         return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
       });
-      return str.replace('-',' 'g);
+      return str.replace(/-/,' ');
     }
     $scope.$route = $route
     $scope.params = $routeParams;
     $scope.$on('$routeChangeSuccess', function() {
       $scope.title = $scope.titleIt($scope.params.postTitle);
       $scope.post = Post.post.query({postTitle:$scope.title});
-    }); 
+    });
+    $scope.images = Post.images.query();
+    $scope.getImage = function(id) {
+      for(var i = 0; i < $scope.images.images.length; i++){
+        if($scope.images.images[i].id === id){
+          return $scope.images.images[i].file;
+        }
+      }
+    };
   }
 ]);

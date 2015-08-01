@@ -15,8 +15,11 @@ blogServices.factory('BlogIndex', ['$resource',
 blogServices.factory('Post', ['$resource',
   function($resource) {
     return {
-      post : $resource('api/v1/pages/?title=:postTitle', {postTitle:'@postTitle'}, {
+      post : $resource('api/v1/pages/?title=:postTitle&fields=main_image,content', {postTitle:'@postTitle'}, {
         query : {method: 'GET', isArray: false}
+      }),
+      images : $resource('/api/v1/images/?fields=file&tags=blog', {}, {
+        query: {method: 'GET', isArray: false}
       })
     }
   }

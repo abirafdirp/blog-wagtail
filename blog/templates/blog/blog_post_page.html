@@ -1,3 +1,22 @@
 {$ params $}
-{$ title $}
-{$ post.title $}
+{$ post $}
+<div ng-repeat="post in post.pages">
+  <div class="container-fluid container-content" ng-controller="PostCtrl">
+    <div class="row">
+      <div class="col-xs-12 main-heading no-padding">
+        <h1><span>{{ post.title }}</span></h1>
+        <h2><span>{{ post.date }}</span></h2>
+      </div>
+    </div>
+
+    <div ng-if="post.main_image">
+      <div class="row main-image box">
+        <div class="col-xs-8 col-xs-offset-2">
+          <img ng-src="getImage(post.main_image.id)" class="img-responsive main-image-plus">
+        </div>
+      </div>
+    </div>
+
+    
+  </div>
+</div>
