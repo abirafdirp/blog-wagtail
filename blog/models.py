@@ -19,51 +19,7 @@ from wagtail.wagtailsearch import index
 
 
 class BlogIndexPage(Page):
-    content_panels = Page.content_panels + [
-        InlinePanel('related_links', label="Related links"),
-    ]
-
-
-class LinkFields(models.Model):
-    link_external = models.URLField("External link", blank=True)
-    link_page = models.ForeignKey(
-        'wagtailcore.Page',
-        null=True,
-        blank=True,
-        related_name='+'
-    )
-
-    @property
-    def link(self):
-        if self.link_page:
-            return self.link_page.url
-        else:
-            return self.link_external
-
-    panels = [
-        FieldPanel('link_external'),
-        PageChooserPanel('link_page'),
-    ]
-
-    class Meta:
-        abstract = True
-
-
-# Related links
-class RelatedLink(LinkFields):
-    title = models.CharField(max_length=255, help_text="Link title")
-
-    panels = [
-        FieldPanel('title'),
-        MultiFieldPanel(LinkFields.panels, "Link"),
-    ]
-
-    class Meta:
-        abstract = True
-
-
-class BlogIndexRelatedLink(Orderable, RelatedLink):
-    page = ParentalKey('BlogIndexPage', related_name='related_links')
+    pass
 
 
 class ContentBlock(blocks.StreamBlock):
@@ -73,6 +29,7 @@ class ContentBlock(blocks.StreamBlock):
     content = blocks.RichTextBlock()
     full_image = ImageChooserBlock(required=False,
                                    help_text='Full Image')
+    code_block = blocks.RawHTMLBlock();
 
     search_fields = Page.search_fields + (
         index.SearchField('subheading'),
@@ -81,6 +38,10 @@ class ContentBlock(blocks.StreamBlock):
 
 
 class BlogPostPage(Page):
+    angular_url = models.CharField\
+        (max_length=100,
+         help_text="Format must be underscored and lowercased title"
+         )
     title_extended = models.CharField(max_length=60, blank=True, null=True)
     author = models.CharField(max_length=50)
     date = models.DateField()
@@ -102,6 +63,7 @@ class BlogPostPage(Page):
     content = fields.StreamField(ContentBlock())
 
     content_panels = Page.content_panels + [
+        FieldPanel('angular_url'),
         FieldPanel('title_extended'),
         FieldPanel('author'),
         FieldPanel('date'),
@@ -118,7 +80,7 @@ class BlogPostPage(Page):
         index.SearchField('intro'),
     )
 
-    api_fields = ('title_exntended', 'author', 'date', 'main_image',
+    api_fields = ('angular_url','title_extended', 'author', 'date', 'main_image',
                   'main_background_image', 'intro', 'content')
 
     class Meta:

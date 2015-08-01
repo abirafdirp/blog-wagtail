@@ -34,7 +34,17 @@ a:hover {
   font-weight: 200;
   line-height: 200%;
 }
-
+.body {
+  background-image: url("bg.jpg");
+}
+.footer p {
+  font-size: small;
+  text-align: center;
+  margin: 0;
+  padding: 10px;
+  background: #ffffff;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+}
 /* no padding */
 .no-padding {
   padding-left: 0;
@@ -42,17 +52,22 @@ a:hover {
 }
 /* backgrounds and images */
 .main-background {
-  z-index: -2;
+  z-index: -100;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-position: center center;
+}
+.main-background-hidden {
+  z-index: -100;
   position: fixed;
   top: 0;
   left: 0;
   background-position: center center;
 }
 .main-image {
-  background: #ffffff;
   padding-top: 20px;
-  padding-bottom: 20px;   
-  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+  padding-bottom: 20px;
   margin-bottom: 20px;
 }
 .main-image-plus {
@@ -61,13 +76,28 @@ a:hover {
   margin-right: auto;
 }
 .full-image {
-  margin-left: 160px;
-  margin-right: 160px;
+  background: rgb(0, 0, 0); /* fallback color */
+  background: rgba(255, 255, 255, 0.6);
+  padding-top: 20px;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+}
+.full-image-title {
+  background: rgb(0, 0, 0); /* fallback color */
+  background: rgba(255, 255, 255, 0.6);
+  text-align: center;
 }
 .subheading-background {
-  position: fixed;
+  position: absolute;
   z-index: -1;
-  top: 0;
+  top: -400px;
+  left: 0;
+  background-position: center center;
+}
+.subheading-background-fixed {
+  position: relative;
+  z-index: -1;
+  top: -50%;
   left: 0;
   background-position: center center;
 }
@@ -85,7 +115,7 @@ a:hover {
   color: #43b1b0;
   letter-spacing: -1px;
   background: rgb(0, 0, 0); /* fallback color */
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.6);
   padding: 10px;
 }
 .main-heading h2 {
@@ -95,7 +125,7 @@ a:hover {
   color: #43b1b0;
   letter-spacing: -1px;
   background: rgb(0, 0, 0); /* fallback color */
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.6);
   padding: 10px;
 }
 /* Menu Bar */
@@ -139,6 +169,17 @@ a:hover {
   font-size: 18px;
   font-weight: 700;
   line-height: 36px;
+}
+@media (max-width: 800px){
+  .menubar .nav a {
+  color: #202020;
+  text-decoration: none;
+  padding-left: 0;
+  padding-right: 0;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 36px;
+  }
 }
 .menubar .nav .active {
   color: #43b1b0;
@@ -203,7 +244,7 @@ a:hover {
   font: bold 20px Helvetica, Sans-Serif;
   letter-spacing: -1px;
   background: rgb(0, 0, 0); /* fallback color */
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.6);
   padding: 20px;
 }
 /* no padding for col */
@@ -243,4 +284,7 @@ a:hover {
 .alert-error {
   color: #b94a48;
   background-color: #f2dede;
+}
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important;
 }

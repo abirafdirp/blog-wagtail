@@ -1,7 +1,8 @@
 var blogApp = angular.module('blog', [
   'blogControllers',
   'blogServices',
-  'ngRoute'
+  'ngRoute',
+  'ngSanitize',
 ]);
 
 blogApp.config(function($interpolateProvider) {
@@ -32,4 +33,4 @@ blogApp.config(['$routeProvider', '$httpProvider',
 		    })
 
 	
-}])
+}]);

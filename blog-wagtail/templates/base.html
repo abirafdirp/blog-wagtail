@@ -19,13 +19,15 @@
   {# Global stylesheets #}
   <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}">
   <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/shCore.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/shThemeDefault.css' %}">
 
   {% block extra_css %}
     {# Override this in templates to add extra stylesheets #}
   {% endblock %}
 </head>
 
-<body class="{% block body_class %}{% endblock %}">
+<body class="body" class="ng-cloak">
   {% wagtailuserbar %}
   <div class="col-xs-12 no-padding">
     <div class="menubar" ng-controller="NavCtrl">
@@ -41,15 +43,25 @@
   </div>
 
   <div ng-view></div>
-
+  <div class="footer"><p>Created by Abirafdi Raditya Putra</p></div>
   {# Global javascript #}
   <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
   <script type="text/javascript" src="{% static 'js/angular.js' %}"></script>
   <script type="text/javascript" src="{% static 'js/angular-resource.js' %}"></script>
   <script type="text/javascript" src="{% static 'js/angular-route.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/angular-sanitize.min.js' %}"></script>
   <script type="text/javascript" src="{% static 'js/app.js' %}"></script>
   <script type="text/javascript" src="{% static 'js/controllers.js' %}"></script>
   <script type="text/javascript" src="{% static 'js/services.js' %}"></script>
+
+  {#  Syntax Highlighter #}
+  <script type="text/javascript" src="{% static 'js/shCore.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/shBrushBash.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/shBrushCpp.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/shBrushCss.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/shBrushJscript.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/shBrushPython.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/shBrushSql.js' %}"></script>
 
   {% block extra_js %}
     {# Override this in templates to add extra javascript #}

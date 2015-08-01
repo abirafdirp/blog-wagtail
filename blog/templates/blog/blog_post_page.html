@@ -1,22 +1,76 @@
-{$ params $}
-{$ post $}
 <div ng-repeat="post in post.pages">
-  <div class="container-fluid container-content" ng-controller="PostCtrl">
+  <div class="container-fluid container-content">
     <div class="row">
       <div class="col-xs-12 main-heading no-padding">
-        <h1><span>{{ post.title }}</span></h1>
-        <h2><span>{{ post.date }}</span></h2>
+        <h1><span>{$ post.title $}</span></h1>
+        <h2><span>{$ post.date | date : 'd - MMMM - yyyy' $}</span></h2>
+      </div>
+    </div>
+
+    <div ng-if="post.main_background_image">
+      <div class="main-background">
+        <img ng-src="{$ getImage(post.main_background_image.id) $}" class="img-responsive .main-background">
       </div>
     </div>
 
     <div ng-if="post.main_image">
       <div class="row main-image box">
-        <div class="col-xs-8 col-xs-offset-2">
-          <img ng-src="getImage(post.main_image.id)" class="img-responsive main-image-plus">
+        <div class="col-xs-12">
+          <img ng-src="{$ getImage(post.main_image.id) $}" class="img-responsive main-image-plus">
         </div>
       </div>
+    </div>
+
+    <div ng-if="post.intro">
+      <div class="row content box">
+        <div class="col-xs-10 col-xs-offset-1" ng-bind-html="post.intro">
+        </div>
+      </div>
+    </div>
+
+    <div ng-repeat="content in post.content">
+
+      <div ng-if="content.type == 'content'">
+        <div class="row content box">
+            <div class="col-xs-10 col-xs-offset-1" ng-bind-html="content.value">
+            </div>
+        </div>
+      </div>
+
+      <div ng-if="content.type == 'code_block'">
+        <div class="row content box">
+            <div class="col-xs-10 col-xs-offset-1" ng-bind="content.value">
+            </div>
+        </div>
+      </div>
+
+      <div ng-if="content.type == 'subheading'">
+        <div class="row subheading">
+          <div class="col-xs-8 col-xs-offset-2">
+            <h2><span ng-bind-html="content.value"></span></h2>
+          </div>
+        </div>
+      </div>
+
+      <div ng-if="content.type == 'subheading_background'">
+        <div class="row subheading-background">
+           <img ng-src="{$ getImage(content.value) $}" class="img-responsive">
+        </div>
+      </div>
+
+      <div ng-if="content.type == 'full_image'">
+        <div class="row full-image box">
+          <div class="col-xs-12">
+            <p class="full-image-title">{$ getImageTitle(content.value) $}</p>
+            <img ng-src="{$ getImage(content.value) $}" class="img-responsive">
+          </div>
+        </div>
+      </div>
+
     </div>
 
     
   </div>
 </div>
+
+<script type="text/javascript">SyntaxHighlighter.all()</script>

@@ -33,18 +33,12 @@ blogControllers.controller('BlogIndexCtrl', ['$scope', 'BlogIndex',
 
 blogControllers.controller('PostCtrl', ['$scope', '$route', '$routeParams', 'Post',
   function($scope, $route, $routeParams, Post){
-    $scope.titleIt = function (title) {
-      var str = title.replace(/\w\S*/g, function(txt){
-        return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
-      });
-      return str.replace(/-/,' ');
-    }
     $scope.$route = $route
     $scope.params = $routeParams;
-    $scope.$on('$routeChangeSuccess', function() {
-      $scope.title = $scope.titleIt($scope.params.postTitle);
-      $scope.post = Post.post.query({postTitle:$scope.title});
-    });
+    $scope.title = $scope.params.postTitle;
+
+    $scope.post = Post.post.query({angular_url:$scope.title});
+
     $scope.images = Post.images.query();
     $scope.getImage = function(id) {
       for(var i = 0; i < $scope.images.images.length; i++){
@@ -53,5 +47,15 @@ blogControllers.controller('PostCtrl', ['$scope', '$route', '$routeParams', 'Pos
         }
       }
     };
+    $scope.getImageTitle = function(id) {
+      for(var i = 0; i < $scope.images.images.length; i++){
+        if($scope.images.images[i].id === id){
+          return $scope.images.images[i].title;
+        }
+      }
+    }
+    $scope.formatDate = function (date) {
+
+    }
   }
 ]);
