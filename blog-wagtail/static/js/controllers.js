@@ -28,7 +28,19 @@ blogControllers.controller('BlogIndexCtrl', ['$scope', 'BlogIndex',
   }
 ]);
 
-blogControllers.controller('PostCtrl', ['$scope', 'Post',
-  function($scope, Post){
-    $scope.post = Post.post.query();
-}]);
+blogControllers.controller('PostCtrl', ['$scope', '$route', '$routeParams', 'Post',
+  function($scope, $route, $routeParams, Post){
+    $scope.titleIt = function (title) {
+      var str = title.replace(/\w\S*/g, function(txt){
+        return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+      });
+      return str.replace('-',' 'g);
+    }
+    $scope.$route = $route
+    $scope.params = $routeParams;
+    $scope.$on('$routeChangeSuccess', function() {
+      $scope.title = $scope.titleIt($scope.params.postTitle);
+      $scope.post = Post.post.query({postTitle:$scope.title});
+    }); 
+  }
+]);

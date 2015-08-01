@@ -19,12 +19,13 @@ blogApp.config(['$routeProvider', '$httpProvider',
 	    	when('/blog', {
 				templateUrl: '/blog',
 				controller: 'BlogIndexCtrl',
-				activetab: 'blog-index'
+				activetab: 'blog'
 			}).
 			when('/blog/:postTitle', {
 				templateUrl: function (params) {return '/blog/'+params.postTitle},
 				controller: 'PostCtrl',
-				activetab: 'post'
+				activetab: 'blog',
+				postTitle: function (params) {return params.postTitle}	
 			}).
 		    otherwise({
 		      redirectTo: '/home'
