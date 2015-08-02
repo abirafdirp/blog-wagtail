@@ -2,8 +2,19 @@
   <div class="container-fluid no-padding">
     <div class="col-xs-12">
       <div ng-repeat="post in posts.pages" ng-cloak>
-        <a href="{$ '#/blog/' + slugify(post.title) $}" ng-click="setCurrentPost(post.title)">{$ post.title $}<a>
-          <img ng-src="{$ getImage(post.main_image.id) $}"><img>
+        <a href="{$ '#/blog/' + slugify(post.title) $}">
+          <div class="post container-fluid">
+            <div class="row">
+              <div class="col-xs-12 col-sm-2">
+                <img ng-src="{$ getImage(post.main_image.id) $}" class="img-responsive post-image"><img>
+              </div>
+              <div class="col-xs-12 col-sm-8 post-title">
+                <h3>{$ post.title $}</h3>
+              </div>
+              <div class="col-sm-8 post-title"><h5>{$ post.date | date : 'd  MMMM  yyyy' $}</h5></div>
+            </div>
+          </div>
+        </a>
       </div>
     </div>
   </div>

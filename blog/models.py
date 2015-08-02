@@ -8,6 +8,7 @@ from wagtail.wagtailcore.models import Page
 from wagtail.wagtailcore.models import Orderable
 from wagtail.wagtailcore import blocks
 from wagtail.wagtailcore import fields
+from wagtail.wagtailcore.fields import StreamField
 from wagtail.wagtailadmin.edit_handlers import FieldPanel
 from wagtail.wagtailadmin.edit_handlers import StreamFieldPanel
 from wagtail.wagtailadmin.edit_handlers import MultiFieldPanel
@@ -19,8 +20,15 @@ from wagtail.wagtailsearch import index
 
 
 class BlogIndexPage(Page):
-    pass
+    featured_posts = StreamField([
+        ('post', blocks.PageChooserBlock(required=False)),
+    ])
 
+    content_panels = Page.content_panels + [
+        StreamFieldPanel('featured_posts'),
+    ]
+
+    api_fields = ('featured_posts', 'title')
 
 class ContentBlock(blocks.StreamBlock):
     subheading = blocks.CharBlock(help_text='Subheading')
@@ -29,7 +37,8 @@ class ContentBlock(blocks.StreamBlock):
     content = blocks.RichTextBlock()
     full_image = ImageChooserBlock(required=False,
                                    help_text='Full Image')
-    code_block = blocks.RawHTMLBlock();
+    code_block = blocks.RawHTMLBlock(help_text="Must Use http://syntaxhighlight.in/");
+    smaller_subheading = blocks.CharBlock(help_text='Subheading')
 
     search_fields = Page.search_fields + (
         index.SearchField('subheading'),
@@ -45,6 +54,7 @@ class BlogPostPage(Page):
     title_extended = models.CharField(max_length=60, blank=True, null=True)
     author = models.CharField(max_length=50)
     date = models.DateField()
+    categories = models
     main_image = models.ForeignKey(
         'wagtailimages.Image',
         null=True,
@@ -80,7 +90,7 @@ class BlogPostPage(Page):
         index.SearchField('intro'),
     )
 
-    api_fields = ('angular_url','title_extended', 'author', 'date', 'main_image',
+    api_fields = ('angular_url', 'title_extended', 'author', 'date', 'main_image',
                   'main_background_image', 'intro', 'content')
 
     class Meta:

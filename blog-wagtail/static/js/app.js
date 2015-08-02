@@ -10,6 +10,8 @@ blogApp.config(function($interpolateProvider) {
     $interpolateProvider.endSymbol('$}');
 });
 
+blogApp.filter('unsafe', function($sce) { return $sce.trustAsHtml; });
+
 blogApp.config(['$routeProvider', '$httpProvider', 
 	function($routeProvider, $httpProvider) {
 	    $routeProvider.
@@ -28,9 +30,9 @@ blogApp.config(['$routeProvider', '$httpProvider',
 				activetab: 'blog',
 				postTitle: function (params) {return params.postTitle}	
 			}).
-		    otherwise({
-		      redirectTo: '/home'
-		    })
+			otherwise({
+				redirectTo: '/home'
+			})
 
 	
 }]);

@@ -78,7 +78,7 @@ a:hover {
 .full-image {
   background: rgb(0, 0, 0); /* fallback color */
   background: rgba(255, 255, 255, 0.6);
-  padding-top: 20px;
+  padding-top: 30px;
   padding-bottom: 20px;
   margin-bottom: 20px;
 }
@@ -174,8 +174,8 @@ a:hover {
   .menubar .nav a {
   color: #202020;
   text-decoration: none;
-  padding-left: 0;
-  padding-right: 0;
+  padding-left: 5px;
+  padding-right: 5px;
   font-size: 18px;
   font-weight: 700;
   line-height: 36px;
@@ -190,6 +190,17 @@ a:hover {
   font-weight: 700;
   line-height: 36px;
 }
+@media (max-width: 800px){
+  .menubar .nav .active {
+  color: #43b1b0;
+  text-decoration: none;
+  padding-left: 5px;
+  padding-right: 5px;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 36px;
+  }
+}
 .menubar .nav a:hover {
   color: #43b1b0;
   text-decoration: none;
@@ -198,6 +209,17 @@ a:hover {
   font-size: 18px;
   font-weight: 700;
   line-height: 36px;
+}
+@media (max-width: 800px){
+  .menubar .nav a:hover {
+  color: #43b1b0;
+  text-decoration: none;
+  padding-left: 5px;
+  padding-right: 5px;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 36px;
+  }
 }
 /* content */
 .intro {
@@ -247,6 +269,53 @@ a:hover {
   background: rgba(255, 255, 255, 0.6);
   padding: 20px;
 }
+.subheading-smaller {
+  position: relative;
+  font: 16px Helvetica, Sans-Serif;
+  top: 25px;
+  text-align: center;
+  padding-top: 30px;
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+/* blog index */
+.post {
+  margin-left: 100px;
+  margin-right: 100px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  background: #ffffff;
+  color: #202020;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+}
+.container-fluid .a:hover .post {
+  background: #43b1b0;
+  color: #202020;
+}
+@media (max-width: 800px){
+  .post {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+.post-image {
+  padding-top: 10px;
+  margin-bottom: -25px;
+}
+.post-title {
+  text-align: center;
+  padding-right: 30px;
+  margin-top: -10px;
+  margin-bottom: -40px;
+}
+.arrow {
+  background: #43b1b0;
+  color: #202020;
+  padding: 0;
+  margin: 0;
+}
+
+
 /* no padding for col */
 .no-padding {
   padding-left: 0 !important;
