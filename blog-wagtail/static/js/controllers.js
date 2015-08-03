@@ -22,6 +22,13 @@ blogControllers.controller('BlogIndexCtrl', ['$scope', 'BlogIndex',
         }
       }
     };
+    $scope.getFeaturedPost = function(id) {
+      for(var i = 0; i < $scope.posts.pages.length; i++){
+        if($scope.posts.post[i].id === id){
+          return $scope.posts.post[i];
+        }
+      }
+    };
     $scope.slugify = function(url) {
         return url
         .toLowerCase()
