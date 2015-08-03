@@ -3,7 +3,7 @@ var blogServices = angular.module('blogServices', ['ngResource']);
 blogServices.factory('BlogIndex', ['$resource',
   function($resource) {
     return {
-      posts : $resource('/api/v1/pages/?type=blog.BlogPostPage&fields=title,date,main_image,categories,intro', {}, {
+      posts : $resource('/api/v1/pages/?type=blog.BlogPostPage&fields=title,date,main_image,categories,intro,content,related_post', {}, {
         query: {method: 'GET', isArray: false}
       }),
       images : $resource('/api/v1/images/?fields=file&tags=index', {}, {
@@ -18,12 +18,12 @@ blogServices.factory('BlogIndex', ['$resource',
 blogServices.factory('Post', ['$resource',
   function($resource) {
     return {
-      post : $resource('/api/v1/pages/?type=blog.BlogPostPage&fields=title,angular_url,title_extended,author,date,main_image,intro,main_background_image,content', {angular_url:'@postTitle'}, {
+      post : $resource('/api/v1/pages/?type=blog.BlogPostPage&fields=title,angular_url,title_extended,author,date,main_image,intro,main_background_image,content,related_post', {angular_url:'@postTitle'}, {
         query : {method: 'GET', isArray: false}
       }),
       images : $resource('/api/v1/images/?fields=file,title&tags=post', {}, {
         query: {method: 'GET', isArray: false}
-      })
+      }),
     }
   }
 ]);

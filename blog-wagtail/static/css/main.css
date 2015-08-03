@@ -19,8 +19,7 @@ li {
   line-height: 200%;
 }
 a {
-  color: #202020;
-  text-decoration: underline;
+  color: #43b1b0;
   font-family: 'Roboto', sans-serif;
   font-size: 18px;
   font-weight: 200;
@@ -28,11 +27,12 @@ a {
 }
 a:hover {
   color: #1c1c1c;
-  text-decoration: underline;
+  text-decoration: none;
   font-family: 'Roboto', sans-serif;
   font-size: 18px;
   font-weight: 200;
   line-height: 200%;
+  -webkit-transition: color 1s;
 }
 .body {
   background-image: url("bg.jpg");
@@ -275,9 +275,8 @@ a:hover {
   font: 16px Helvetica, Sans-Serif;
   top: 25px;
   text-align: center;
-  padding-top: 30px;
-  padding-bottom: 0;
-  margin-bottom: 0;
+  padding-bottom: 30px;
+  margin-bottom: 5px;
 }
 /* blog index */
 .post {
@@ -350,6 +349,7 @@ a:hover {
 .post-title h5 {
   padding: 0;
   margin: 0;
+  margin-top: -13px;
 }
 .post-title h6 {
   padding: 0;
@@ -392,26 +392,51 @@ a:hover {
   padding-left: 0;
   margin-bottom: 10px;
   margin-top: 50px;
-  display: inline;
+  display: inline-block;
 }
-.toolspan form {
-  display: inline;
-}
-.toolspan form input{
+.toolspan input{
   outline: 0 none;
   box-shadow: none;
   border: none;
-  border: solid;
-  border-color: #bbbbbb;
-  border-width: 1px;
-  border-radius: 5px;
-  background: rgba(255, 255, 255, 0.8);
-  line-height: 25px;
-  width: 230px;
+  line-height: 35px;
+  width: 290px;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
 }
-.toolspan span {
-  padding-right: 5px;
+.toolspan button {
+  background: #ffffff;
+  border: none;
 }
+.related-post {
+  margin-top: 0;
+  margin-bottom: 50px;
+  background: #ffffff;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+}
+.subheading-related {
+  text-align: center;
+  padding: 10px;
+  padding-bottom: 0;
+}
+/* enable absolute positioning */
+.inner-addon {
+    position: relative;
+  left: -20px
+}
+
+/* style icon */
+.inner-addon .glyphicon {
+  position: absolute;
+  padding: 10px;
+  pointer-events: none;
+}
+
+/* align icon */
+.left-addon .glyphicon  { left:  0px;}
+.right-addon .glyphicon { right: 0px;}
+
+/* add padding  */
+.left-addon input  { padding-left:  30px; }
+.right-addon input { padding-right: 30px; }
 /* buttons */
 .featured-post-container button {
 }

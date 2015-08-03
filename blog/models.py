@@ -71,6 +71,9 @@ class BlogPostPage(Page):
     )
     intro = fields.RichTextField(null=True, blank=True)
     content = fields.StreamField(ContentBlock())
+    related_post = StreamField([
+        ('post', blocks.PageChooserBlock(required=False))
+    ])
 
     content_panels = Page.content_panels + [
         FieldPanel('angular_url'),
@@ -83,6 +86,7 @@ class BlogPostPage(Page):
         ImageChooserPanel('main_background_image'),
         FieldPanel('intro'),
         StreamFieldPanel('content'),
+        StreamFieldPanel('related_post'),
     ]
 
     search_fields = Page.search_fields + (
@@ -94,7 +98,7 @@ class BlogPostPage(Page):
 
     api_fields = ('angular_url', 'title_extended', 'author', 'date',
                   'main_image', 'main_background_image', 'categories',
-                  'intro','content')
+                  'intro','content', 'related_post')
 
     class Meta:
         verbose_name = 'Blog Post'

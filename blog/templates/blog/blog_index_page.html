@@ -23,9 +23,12 @@
      </div>
    </div>
    -->
-    <div class="col-xs-12 col-sm-9 col-sm-offset-1 toolspan">
-      <span class="label-toolspan">Search</span>
-      <form><input type="text" placeholder="  Post, content, date, categories...." ng-model="search"> </form>
+    <div class="col-xs-9 col-xs-offset-3 col-sm-8 col-sm-offset-4 col-md-7 col-md-offset-5 toolspan animated fadeIn">
+      <div class="inner-addon left-addon">
+        <i class="glyphicon glyphicon-search" aria-hidden="true"></i>
+        <input type="text" placeholder="Search post, content, date, categories" ng-model="search">
+      </div>
+
     </div>
 
     <div class="col-xs-12">
@@ -43,7 +46,7 @@
                   <div class="col-xs-12 col-sm-10 col-lg-11">
                     <h3>{$ post.title $}</h3>
                     <h5 class="animated fadeIn" ng-hide="hover==true">{$ post.date | date : 'd  MMMM  yyyy' $}</h5>
-                    <h5 class="animated fadeIn" ng-hide="hover==true">In {$ post.categories $}</h5>
+                    <h6 class="animated fadeIn" ng-hide="hover==true">In {$ post.categories $}</h6>
                   </div>
                   <div class="col-xs-12">
                     <div class="animated fadeIn post-intro" ng-bind-html=" post.intro" ng-show="hover"></div>

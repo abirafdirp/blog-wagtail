@@ -39,11 +39,12 @@ blogControllers.controller('BlogIndexCtrl', ['$scope', 'BlogIndex',
   }
 ]);
 
-blogControllers.controller('PostCtrl', ['$scope', '$route', '$routeParams', 'Post',
-  function($scope, $route, $routeParams, Post){
+blogControllers.controller('PostCtrl', ['$scope', '$route', '$routeParams', 'Post', 'BlogIndex',
+  function($scope, $route, $routeParams, Post, BlogIndex){
     $scope.$route = $route
     $scope.params = $routeParams;
     $scope.title = $scope.params.postTitle;
+    $scope.posts = BlogIndex.posts.query();
 
     $scope.post = Post.post.query({angular_url:$scope.title});
 
@@ -55,8 +56,12 @@ blogControllers.controller('PostCtrl', ['$scope', '$route', '$routeParams', 'Pos
         }
       }
     };
-    $scope.formatDate = function (date) {
-
-    }
+    $scope.slugify = function(url) {
+        return url
+        .toLowerCase()
+        .replace(/ /g,'-')
+        .replace(/[^\w-]+/g,'')
+        ;
+    };
   }
 ]);

@@ -77,6 +77,28 @@
 
     </div>
 
+    <div class="row subheading-related animated fadeIn">
+      <div class="col-xs-8 col-xs-offset-2">
+        <h3>Related Posts</h3>
+      </div>
+    </div>
+
+    <div class="row box related-post">
+      <div ng-if="post.related_post" ng-repeat="related_post in post.related_post">
+        <ul>
+          <div  ng-repeat="posT in posts.pages" class="col-xs-12">
+            <span ng-if="related_post.value == posT.id">
+              <a href="{$ '#/blog/' + slugify(posT.title) $}"><li>{$ posT.title $}</li></a>
+            </span>
+          </div >
+        </ul>
+      </div>
+    </div>
+
+    <div class="row box related-post">
+      <div disqus=" post.id "></div>
+    </div>
+
 
   </div>
 </div>
