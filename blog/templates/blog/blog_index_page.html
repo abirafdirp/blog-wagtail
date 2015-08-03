@@ -4,24 +4,33 @@
         <a href="{$ '#/blog/' + slugify(post.title) $}" ng-mouseenter="hover = true" ng-mouseleave=" hover = false">
           <div ng-class="{'post container-fluid':hover==false, 'post-hovered container-fluid animated':hover==true}">
             <div class="row">
-              <div class="col-xs-12 col-sm-2">
+              <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2 post-image-container">
                 <img ng-src="{$ getImage(post.main_image.id) $}" class="img-responsive post-image"><img>
               </div>
-              <div class="col-xs-12 col-sm-8 post-title animated fadeIn">
-                <h2>{$ post.title $}</h2>
-              </div>
               <div ng-if="post.intro">
-                <div class="col-sm-8 post-title animated fadeIn" ng-hide="hover==true"><h5>{$ post.date | date : 'd  MMMM  yyyy' $}</h5></div>
-                <div class="col-sm-8 post-title animated fadeIn category" ng-hide="hover==true"><h5>In {$ post.categories $}</h5></div>
-                <div class="col-sm-9 post-intro animated fadeIn" ng-bind-html=" post.intro" ng-show="hover"></div>
+                <div class="col-xs-12 col-sm-8 col-md-9 col-lg-10 post-title animated fadeIn">
+                  <div class="col-xs-12 col-sm-10">
+                    <h3>{$ post.title $}</h3>
+                    <h5 class="animated fadeIn" ng-hide="hover==true">{$ post.date | date : 'd  MMMM  yyyy' $}</h5>
+                    <h5 class="animated fadeIn" ng-hide="hover==true">In {$ post.categories $}</h5>
+                  </div>
+                  <div class="col-xs-12">
+                    <div class="animated fadeIn post-intro" ng-bind-html=" post.intro" ng-show="hover"></div>
+                  </div>
+                </div>
               </div>
               <div ng-if="!post.intro">
-                <div class="col-sm-8 post-title"><h5>{$ post.date | date : 'd  MMMM  yyyy' $}</h5></div>
-                <div class="col-sm-8 post-title category"><h5>In {$ post.categories $}</h5></div>
+                <div class="col-xs-12 col-sm-8 col-md-9 col-lg-10 post-title animated fadeIn">
+                  <div class="col-xs-12 col-sm-10">
+                    <h3>{$ post.title $}</h3>
+                    <h5>{$ post.date | date : 'd  MMMM  yyyy' $}</h5>
+                    <h6>In {$ post.categories $}</h6>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </a>
       </div>
     </div>
-  </div>
+ </div>

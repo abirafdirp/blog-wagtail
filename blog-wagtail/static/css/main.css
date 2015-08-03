@@ -286,13 +286,15 @@ a:hover {
   margin-bottom: 10px;
   margin-top: 10px;
   background: #ffffff;
-  -webkit-transition: margin 0.5s;
+  -webkit-transition: margin 0.5s, background 0.5s;
+  -moz-transition: margin 0.5s, background 0.5s;
   color: #202020;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
 }
 .post-hovered {
-  -webkit-transition: margin 0.5s;
-  background: #43b1b0;
+  -webkit-transition: margin 0.5s, background 0.5s;
+  -moz-transition: margin 0.5s, background 0.5s;
+  background: #F0F0F0;
   color: #202020;
   margin-top: 30px;
   margin-bottom: 30px;
@@ -302,64 +304,58 @@ a:hover {
 }
 @media (max-width: 1300px){
   .post-hovered {
-  -webkit-transition: margin 0.5s;
-  background: #43b1b0;
+  -webkit-transition: margin 0.5s, background 0.5s;
+  -moz-transition: margin 0.5s, background 0.5s;
+  background: #F0F0F0;
   color: #202020;
   margin-top: 30px;
   margin-bottom: 30px;
   margin-left: 0;
   margin-right: 0;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+  }
 }
+.post-image-container {
+  padding: 0;
+  justify-content:center;
+  align-items:center;
+  overflow:hidden;
+  height: 140px;
+  width: 180px;
 }
 .post-image {
-  padding-top: 10px;
-  margin-bottom: -25px;
+  display:inline-block;
+  min-width:100%;
+  min-height:100%
+}
+.post-image-container img{
+  max-width:250px;
+  max-height:250px;
+  width: auto;
+  height: auto;
 }
 .post-title {
+  display: inline-block;
   text-align: center;
-  padding-right: 30px;
-  margin-top: -10px;
-  margin-bottom: -40px;
+}
+.post-title h3 {
+  padding: 0;
+  margin: 0;
+  margin-top: 8px;
+}
+.post-title h5 {
+  padding: 0;
+  margin: 0;
+}
+.post-title h6 {
+  padding: 0;
+  margin: 0;
+}
+.post-intro {
+  text-align: left;
 }
 .category {
   margin-top: 5px;
-}
-@media (max-width: 1300px){
-  .post-title {
-  text-align: center;
-  padding-right: 30px;
-  margin-top: -20px;
-  margin-bottom: -31px;
-  }
-}
-@media (max-width: 768px){
-  .post-title {
-  text-align: center;
-  padding-right: 30px;
-  margin-top: -30px;
-  margin-bottom: 0;
-  }
-}
-.post-title h5 {
-  margin-top: 20px;
-  margin-bottom: 30px;
-}
-@media (max-width: 1300px){
-  .post-title h5 {
-  margin-top: 8px;
-  margin-bottom: 8px;
-  }
-}
-.post-title h6 {
-  margin-top: 20px;
-  margin-bottom: 20px;
-}
-@media (max-width: 1300px){
-  .post-title h6 {
-  margin-top: 8px;
-  margin-bottom: 8px;
-  }
 }
 .arrow {
   background: #43b1b0;
