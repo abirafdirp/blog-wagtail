@@ -17,6 +17,34 @@ blogApp.config(function($disqusProvider) {
 
 blogApp.filter('unsafe', function($sce) { return $sce.trustAsHtml; });
 
+blogApp.filter('object2Array', function() {
+	return function(input) {
+		var out = [];
+		for(i in input){
+			out.push(input[i]);
+		}
+		return out;
+	}
+});
+
+blogApp.filter('orderObjectBy', function(){
+ return function(input, attribute) {
+    if (!angular.isObject(input)) return input;
+
+    var array = [];
+    for(var objectKey in input) {
+        array.push(input[objectKey]);
+    }
+
+    array.sort(function(a, b){
+        a = parseInt(a[attribute]);
+        b = parseInt(b[attribute]);
+        return a - b;
+    });
+    return array;
+ }
+});
+
 blogApp.config(['$routeProvider', '$httpProvider', 
 	function($routeProvider, $httpProvider) {
 	    $routeProvider.

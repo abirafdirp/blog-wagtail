@@ -22,13 +22,6 @@
       </div>
     </div>
 
-    <div ng-if="post.intro">
-      <div class="row content box animated fadeIn">
-        <div class="col-xs-10 col-xs-offset-1" ng-bind-html="post.intro">
-        </div>
-      </div>
-    </div>
-
     <div ng-repeat="content in post.content">
 
       <div ng-if="content.type == 'content'">
