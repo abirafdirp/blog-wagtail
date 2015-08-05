@@ -62,6 +62,13 @@ class BlogPostPage(Page):
         on_delete=models.SET_NULL,
         related_name='+',
     )
+    thumbnail_image = models.ForeignKey(
+        'wagtailimages.Image',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+',
+    )
     main_background_image = models.ForeignKey(
         'wagtailimages.Image',
         null=True,
@@ -83,6 +90,7 @@ class BlogPostPage(Page):
         FieldPanel('categories'),
 
         ImageChooserPanel('main_image'),
+        ImageChooserPanel('thumbnail_image'),
         ImageChooserPanel('main_background_image'),
         FieldPanel('intro'),
         StreamFieldPanel('content'),
@@ -97,8 +105,8 @@ class BlogPostPage(Page):
     )
 
     api_fields = ('angular_url', 'title_extended', 'author', 'date',
-                  'main_image', 'main_background_image', 'categories',
-                  'intro','content', 'related_post')
+                  'main_image', 'main_background_image', 'thumbnail_image',
+                  'categories', 'intro', 'content', 'related_post')
 
     class Meta:
         verbose_name = 'Blog Post'
