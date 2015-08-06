@@ -31,11 +31,15 @@
   padding-left: 28px;
   margin-top: 15px;
   margin-bottom: 5px;
+  border-bottom: solid;
+  border-width: 1px;
+  border-color: rgba(130, 130, 130, 0.6);
 }
 .index-title-noimage .title {
   display: inline-block;
   font-weight: 300;
   font-size: 30px;
+  padding-bottom: 25px;
 }
 .left-nav {
   position: fixed;
@@ -46,7 +50,7 @@
 }
 .left-nav h6 {
   border-left: solid;
-  border-color: #BBDEFB;
+  border-color: rgba(70, 70, 70, 0.87);
   border-width: 2px;
   padding: 7px 0 7px 7px;
 }

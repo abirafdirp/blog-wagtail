@@ -24,6 +24,13 @@ blogControllers.controller('BlogIndexCtrl', ['$scope', '$route', '$routeParams',
         }
       }
     };
+    $scope.slugify = function(url) {
+        return url
+        .toLowerCase()
+        .replace(/ /g,'-')
+        .replace(/[^\w-]+/g,'')
+        ;
+    };
     $scope.getCategories = function() {
       categories = [];
       for(var i = 0; i < $scope.posts.pages.length; i++){
@@ -34,13 +41,6 @@ blogControllers.controller('BlogIndexCtrl', ['$scope', '$route', '$routeParams',
         }
       }
       return categories;
-    };
-    $scope.slugify = function(url) {
-        return url
-        .toLowerCase()
-        .replace(/ /g,'-')
-        .replace(/[^\w-]+/g,'')
-        ;
     };
   }
 ]);
