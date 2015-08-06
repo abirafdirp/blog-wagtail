@@ -289,12 +289,4 @@ WAGTAIL_SITE_NAME = "abiraf"
 
 
 # ElasticSearch backend settings for Wagtail
-WAGTAILSEARCH_BACKENDS = {
-    'default': {
-        'BACKEND': 'wagtail.wagtailsearch.backends.elasticsearch.ElasticSearch',
-        'URLS': ['http://localhost:9200'],
-        'INDEX': 'blog',
-        'TIMEOUT': 5,
-    }
-}
 

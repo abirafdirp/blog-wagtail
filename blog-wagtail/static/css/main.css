@@ -46,8 +46,16 @@
   display: inline-block;
 }
 .meta-tag {
-  background-color: rgba(30,30,30,0.8);
+  background-color: rgba(20,20,20,0.8);
   color: #ffffff;
   padding: 2px 8px 2px 8px;
   margin: 3px;
+}
+.meta-tag a {
+  text-decoration: none;
+  color: #ffffff;
+}
+.author-post {
+  text-decoration: none;   
+  color: rgba(0, 0, 0, 0.87);
 }

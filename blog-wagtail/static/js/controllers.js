@@ -6,11 +6,15 @@ blogControllers.controller('NavCtrl', ['$scope', '$route',
   }
 ]);
 
-blogControllers.controller('BlogIndexCtrl', ['$scope', 'BlogIndex',
-  function($scope, BlogIndex) {
+blogControllers.controller('BlogIndexCtrl', ['$scope', '$route', '$routeParams', 'BlogIndex',
+  function($scope, $route, $routeParams, BlogIndex) {
     $scope.posts = BlogIndex.posts.query();
     $scope.images = BlogIndex.images.query();
     $scope.featured_posts = BlogIndex.featured_posts.query();
+    $scope.$route = $route
+    $scope.params = $routeParams;
+    $scope.category = $scope.params.category;
+    $scope.author = $scope.params.author;
 
     // for loop is the fastest among filter and for each
     $scope.getImage = function(id) {

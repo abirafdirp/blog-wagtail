@@ -1,3 +1,4 @@
+<div class="row">
 <div class="row" id="search">
   <form class="col s12">
     <div class="row animated fadeIn">
@@ -9,9 +10,10 @@
     </div>
   </form>
 </div>
-{$ posts.pages.lentgh $}
+
 <div class="row" id="index-posts">
-  <div ng-repeat="post in posts.pages | orderBy:'-id' | filter:search" ng-cloak>
+
+  <div ng-repeat="post in posts.pages | orderBy:'-id' | filter:search | filter:category | filter:author" ng-cloak>
     <div class="col s12 m10 offset-m1 animated fadeIn">
       <a href="{$ '#/blog/' + slugify(post.title) $}" ng-mouseenter="hover=true" ng-mouseleave="hover=false">
 
@@ -30,12 +32,14 @@
             <div ng-hide="hover" class="post-meta-container">
               <div class="post-meta">
                 <div class="valign-wrapper animated fadeIn">
-                  <i class="material-icons">today</i>
+                  <i class="material-icons">today</i>&nbsp;
                   {$ post.date | date : 'd  MMMM  yyyy' $}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                   <i class="material-icons">view_list</i>
                   <span ng-repeat="category in post.categories">
                     <span class="meta-tag">{$ category.value $}</span>
-                  </span>
+                  </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  <i class="material-icons">perm_contact_calendar</i>&nbsp;By
+                  {$ post.author $}
                 </div>
               </div>
             </div>
@@ -47,4 +51,5 @@
       </a>
     </div>
   </div>
+</div>
 </div>

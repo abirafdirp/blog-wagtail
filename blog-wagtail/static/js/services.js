@@ -3,7 +3,7 @@ var blogServices = angular.module('blogServices', ['ngResource']);
 blogServices.factory('BlogIndex', ['$resource',
   function($resource) {
     return {
-      posts : $resource('/api/v1/pages/?type=blog.BlogPostPage&fields=title,date,main_image,categories,intro,content,related_post,thumbnail_image', {}, {
+      posts : $resource('/api/v1/pages/?type=blog.BlogPostPage&fields=title,date,main_image,categories,intro,content,related_post,thumbnail_image,author', {}, {
         query: {method: 'GET', isArray: false}
       }),
       images : $resource('/api/v1/images/?fields=file&tags=index', {}, {

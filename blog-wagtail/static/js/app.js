@@ -55,7 +55,18 @@ blogApp.config(['$routeProvider', '$httpProvider',
 	    	when('/blog', {
 				templateUrl: '/blog',
 				controller: 'BlogIndexCtrl',
-				activetab: 'blog'
+				activetab: 'blog',
+				category: ''
+			}).
+			when('/blog?category=:category', {
+				templateUrl: '/blog',
+				controller: 'BlogIndexCtrl',
+				category: function (params) {return params.category}
+			}).
+			when('/blog?author=:author', {
+				templateUrl: '/blog',
+				controller: 'BlogIndexCtrl',
+				author: function (params) {return params.author}
 			}).
 			when('/blog/:postTitle', {
 				templateUrl: function (params) {return '/blog/'+params.postTitle},

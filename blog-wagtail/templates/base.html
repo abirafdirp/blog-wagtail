@@ -7,7 +7,8 @@
 <!--[if gt IE 8]><!-->
 <html class="no-js" ng-app="blog"> <!--<![endif]-->
 <head>
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
+  <link rel="stylesheet" type="text/css" href="{% static 'css/material-icons.css' %}">
   <meta charset="utf-8"/>
   <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
   <title>{% block title %}{% if self.seo_title %}{{ self.seo_title }}{% else %}
@@ -18,7 +19,7 @@
 
   {# Global stylesheets #}
   <link rel="stylesheet" type="text/css" href="{% static 'css/materialize.css' %}">
-<link rel="stylesheet" type="text/css" href="{% static 'css/animate.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/animate.css' %}">
   <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
   <link rel="stylesheet" type="text/css" href="{% static 'css/shi_default-light.min.css' %}">
 
