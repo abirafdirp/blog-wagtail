@@ -28,7 +28,7 @@
   color: rgba(0, 0, 0, 0.87);
 }
 .index-title-noimage {
-  text-align: center;
+  padding-left: 28px;
   margin-top: 15px;
   margin-bottom: 5px;
 }
@@ -36,6 +36,29 @@
   display: inline-block;
   font-weight: 300;
   font-size: 30px;
+}
+.left-nav {
+  position: fixed;
+  padding-top: 140px;
+  padding-left: 20px;
+  font-weight: 300;
+  
+}
+.left-nav h6 {
+  border-left: solid;
+  border-color: #BBDEFB;
+  border-width: 2px;
+  padding: 7px 0 7px 7px;
+}
+.left-nav li {
+  padding-left: 20px;
+  padding-bottom: 6px;
+}
+.left-nav li a {
+  color: rgba(0, 0, 0, 0.87);
+}
+.left-nav li a:hover {
+  color: rgba(70, 70, 70, 0.87);
 }
 
 /* SHARED */

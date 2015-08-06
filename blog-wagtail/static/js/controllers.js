@@ -24,6 +24,17 @@ blogControllers.controller('BlogIndexCtrl', ['$scope', '$route', '$routeParams',
         }
       }
     };
+    $scope.getCategories = function() {
+      categories = [];
+      for(var i = 0; i < $scope.posts.pages.length; i++){
+        for(var j = 0; j < $scope.posts.pages[i].categories.length; j++){
+          if(categories.indexOf($scope.posts.pages[i].categories[j].value) == -1){
+            categories.push($scope.posts.pages[i].categories[j].value);
+          }
+        }
+      }
+      return categories;
+    };
     $scope.slugify = function(url) {
         return url
         .toLowerCase()
