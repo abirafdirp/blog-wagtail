@@ -46,6 +46,9 @@ class ContentBlock(blocks.StreamBlock):
         index.SearchField('content'),
     )
 
+class CategoryBlock(blocks.StreamBlock):
+    name = blocks.CharBlock(max_length=50)
+
 class BlogPostPage(Page):
     angular_url = models.CharField\
         (max_length=100,
@@ -54,7 +57,7 @@ class BlogPostPage(Page):
     title_extended = models.CharField(max_length=60, blank=True, null=True)
     author = models.CharField(max_length=50)
     date = models.DateField()
-    categories = models.CharField(max_length=250, blank=True, null=True)
+    categories = fields.StreamField(CategoryBlock())
     main_image = models.ForeignKey(
         'wagtailimages.Image',
         null=True,
@@ -87,7 +90,7 @@ class BlogPostPage(Page):
         FieldPanel('title_extended'),
         FieldPanel('author'),
         FieldPanel('date'),
-        FieldPanel('categories'),
+        StreamFieldPanel('categories'),
 
         ImageChooserPanel('main_image'),
         ImageChooserPanel('thumbnail_image'),
@@ -106,7 +109,7 @@ class BlogPostPage(Page):
 
     api_fields = ('angular_url', 'title_extended', 'author', 'date',
                   'main_image', 'main_background_image', 'thumbnail_image',
-                  'categories', 'intro', 'content', 'related_post')
+                  'categories', 'intro', 'content', 'related_post','category')
 
     class Meta:
         verbose_name = 'Blog Post'

@@ -1,12 +1,10 @@
-
 <div ng-repeat="post in post.pages" class="ng-cloak">
-  <div class="col s12 col m10 offset-s1 l8 offset-l2">
 
     <div class="row">
       <div class="col s12 m10 offset-m1 main-heading animated fadeIn">
 
         <div ng-if="post.main_image" class="row">
-          <div class="col s12 m10 offset-m1">
+          <div class="col s12">
             <img ng-src="{$ getImage(post.main_image.id) $}" class="responsive-img z-depth-2">
           </div>
         </div>
@@ -14,9 +12,20 @@
         <h2 class="center-align">{$ post.title $}</h2>
         <div class="post-meta">
           <div class="valign-wrapper">
-              &nbsp;<i class="material-icons">today</i>{$ post.date | date : 'd  MMMM  yyyy' $}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="material-icons">view_list</i>{$ post.categories $}
+            <i class="material-icons">today</i>{$ post.date | date : 'd  MMMM  yyyy' $}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <i class="material-icons">view_list</i>
+            <span ng-repeat="category in post.categories">
+              <span class="meta-tag">&nbsp;{$ category.value $}&nbsp;</span>
+            </span>
           </div>
         </div>
+      </div>
+      <div class="col s1 hide-on-small-only">
+        <ul class="section table-of-contents">
+          <li><a href="#introduction">Introduction</a></li>
+          <li><a href="#structure">Structure</a></li>
+          <li><a href="{$ '#/blog/' + slugify(post.title) + '#comments' $}">Comments</a></li>
+        </ul>
       </div>
     </div>
 
@@ -43,15 +52,15 @@
 
       <div ng-if="content.type == 'subheading'">
         <div class="row subheading animated fadeIn flow-text">
-          <div class="col s10 offset-s1">
+          <div class="col s12 m10 offset-m1">
             <h3 ng-bind-html="content.value"></h3>
           </div>
         </div>
       </div>
 
       <div ng-if="content.type == 'smaller_subheading'">
-        <div class="row subheading-smaller animated fadeIn flow-text">
-          <div class="col s12 center-align">
+        <div class="row subheading-smaller animated fadeIn">
+          <div class="col s12 m10 offset-m1 center-align">
             <div ng-bind-html="content.value"></div>
           </div>
         </div>
@@ -65,7 +74,7 @@
 
       <div ng-if="content.type == 'full_image'" class="center-align">
         <div class="row animated fadeIn">
-          <div class="col s12">
+          <div class="col s12 m10 offset-m1">
             <img ng-src="{$ getImage(content.value) $}" class="responsive-img">
           </div>
         </div>
@@ -75,8 +84,8 @@
     <div ng-repeat="related_post in post.related_post | limitTo : 1">
       <div ng-show="related_post">
         <div class="row subheading-related animated fadeIn flow-text">
-          <div class="col s8 offset-s2">
-            <h3>Related Posts</h3>
+          <div class="col s12 m10 offset-m1">
+            <h4>Related Posts</h4>
           </div>
         </div>
       </div>
@@ -98,6 +107,6 @@
       <div disqus=" post.title "></div>
     </div>
 
-
-  </div>
 </div>
+
+
