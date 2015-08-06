@@ -1,68 +1,37 @@
- <div class="container-fluid no-padding" ng-init="hover = false">
-
-
-   <div class="toolspan-container">
-     <div class="toolspan animated fadeIn">
-        <div class="inner-addon left-addon">
-          <i class="glyphicon glyphicon-search" aria-hidden="true"></i>
-          <input type="text" placeholder="Search post, content, date, categories..." ng-model="search">
-        </div>
-     </div>
-   </div>
-
-  <div class="col-xs-12 col-sm-10 col-sm-offset-1">
-   <div ng-repeat="post in posts.pages | orderBy:'-id' | filter:search" ng-cloak>
-     <a href="{$ '#/blog/' + slugify(post.title) $}">
-       <div class="col-sm-6 col-xs-12 animated fadeIn">
-         <div class="hovereffect">
-           <img class="img-responsive" ng-src="{$ getImage(post.thumbnail_image.id) $}" alt="">
-           <div class="overlay">
-             <h2>{$ post.title $}</h2></br>
-             <h3>{$ post.date | date : 'd  MMMM  yyyy' $}</h3>
-           </div>
-          </div>
-       </div>
-     </a>
-   </div>
-  </div>
-
-    <div class="col-xs-12">
-
-      <div ng-repeat="post in posts.pages | orderBy:'-id' | filter:search" ng-cloak class="animated fadeIn">
-        <a href="{$ '#/blog/' + slugify(post.title) $}" ng-mouseenter="hover = true" ng-mouseleave=" hover = false">
-          <div ng-class="{'post container-fluid':hover==false, 'post-hovered container-fluid animated':hover==true}">
-            <div class="row">
-              <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2 post-image-container animated fadeIn">
-                <img ng-src="{$ getImage(post.main_image.id) $}" class="img-responsive post-image "><img>
-              </div>
-
-              <div ng-if="post.intro">
-                <div class="col-xs-12 col-sm-9 col-md-9 col-lg-10 post-title animated fadeIn">
-                  <div class="col-xs-12 col-sm-10 col-lg-11">
-                    <h3>{$ post.title $}</h3>
-                    <h5 class="animated fadeIn" ng-hide="hover==true">{$ post.date | date : 'd  MMMM  yyyy' $}</h5>
-                    <h6 class="animated fadeIn" ng-hide="hover==true">In {$ post.categories $}</h6>
-                  </div>
-                </div>
-                <div class="col-xs-10 post-intro">
-                    <div class="animated fadeIn" ng-bind-html=" post.intro" ng-show="hover"></div>
-                  </div>
-              </div>
-
-              <div ng-if="!post.intro">
-                <div class="col-xs-12 col-sm-7 col-md-9 col-lg-10 post-title animated fadeIn">
-                  <div class="col-xs-12 col-sm-10 col-lg-11">
-                    <h3>{$ post.title $}</h3>
-                    <h5>{$ post.date | date : 'd  MMMM  yyyy' $}</h5>
-                    <h6>In {$ post.categories $}</h6>
-                  </div>
-                </div>
-              </div>
-
-            </div>
-          </div>
-        </a>
+<div class="row" id="search">
+  <form class="col s12">
+    <div class="row animated fadeIn">
+      <div class="input-field col s12 m6 offset-m3 animated fadeIn">
+        <i class="material-icons prefix">search</i>
+        <input id="icon_prefix" type="text" class="validate" ng-model="search">
+        <label for="icon_prefix">Search or filter by content, date and categories</label>
       </div>
     </div>
+  </form>
+</div>
 
- </div>
+<div class="row" id="index-posts">
+  <div ng-repeat="post in posts.pages | orderBy:'-id' | filter:search" ng-cloak>
+    <div class="col s12 m10 offset-m1 animated fadeIn">
+      <a href="{$ '#/blog/' + slugify(post.title) $}" ng-mouseenter="hover=true" ng-mouseleave="hover=false">
+
+        <div class="card hoverable">
+          <div class="card-image">
+            <img ng-src="{$ getImage(post.thumbnail_image.id) $}" alt="">
+            <span class="card-title">{$ post.title $}</span>
+          </div>
+          <div class="card-content black-text" style="padding-top: 10px">
+            <div ng-hide="hover" class="valign-wrapper animated fadeIn">
+              &nbsp;<i class="material-icons">today</i>&nbsp;{$ post.date | date : 'd  MMMM  yyyy' $}
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <i class="material-icons">view_list</i>&nbsp;{$ post.categories $}
+
+            </div>
+            <div ng-show="hover" class="animated fadeIn flow-text" ng-bind-html=" post.intro" style=""></div>
+          </div>
+        </div>
+
+      </a>
+    </div>
+  </div>
+</div>
