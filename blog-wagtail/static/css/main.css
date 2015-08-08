@@ -39,20 +39,20 @@
   display: inline-block;
   font-weight: 300;
   font-size: 30px;
-  padding-bottom: 25px;
+  padding-bottom: 20px;
 }
 .left-nav {
   position: fixed;
-  padding-top: 140px;
-  padding-left: 20px;
+  padding-top: 130px;
+  padding-left: 50px;
   font-weight: 300;
   
 }
 .left-nav h6 {
   border-left: solid;
-  border-color: rgba(70, 70, 70, 0.87);
-  border-width: 2px;
-  padding: 7px 0 7px 7px;
+  border-color: #455a64;
+  border-width: 1px;
+  padding: 5px 0 5px 12px;
 }
 .left-nav li {
   padding-left: 20px;
@@ -63,6 +63,15 @@
 }
 .left-nav li a:hover {
   color: rgba(70, 70, 70, 0.87);
+}
+.left-nav li .active {
+  
+}
+.index-post {
+  margin-bottom: 6px;
+}
+.all-category {
+  margin-bottom: -5px;
 }
 
 /* SHARED */

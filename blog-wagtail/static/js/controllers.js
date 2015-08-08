@@ -16,7 +16,6 @@ blogControllers.controller('BlogIndexCtrl', ['$scope', '$route', '$routeParams',
     $scope.category = $scope.params.category;
     $scope.author = $scope.params.author;
 
-    // for loop is the fastest among filter and for each
     $scope.getImage = function(id) {
       for(var i = 0; i < $scope.images.images.length; i++){
         if($scope.images.images[i].id === id){
@@ -24,6 +23,7 @@ blogControllers.controller('BlogIndexCtrl', ['$scope', '$route', '$routeParams',
         }
       }
     };
+    
     $scope.slugify = function(url) {
         return url
         .toLowerCase()
@@ -31,6 +31,7 @@ blogControllers.controller('BlogIndexCtrl', ['$scope', '$route', '$routeParams',
         .replace(/[^\w-]+/g,'')
         ;
     };
+
     $scope.getCategories = function() {
       categories = [];
       for(var i = 0; i < $scope.posts.pages.length; i++){
@@ -42,6 +43,7 @@ blogControllers.controller('BlogIndexCtrl', ['$scope', '$route', '$routeParams',
       }
       return categories;
     };
+
   }
 ]);
 
