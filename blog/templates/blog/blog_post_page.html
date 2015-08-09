@@ -9,7 +9,7 @@
           </div>
         </div>
 
-        <h2 class="center-align">{$ post.title $}</h2>
+        <h2 id="title" class="center-align">{$ post.title $}</h2>
         <div class="post-meta">
           <div class="valign-wrapper">
             <i class="material-icons">today</i>{$ post.date | date : 'd  MMMM  yyyy' $}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -24,9 +24,9 @@
           </div>
         </div>
       </div>
-      <div class="col s1 hide-on-small-only">
+      <div class="col s1 hide-on-small-only animated fadeIn">
         <ul class="section table-of-contents">
-          <li><a href="#introduction">Introduction</a></li>
+          <li><a href="#title" du-scrollspy>Introduction</a></li>
           <li><a href="#structure">Structure</a></li>
           <li><a href="{$ '#/blog/' + slugify(post.title) + '#comments' $}">Comments</a></li>
         </ul>

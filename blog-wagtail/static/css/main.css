@@ -43,16 +43,14 @@
 }
 .left-nav {
   position: fixed;
-  padding-top: 130px;
-  padding-left: 50px;
+  padding-top: 105px;
+  padding-left: 40px;
   font-weight: 300;
-  
 }
-.left-nav h6 {
-  border-left: solid;
-  border-color: #455a64;
+.left-nav h4 {
   border-width: 1px;
-  padding: 5px 0 5px 12px;
+  padding: 0;
+  font-weight: 300;
 }
 .left-nav li {
   padding-left: 20px;
@@ -62,10 +60,10 @@
   color: rgba(0, 0, 0, 0.87);
 }
 .left-nav li a:hover {
-  color: rgba(70, 70, 70, 0.87);
+  color: rgba(110, 110, 110, 0.6);
 }
 .left-nav li .active {
-  
+  font-weight: 500;
 }
 .index-post {
   margin-bottom: 6px;

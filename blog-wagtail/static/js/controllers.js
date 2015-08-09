@@ -11,9 +11,9 @@ blogControllers.controller('BlogIndexCtrl', ['$scope', '$route', '$routeParams',
     $scope.posts = BlogIndex.posts.query();
     $scope.images = BlogIndex.images.query();
     $scope.featured_posts = BlogIndex.featured_posts.query();
-    $scope.$route = $route
+    $scope.$route = $route;
     $scope.params = $routeParams;
-    $scope.category = $scope.params.category;
+    $scope.params_category = $scope.params.category;
     $scope.author = $scope.params.author;
 
     $scope.getImage = function(id) {

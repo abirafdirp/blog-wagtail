@@ -4,6 +4,7 @@ var blogApp = angular.module('blog', [
   'ngRoute',
 	'ngDisqus',
   'ngSanitize',
+	'duScroll'
 ]);
 
 blogApp.config(function($interpolateProvider) {
@@ -56,23 +57,21 @@ blogApp.config(['$routeProvider', '$httpProvider',
 				templateUrl: '/blog',
 				controller: 'BlogIndexCtrl',
 				activetab: 'blog',
-				category: ''
+				category: 'all'
 			}).
 			when('/blog?category=:category', {
 				templateUrl: '/blog',
 				controller: 'BlogIndexCtrl',
-				category: function (params) {return params.category}
+				category: 'notAll'
 			}).
 			when('/blog?author=:author', {
 				templateUrl: '/blog',
-				controller: 'BlogIndexCtrl',
-				author: function (params) {return params.author}
+				controller: 'BlogIndexCtrl'
 			}).
 			when('/blog/:postTitle', {
 				templateUrl: function (params) {return '/blog/'+params.postTitle},
 				controller: 'PostCtrl',
-				activetab: 'blog',
-				postTitle: function (params) {return params.postTitle}	
+				activetab: 'blog'
 			}).
 			otherwise({
 				redirectTo: '/home'
