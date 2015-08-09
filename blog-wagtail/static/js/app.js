@@ -61,8 +61,7 @@ blogApp.config(['$routeProvider', '$httpProvider',
 			}).
 			when('/blog?category=:category', {
 				templateUrl: '/blog',
-				controller: 'BlogIndexCtrl',
-				category: 'notAll'
+				controller: 'BlogIndexCtrl'
 			}).
 			when('/blog?author=:author', {
 				templateUrl: '/blog',

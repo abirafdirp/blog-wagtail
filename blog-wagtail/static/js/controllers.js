@@ -44,6 +44,15 @@ blogControllers.controller('BlogIndexCtrl', ['$scope', '$route', '$routeParams',
       return categories;
     };
 
+    $scope.getPostCategories = function(postID) {
+      categories = [];
+      for(var i = 0; i < $scope.posts.pages.
+        categories.length; i++){
+        categories.push($scope.posts.pages[postID].categories[i].value);
+      }
+      return categories;
+    };
+
   }
 ]);
 
