@@ -29,28 +29,33 @@
   {% endblock %}
 </head>
 
-<body class="body" class="ng-cloak">
+<body ng-cloak class="body" ng-controller="NavCtrl">
 
-  <nav>
-    <div class="nav-wrapper blue-grey darken-3" ng-controller="NavCtrl">
+  <nav ng-hide="$route.current.activetab == 'home'">
+    <div class="nav-wrapper blue-grey darken-3">
       <ul class="left">
         <li ng-class="{'active':$route.current.activetab == 'home'}"><a href="/#/home">Home</a></li>
         <li ng-class="{'active':$route.current.activetab == 'blog'}"><a href="/#/blog">Blog</a></li>
-        <li ng-class="{'active':$route.current.activetab == 'projects'}"><a href="/#/projects">Projects</a></li>
-        <li ng-class="{'active':$route.current.activetab == 'about'}"><a href="/#/about">About</a></li>
-      </ul>
-      <ul class="side-nav" id="mobile-demo">
-        <li ng-class="{'active':$route.current.activetab == 'home'}"><a href="/#/home">Home</a></li>
-        <li ng-class="{'active':$route.current.activetab == 'blog'}"><a href="/#/blog">Blog</a></li>
-        <li ng-class="{'active':$route.current.activetab == 'projects'}"><a href="/#/projects">Projects</a></li>
+        <li ng-class="{'active':$route.current.activetab == 'portofolio'}"><a href="/#/portofolio">Portofolio</a></li>
         <li ng-class="{'active':$route.current.activetab == 'about'}"><a href="/#/about">About</a></li>
       </ul>
     </div>
   </nav>
 
+  <div class="nav-home animated fadeIn" ng-show="$route.current.activetab == 'home'">
+    <div class="nav-home-wrapper">
+      <ul class="nav-container">
+        <li ng-class="{'active':$route.current.activetab == 'home'}"><a href="/#/home">Home</a></li>
+        <li ng-class="{'active':$route.current.activetab == 'blog'}"><a href="/#/blog">Blog</a></li>
+        <li ng-class="{'active':$route.current.activetab == 'portofolio'}"><a href="/#/portofolio">Portofolio</a></li>
+        <li ng-class="{'active':$route.current.activetab == 'about'}"><a href="/#/about">About</a></li>
+      </ul>
+    </div>
+  </div>
+
   <main ng-view></main>
 
-  <footer class="page-footer transparent">
+  <footer class="page-footer transparent" ng-hide="$route.current.activetab == 'home'">
     <div class="footer-copyright blue-grey darken-4">
       <div class="container">
       Created by Abirafdi Raditya Putra
