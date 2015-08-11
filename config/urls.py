@@ -20,6 +20,7 @@ urlpatterns = [
 
     # partials initilization
     url(r'^home-page/$',  TemplateView.as_view(template_name='home/home_page.html'), name='home'),
+    url(r'^about/$',  TemplateView.as_view(template_name='about/about_page.html'), name='about'),
     url(r'^$',  TemplateView.as_view(template_name='base.html'), name='base'),
 
     url(r'', include(wagtail_urls)),

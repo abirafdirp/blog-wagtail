@@ -20,6 +20,7 @@
   {# Global stylesheets #}
   <link rel="stylesheet" type="text/css" href="{% static 'css/materialize.css' %}">
   <link rel="stylesheet" type="text/css" href="{% static 'css/animate.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/lightbox.css' %}">
   <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
   <link rel="stylesheet" type="text/css" href="{% static 'css/shi_default-light.min.css' %}">
 
@@ -30,11 +31,9 @@
 
 <body class="body" class="ng-cloak">
 
-
   <nav>
-    <div class="nav-wrapper blue-grey darken-2" ng-controller="NavCtrl">
-      <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
-      <ul class="left hide-on-med-and-down">
+    <div class="nav-wrapper blue-grey darken-3" ng-controller="NavCtrl">
+      <ul class="left">
         <li ng-class="{'active':$route.current.activetab == 'home'}"><a href="/#/home">Home</a></li>
         <li ng-class="{'active':$route.current.activetab == 'blog'}"><a href="/#/blog">Blog</a></li>
         <li ng-class="{'active':$route.current.activetab == 'projects'}"><a href="/#/projects">Projects</a></li>
@@ -48,7 +47,17 @@
       </ul>
     </div>
   </nav>
-    <div ng-view></div>
+
+  <main ng-view></main>
+
+  <footer class="page-footer transparent">
+    <div class="footer-copyright blue-grey darken-4">
+      <div class="container">
+      Created by Abirafdi Raditya Putra
+      <a class="white-text text-lighten-4 right" href="#!">Sitemap</a>
+      </div>
+    </div>
+  </footer>
 
   {# Global javascript #}
   <script type="text/javascript" src="{% static 'js/angular.js' %}"></script>
@@ -62,6 +71,7 @@
   <script type="text/javascript" src="{% static 'js/services.js' %}"></script>
   <script type="text/javascript" src="{% static 'js/jquery-2.1.4.min.js' %}"></script>
   <script type="text/javascript" src="{% static 'js/materialize.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/lightbox.js' %}"></script>
   <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
 
 

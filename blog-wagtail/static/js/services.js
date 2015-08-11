@@ -27,3 +27,15 @@ blogServices.factory('Post', ['$resource',
     }
   }
 ]);
+blogServices.factory('About', ['$resource',
+  function($resource) {
+    return {
+      about : $resource('/api/v1/pages/?type=about.AboutPage&fields=content,picture', {}, {
+        query : {method: 'GET', isArray: false}
+      }),
+      images : $resource('/api/v1/images/?fields=file,title&tags=about', {}, {
+        query: {method: 'GET', isArray: false}
+      }),
+    }
+  }
+])

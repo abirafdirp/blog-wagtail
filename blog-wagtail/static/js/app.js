@@ -72,6 +72,11 @@ blogApp.config(['$routeProvider', '$httpProvider',
 				controller: 'PostCtrl',
 				activetab: 'blog'
 			}).
+			when('/about', {
+				templateUrl: '/about',
+				controller: 'AboutCtrl',
+				activetab: 'about',
+			}).
 			otherwise({
 				redirectTo: '/home'
 			})

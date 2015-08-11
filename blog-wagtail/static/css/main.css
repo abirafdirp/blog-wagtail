@@ -19,10 +19,34 @@
   top: 20%;
   font-weight: 500;
 }
+.related-post {
+  margin-bottom: 40px;
+  margin-top: 20px;
+}
+.related-post h5 {
+}
+.related-post li {
+  padding: 0;
+  margin-bottom: -25px;
+}
+.related-post li a {
+  color: rgba(0, 0, 0, 0.87);
+  -webkit-transition: color 0.25s;
+  -moz-transition: color 0.25s;
+}
+.related-post li a:hover {
+  color: rgba(110, 110, 110, 0.6);
+  -webkit-transition: color 0.25s;
+  -moz-transition: color 0.25s;
+}
+.related-post li .active a:hover {
+  color: rgba(0, 0, 0, 0.87);
+}
+
 /* INDEX */
 #search {
-  margin-top: 20px;
-  margin-bottom: 0;
+  margin-top: 10px;
+  margin-bottom: -20px;
 }
 .card {
   color: rgba(0, 0, 0, 0.87);
@@ -43,8 +67,8 @@
 }
 .left-nav {
   position: fixed;
-  padding-top: 115px;
-  padding-left: 40px;
+  top: 150px;
+  left: 40px;
   font-weight: 300;
 }
 .left-nav h5 {
@@ -57,9 +81,16 @@
 }
 .left-nav li a {
   color: rgba(0, 0, 0, 0.87);
+  -webkit-transition: color 0.25s;
+  -moz-transition: color 0.25s;
 }
 .left-nav li a:hover {
   color: rgba(110, 110, 110, 0.6);
+  -webkit-transition: color 0.25s;
+  -moz-transition: color 0.25s;
+}
+.left-nav li .active a:hover {
+  color: rgba(0, 0, 0, 0.87);
 }
 .left-nav li .active {
   font-weight: 500;
@@ -91,4 +122,21 @@
 .author-post {
   text-decoration: none;   
   color: rgba(0, 0, 0, 0.87);
+}
+
+/* ABOUT */
+.about-image {
+  margin-top: 100px;
+  margin-bottom: 10px;
+}
+
+/* FOOTER */
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
 }

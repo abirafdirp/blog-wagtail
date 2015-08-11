@@ -66,6 +66,7 @@ LOCAL_APPS = (
     'search',  # search app
     'home',  # front page
     'blog',
+    'about',
 )
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
