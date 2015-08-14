@@ -6,11 +6,32 @@ blogControllers.controller('NavCtrl', ['$scope', '$route',
   }
 ]);
 
+blogControllers.controller('HomeCtrl', ['$scope',
+  function($scope){
+    angular.element(document).ready(function () {
+        $(".parallax").parallax();
+    });
+  }
+]);
+
+blogControllers.controller('PortofolioCtrl', ['$scope', 'Portofolio',
+  function($scope, Portofolio){
+    $scope.items = Portofolio.portofolio.query();
+    $scope.images = Portofolio.images.query();
+    $scope.getImage = function(id) {
+      for(var i = 0; i < $scope.images.images.length; i++){
+        if($scope.images.images[i].id === id){
+          return $scope.images.images[i].file;
+        }
+      }
+    };
+  }
+]);
+
 blogControllers.controller('BlogIndexCtrl', ['$scope', '$route', '$routeParams', 'BlogIndex',
   function($scope, $route, $routeParams, BlogIndex) {
     $scope.posts = BlogIndex.posts.query();
     $scope.images = BlogIndex.images.query();
-    $scope.featured_posts = BlogIndex.featured_posts.query();
     $scope.$route = $route;
     $scope.params = $routeParams;
     $scope.params_category = $scope.params.category;
@@ -60,6 +81,11 @@ blogControllers.controller('BlogIndexCtrl', ['$scope', '$route', '$routeParams',
         }
       }
       return false;
+    };
+
+    $scope.postLimit = 0;
+    $scope.loadMore = function() {
+      $scope.postLimit += 5;
     }
 
   }
@@ -70,7 +96,7 @@ blogControllers.controller('PostCtrl', ['$scope', '$route', '$routeParams', 'Pos
     $scope.$route = $route
     $scope.params = $routeParams;
     $scope.title = $scope.params.postTitle;
-    $scope.posts = BlogIndex.posts.query();
+    $scope.posts = BlogIndex.posts_minimal.query();
 
     $scope.post = Post.post.query({angular_url:$scope.title});
 
@@ -89,6 +115,9 @@ blogControllers.controller('PostCtrl', ['$scope', '$route', '$routeParams', 'Pos
         .replace(/[^\w-]+/g,'')
         ;
     };
+
+    angular.element(document).ready(function () {
+    });
   }
 ]);
 

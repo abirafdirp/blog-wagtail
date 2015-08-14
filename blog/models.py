@@ -38,16 +38,20 @@ class ContentBlock(blocks.StreamBlock):
     content = blocks.RichTextBlock()
     full_image = ImageChooserBlock(required=False,
                                    help_text='Full Image')
-    code_block = blocks.RawHTMLBlock(help_text="Must Use http://syntaxhighlight.in/");
+    code_block = blocks.RawHTMLBlock(help_text="Must Use http://syntaxhighlight.in/")
+    pre_tag = blocks.TextBlock()
     smaller_subheading = blocks.CharBlock(help_text='Subheading')
+    raw_html = blocks.RawHTMLBlock()
 
     search_fields = Page.search_fields + (
         index.SearchField('subheading'),
         index.SearchField('content'),
     )
 
+
 class CategoryBlock(blocks.StreamBlock):
     name = blocks.CharBlock(max_length=50)
+
 
 class BlogPostPage(Page):
     angular_url = models.CharField\
@@ -65,6 +69,8 @@ class BlogPostPage(Page):
         on_delete=models.SET_NULL,
         related_name='+',
     )
+    main_img_disc = models.CharField(max_length=50, blank=True, null=True,
+                                     help_text='main image disclaimer')
     thumbnail_image = models.ForeignKey(
         'wagtailimages.Image',
         null=True,
@@ -93,6 +99,7 @@ class BlogPostPage(Page):
         StreamFieldPanel('categories'),
 
         ImageChooserPanel('main_image'),
+        FieldPanel('main_img_disc'),
         ImageChooserPanel('thumbnail_image'),
         ImageChooserPanel('main_background_image'),
         FieldPanel('intro'),
@@ -109,7 +116,8 @@ class BlogPostPage(Page):
 
     api_fields = ('angular_url', 'title_extended', 'author', 'date',
                   'main_image', 'main_background_image', 'thumbnail_image',
-                  'categories', 'intro', 'content', 'related_post','category')
+                  'categories', 'intro', 'content', 'related_post', 'category',
+                  'main_img_disc')
 
     class Meta:
         verbose_name = 'Blog Post'

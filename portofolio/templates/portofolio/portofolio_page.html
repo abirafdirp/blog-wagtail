@@ -1,0 +1,20 @@
+<div class="container portofolio animated fadeIn">
+  <div class="row">
+    <div ng-repeat="item in items.pages[0].item" class="col s12 m4">
+     <div class="card">
+        <div class="card-image waves-effect waves-block waves-light">
+          <img class="activator" ng-src="{$ getImage(item.value.image) $}">
+        </div>
+        <div class="card-content">
+          <span class="card-title card-title-port activator grey-text text-darken-4">{$ item.value.title $}<i class="material-icons right">more_vert</i></span>
+          <p><a href="{$ item.value.link $}">Project Page</a></p>
+        </div>
+        <div class="card-reveal">
+          <span class="card-title card-title-port grey-text text-darken-4">{$ item.value.title $}<i class="material-icons right">close</i></span>
+          <p ng-bind-html="item.value.description"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

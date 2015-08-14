@@ -1,4 +1,5 @@
-{% load static wagtailuserbar %}
+{% load static %}
+{% load compress %}
 
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
@@ -11,18 +12,18 @@
   <link rel="stylesheet" type="text/css" href="{% static 'css/material-icons.css' %}">
   <meta charset="utf-8"/>
   <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-  <title>{% block title %}{% if self.seo_title %}{{ self.seo_title }}{% else %}
-    {{ self.title }}{% endif %}{% endblock %}
-      {% block title_suffix %}{% endblock %}</title>
+  <title ng-bind=" title"></title>
   <meta name="description" content=""/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
   {# Global stylesheets #}
+  {% compress css %}
   <link rel="stylesheet" type="text/css" href="{% static 'css/materialize.css' %}">
   <link rel="stylesheet" type="text/css" href="{% static 'css/animate.css' %}">
   <link rel="stylesheet" type="text/css" href="{% static 'css/lightbox.css' %}">
   <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
   <link rel="stylesheet" type="text/css" href="{% static 'css/shi_default-light.min.css' %}">
+  {% endcompress %}
 
   {% block extra_css %}
     {# Override this in templates to add extra stylesheets #}
@@ -32,12 +33,11 @@
 <body ng-cloak class="body" ng-controller="NavCtrl">
 
   <nav ng-hide="$route.current.activetab == 'home'">
-    <div class="nav-wrapper blue-grey darken-3">
+    <div class="nav-wrapper grey-mod">
       <ul class="left">
-        <li ng-class="{'active':$route.current.activetab == 'home'}"><a href="/#/home">Home</a></li>
-        <li ng-class="{'active':$route.current.activetab == 'blog'}"><a href="/#/blog">Blog</a></li>
-        <li ng-class="{'active':$route.current.activetab == 'portofolio'}"><a href="/#/portofolio">Portofolio</a></li>
-        <li ng-class="{'active':$route.current.activetab == 'about'}"><a href="/#/about">About</a></li>
+        <li ng-class="{'active':$route.current.activetab == 'home'}"><a class="white-text" href="/#/home">Home</a></li>
+        <li ng-class="{'active':$route.current.activetab == 'blog'}"><a class="white-text" href="/#/blog">Blog</a></li>
+        <li ng-class="{'active':$route.current.activetab == 'portofolio'}"><a class="white-text" href="/#/portofolio">Portofolio</a></li>
       </ul>
     </div>
   </nav>
@@ -45,10 +45,8 @@
   <div class="nav-home animated fadeIn" ng-show="$route.current.activetab == 'home'">
     <div class="nav-home-wrapper">
       <ul class="nav-container">
-        <li ng-class="{'active':$route.current.activetab == 'home'}"><a href="/#/home">Home</a></li>
         <li ng-class="{'active':$route.current.activetab == 'blog'}"><a href="/#/blog">Blog</a></li>
         <li ng-class="{'active':$route.current.activetab == 'portofolio'}"><a href="/#/portofolio">Portofolio</a></li>
-        <li ng-class="{'active':$route.current.activetab == 'about'}"><a href="/#/about">About</a></li>
       </ul>
     </div>
   </div>
@@ -56,31 +54,35 @@
   <main ng-view></main>
 
   <footer class="page-footer transparent" ng-hide="$route.current.activetab == 'home'">
-    <div class="footer-copyright blue-grey darken-4">
-      <div class="container">
-      Created by Abirafdi Raditya Putra
-      <a class="white-text text-lighten-4 right" href="#!">Sitemap</a>
+    <div class="footer-copyright grey-mod">
+      <div class="container-fluid white-text">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Created by Abirafdi Raditya Putra
+      <a class="white-text right" href="/sitemap.xml">Sitemap&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
       </div>
     </div>
   </footer>
 
   {# Global javascript #}
-  <script type="text/javascript" src="{% static 'js/angular.js' %}"></script>
-  <script type="text/javascript" src="{% static 'js/angular-disqus.js' %}"></script>
-  <script type="text/javascript" src="{% static 'js/angular-resource.js' %}"></script>
-  <script type="text/javascript" src="{% static 'js/angular-route.min.js' %}"></script>
-  <script type="text/javascript" src="{% static 'js/angular-sanitize.min.js' %}"></script>
-  <script type="text/javascript" src="{% static 'js/angular-scroll.min.js' %}"></script>
-  <script type="text/javascript" src="{% static 'js/app.js' %}"></script>
-  <script type="text/javascript" src="{% static 'js/controllers.js' %}"></script>
-  <script type="text/javascript" src="{% static 'js/services.js' %}"></script>
+  {% compress js %}
   <script type="text/javascript" src="{% static 'js/jquery-2.1.4.min.js' %}"></script>
   <script type="text/javascript" src="{% static 'js/materialize.js' %}"></script>
   <script type="text/javascript" src="{% static 'js/lightbox.js' %}"></script>
   <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
 
+  <script type="text/javascript" src="{% static 'js/angular.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/angular-disqus.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/angular-resource.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/angular-route.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/angular-sanitize.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/ng-infinite-scroll.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/app.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/controllers.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/services.js' %}"></script>
+  {% endcompress %}
+
 
   {#  Syntax Highlighter #}
   <script type="text/javascript" src="{% static 'js/shi_jquery.min.js' %}"></script>
+
 </body>
 </html>

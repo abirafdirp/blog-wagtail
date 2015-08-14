@@ -1,12 +1,16 @@
 <div ng-repeat="post in post.pages" class="container">
+    {$ setPageTitle(post.title) $}
 
     <div class="row">
 
       <div class="col s12 m10 offset-m1 main-heading animated fadeIn">
 
         <div ng-if="post.main_image" class="row">
-          <div class="col s12">
-            <a ng-href="{$ getImage(post.main_image.id) $}" data-lightbox="image"><img ng-src="{$ getImage(post.main_image.id) $}" class="responsive-img"></a>
+          <div class="col s12 main-img-cont">
+            <a ng-href="{$ getImage(post.main_image.id) $}" data-lightbox="image">
+              <img ng-src="{$ getImage(post.main_image.id) $}" class="responsive-img z-depth-2">
+              <span class="main-img-disc">{$ post.main_img_disc $}</span>
+            </a>
           </div>
         </div>
 
@@ -48,17 +52,32 @@
         </div>
       </div>
 
-      <div ng-if="content.type == 'subheading'">
-        <div class="subheading animated fadeIn flow-text">
+      <div ng-if="content.type == 'pre_tag'">
+        <div class="code-block animated fadeIn">
           <div class="col s12 m10 offset-m1">
-            <h3 ng-bind-html="content.value"></h3>
+            <pre class="prettyprint">{$ content.value $}</pre>
+          </div>
+        </div>
+      </div>
+
+      <div ng-if="content.type == 'raw_html'">
+        <div class="animated fadeIn">
+          <div class="col s12 m10 offset-m1" ng-bind-html="content.value | unsafe">
+          </div>
+        </div>
+      </div>
+
+      <div ng-if="content.type == 'subheading'">
+        <div class="animated fadeIn flow-text">
+          <div class="col s12 m10 offset-m1 subheading">
+            <h2 ng-bind-html="content.value"></h2>
           </div>
         </div>
       </div>
 
       <div ng-if="content.type == 'smaller_subheading'">
-        <div class="subheading-smaller animated fadeIn">
-          <div class="col s12 m10 offset-m1 center-align">
+        <div class="animated fadeIn">
+          <div class="col s12 m10 offset-m1 center-align subheading-smaller">
             <div ng-bind-html="content.value"></div>
           </div>
         </div>
@@ -72,15 +91,15 @@
 
       <div ng-if="content.type == 'full_image'" class="center-align">
         <div class="animated fadeIn">
-          <div class="col s12 m10 offset-m1">
-            <a ng-href="{$ getImage(content.value) $}" data-lightbox="image"><img ng-src="{$ getImage(content.value) $}" class="responsive-img"></a>
+          <div class="col s12 m10 offset-m1 full-image-cont">
+            <a ng-href="{$ getImage(content.value) $}" data-lightbox="image"><img ng-src="{$ getImage(content.value) $}" class="responsive-img full-img"></a>
           </div>
         </div>
       </div>
     </div>
 
     <div class="col s12 m10 offset-m1 related-post flow-text" ng-show="post.related_post.length > 0">
-      <h5>Related Post</h5>
+      <h4>Related Post</h4>
       <div ng-repeat="related_post in post.related_post">
         <ul class="all-category" ng-repeat="posT in posts.pages" class="col s12 m10 offset-m1 flow-text">
           <li ng-if="related_post.value == posT.id"><a href="{$ '#/blog/' + slugify(posT.title) $}">{$ posT.title $}</a></li>
@@ -93,5 +112,7 @@
     </div>
 
 </div>
+
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?lang=css&amp;skin=desert"></script>
 
 

@@ -7,6 +7,7 @@ from wagtail.wagtailadmin import urls as wagtailadmin_urls
 from wagtail.wagtaildocs import urls as wagtaildocs_urls
 from wagtail.wagtailcore import urls as wagtail_urls
 from wagtail.contrib.wagtailapi import urls as wagtailapi_urls
+from wagtail.contrib.wagtailsitemaps.views import sitemap
 
 urlpatterns = [
     url(r'^django-admin/', include(admin.site.urls)),
@@ -18,9 +19,16 @@ urlpatterns = [
 
     url(r'^api/', include(wagtailapi_urls)),
 
+    # sitemap
+    url('^sitemap\.xml$', sitemap),
+
     # partials initilization
-    url(r'^home-page/$',  TemplateView.as_view(template_name='home/home_page.html'), name='home'),
-    url(r'^about/$',  TemplateView.as_view(template_name='about/about_page.html'), name='about'),
+    url(r'^home-page/$',  TemplateView.as_view(template_name='home/home_page.html'),
+        name='home'),
+    url(r'^about/$',  TemplateView.as_view(template_name='about/about_page.html'),
+        name='about'),
+    url(r'^portofolio/$',  TemplateView.as_view(template_name='portofolio/portofolio_page.html'),
+        name='portofolio'),
     url(r'^$',  TemplateView.as_view(template_name='base.html'), name='base'),
 
     url(r'', include(wagtail_urls)),

@@ -59,14 +59,15 @@ WAGTAIL = (
     'wagtail.wagtailredirects',
     'wagtail.wagtailforms',
     'wagtail.contrib.wagtailapi',
+    'wagtail.contrib.wagtailsitemaps',
 )
 # Apps specific for this project go here.
 LOCAL_APPS = (
     'blog-wagtail.users',  # custom users app
-    'search',  # search app
     'home',  # front page
     'blog',
     'about',
+    'portofolio',
 )
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
@@ -210,6 +211,7 @@ STATICFILES_DIRS = (
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'compressor.finders.CompressorFinder',
 )
 
 # MEDIA CONFIGURATION
@@ -286,8 +288,13 @@ LOGGING = {
 # Wagtail settings
 WAGTAIL_SITE_NAME = "abiraf"
 
-# Wagtail API settings
-
-
-# ElasticSearch backend settings for Wagtail
+# Django Compressor
+# -----------------------------------------------------------------------------
+COMPRESS_ENABLED = True
+COMPRESS_OFFLINE = True
+COMPRESS_ROOT = str(ROOT_DIR('staticfiles'))
+COMPRESS_CSS_FILTERS = ['compressor.filters.cssmin.rCSSMinFilter',
+                        'compressor.filters.css_default.CssAbsoluteFilter',
+                        ]
+COMPRESS_JS_FILTERS = ['compressor.filters.jsmin.JSMinFilter']
 

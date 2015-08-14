@@ -16,6 +16,7 @@ framework.
 import os
 
 from django.core.wsgi import get_wsgi_application
+from whitenoise.django import DjangoWhiteNoise
 
 
 # We defer to a DJANGO_SETTINGS_MODULE already in the environment. This breaks
@@ -28,6 +29,7 @@ os.environ.setdefault("DJANGO_SETTINGS_MODULE", "config.settings.production")
 # file. This includes Django's development server, if the WSGI_APPLICATION
 # setting points here.
 application = get_wsgi_application()
+application = DjangoWhiteNoise(application)
 
 
 

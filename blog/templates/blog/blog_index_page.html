@@ -20,16 +20,16 @@
 	    </div>
 	  </form>
 
-		<div class="row" id="index-posts">
+		<div class="row" id="index-posts" infinite-scroll="loadMore()">
 
-		  <div ng-repeat="post in posts.pages | orderBy:'-id' | filter:search | filter:author" ng-cloak>
+		  <div ng-repeat="post in posts.pages | orderBy:'-id' | filter:search | filter:author | limitTo: postLimit" ng-cloak>
 		    <div ng-show="filterCategory(post.id)" class="col s12 index-post animated fadeIn">
 		      <a href="{$ '#/blog/' + slugify(post.title) $}" ng-mouseenter="hover=true" ng-mouseleave="hover=false">
 
-		        <div class="card hoverable">
+		        <div class="card hoverable z-depth-2">
 
 		          <div ng-show="post.thumbnail_image" class="card-image">
-		            <img ng-src="{$ getImage(post.thumbnail_image.id) $}" alt="">
+		            <img ng-src="{$ getImage(post.thumbnail_image.id) $}" alt="" class="index-img">
 		            <span class="card-title">{$ post.title $}</span>
 		          </div>
 
@@ -37,7 +37,7 @@
 		            <span class="title">{$ post.title $}</span>
 		          </div>
 
-		          <div class="card-content black-text" style="padding-top: 10px">
+		          <div class="card-content card-content-mod black-text" style="padding-top: 10px">
 		            <div ng-hide="hover" class="post-meta-container">
 		              <div class="post-meta">
 		                <div class="valign-wrapper animated fadeIn">
@@ -50,7 +50,7 @@
 		                </div>
 		              </div>
 		            </div>
-		            <div ng-show="hover" class="animated fadeIn flow-text" ng-bind-html=" post.intro" style=""></div>
+		            <div ng-show="hover" class="animated fadeIn flow-text" ng-bind-html=" post.intro"></div>
 		          </div>
 
 		        </div>

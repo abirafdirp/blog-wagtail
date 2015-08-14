@@ -4,7 +4,7 @@ var blogApp = angular.module('blog', [
   'ngRoute',
 	'ngDisqus',
   'ngSanitize',
-	'duScroll'
+	'infinite-scroll'
 ]);
 
 blogApp.config(function($interpolateProvider) {
@@ -51,31 +51,44 @@ blogApp.config(['$routeProvider', '$httpProvider',
 	    $routeProvider.
 	    	when('/home', {
 				templateUrl: '/home-page',
-				activetab: 'home'
+				activetab: 'home',
+				title: 'Home',
+				controller: 'HomeCtrl'
 			}).
 	    	when('/blog', {
 				templateUrl: '/blog',
 				controller: 'BlogIndexCtrl',
 				activetab: 'blog',
+				title: 'Blog',
 				category: 'all'
 			}).
 			when('/blog?category=:category', {
 				templateUrl: '/blog',
+				title: 'Blog',
 				controller: 'BlogIndexCtrl'
 			}).
 			when('/blog?author=:author', {
 				templateUrl: '/blog',
+				title: 'Blog',
 				controller: 'BlogIndexCtrl'
 			}).
 			when('/blog/:postTitle', {
 				templateUrl: function (params) {return '/blog/'+params.postTitle},
 				controller: 'PostCtrl',
-				activetab: 'blog'
+				title: 'Blog',
+				activetab: 'blog',
+				postTitle: function (params) {return params.postTitle}
 			}).
 			when('/about', {
 				templateUrl: '/about',
 				controller: 'AboutCtrl',
 				activetab: 'about',
+			}).
+			when('/portofolio', {
+				templateUrl: '/portofolio',
+				controller: 'PortofolioCtrl',
+				title: 'Portofolio',
+				activetab: 'portofolio',
 			}).
 			otherwise({
 				redirectTo: '/home'
@@ -83,3 +96,22 @@ blogApp.config(['$routeProvider', '$httpProvider',
 
 	
 }]);
+
+blogApp.run(['$rootScope', '$routeParams',
+	function($rootScope, $routeParams) {
+		$rootScope.$on('$routeChangeSuccess', function (event, current, previous) {
+			var unSlugify = function(title) {
+				return title
+				.replace(/-/g,' ')
+					.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+				;
+			};
+			if(current.$$route.postTitle) {
+				$rootScope.title = current.$$route.title + ' | ' + unSlugify($routeParams.postTitle);
+			}
+			else {
+				$rootScope.title = current.$$route.title;
+			}
+		});
+	}
+]);

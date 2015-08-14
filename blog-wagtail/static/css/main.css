@@ -1,13 +1,30 @@
 .main-heading {
   margin-top: 50px;
   text-align: center;
+  margin-bottom: 20px;
 }
 .main-heading h5 {
   font-weight: 300;
 }
+.main-img-cont {
+  position: relative;
+}
+.main-img-disc {
+  position: absolute;
+  display: inline-block;
+  background-color: rgba(20,20,20,0.7);
+  padding: 3px;
+  color: #ffffff;
+  font-size: 10px;
+  left: 550px;
+  top: 1px;
+}
+.subheading {
+  margin-top: 30px;
+}
 .subheading-smaller {
   margin-top: 20px;
-  margin-bottom: -30px;
+  margin-bottom: 10px;
   font-weight: 500;
   font-size: 18px;
 }
@@ -20,8 +37,7 @@
   font-weight: 500;
 }
 .related-post {
-  margin-bottom: 40px;
-  margin-top: 20px;
+  margin-top: 40px;
 }
 .related-post h5 {
 }
@@ -42,7 +58,33 @@
 .related-post li .active a:hover {
   color: rgba(0, 0, 0, 0.87);
 }
-
+#comments {
+  margin-top: 80px;
+  margin-bottom: 20px;
+}
+.full-image-cont {
+  margin-bottom: 20px;
+}
+.full-img {
+  max-height: 500px;
+}
+pre {
+  display: block;
+  padding: 9.5px;
+  margin: 0 0 10px;
+  font-size: 18px;
+  line-height: 1.42857143;
+  word-break: break-all;
+  word-wrap: break-word;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+table {
+  border-collapse: collapse;
+}
+table td, table th {
+  border: 1px solid black;
+}
 /* INDEX */
 #search {
   margin-top: 10px;
@@ -51,19 +93,25 @@
 .card {
   color: rgba(0, 0, 0, 0.87);
 }
+.card-content-mod {
+  margin-bottom: -18px;
+  margin-top: -2px;
+}
 .index-title-noimage {
-  padding-left: 28px;
-  margin-top: 15px;
-  margin-bottom: 5px;
-  border-bottom: solid;
-  border-width: 1px;
-  border-color: rgba(130, 130, 130, 0.6);
+  padding-top: 29px;
+  padding-bottom: 29px;
+  padding-left: 25px;
+  background-color: #333333;
 }
 .index-title-noimage .title {
-  display: inline-block;
+  display: inline;
+  padding: 6px;
+  padding-bottom: 8px;
+  padding-top: 8px;
   font-weight: 300;
-  font-size: 30px;
-  padding-bottom: 20px;
+  font-size: 25px;
+  color: #ffffff;
+  background-color: rgba(20,20,20,0.8);
 }
 .left-nav {
   position: fixed;
@@ -101,8 +149,16 @@
 .all-category {
   margin-bottom: -5px;
 }
-
+.index-img {
+  max-height: 100px;
+  object-fit: cover;
+}
 /* SHARED */
+iframe {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
 .post-meta-container {
   text-align: center;
 }
@@ -123,7 +179,9 @@
   text-decoration: none;   
   color: rgba(0, 0, 0, 0.87);
 }
-
+.grey-mod {
+  background-color: #333333 !important;
+}
 /* ABOUT */
 .about-image {
   margin-top: 100px;
@@ -142,27 +200,41 @@ main {
 }
 
 /* HOME */
+.home-my-pic {
+  position: absolute;
+  width: 150px;
+  top: 530px;
+  left: 50%;
+  padding: 10px;
+  background-color: #ffffff;
+  border-radius: 50%;
+  margin-left: -75px;
+}
+.blue-main {
+  color: #0000ff;
+}
 .nav-home {
+  position: absolute;
+  left: 50%;
+  margin-left: -157px;
   margin-top: 20px;
+  z-index: 1;
 }
 .nav-home li {
   display: inline-block;
   padding-left: 50px;
   padding-right: 50px;
   font-weight: 400;
-  font-size: 20px;
+  font-size: 24px;
 }
 .nav-home li a {
-  -webkit-transition: padding 0.5s, color 0.5s;
-  -moz-transition: padding 0.5s, color 0.5s;
-  color: #C5C5C5;
+  -webkit-transition: color 0.5s;
+  -moz-transition: color 0.5s;
+  color: #ffffff;
 }
 .nav-home li a:hover{
-  color: #ffffff;
-  padding-left: 50px;
-  padding-right: 50px;
-  -webkit-transition: padding 0.5s, color 0.5s;
-  -moz-transition: padding 0.5s, color 0.5s;
+  -webkit-transition: color 0.5s;
+  -moz-transition: color 0.5s;
 }
 .nav-container {
   text-align: center;
@@ -180,7 +252,6 @@ img.bg {
   position: fixed;
   top: 0;
   left: 0;
-  z-index: -10;
 }
 
 @media screen and (max-width: 1024px) { /* Specific to this particular image */
@@ -199,7 +270,39 @@ img.bg {
 .slide {
   display: inline-block;
   color: #ffffff;
+  padding-left: 40px;
+  padding-right: 40px;
 }
+.img-disc-home {
+  display: inline-block;
+  position: absolute;
+  padding: 3px;
+  background-color: rgba(70,70,70,0.5);
+  color: #ffffff;
+  font-size: 12px;
+  top: 560px;
+  right: 0;
+  z-index: 3;
+}
+.contact-wrapper {
+  text-align: center;
+}
+.contact {
+  display: inline-block;
+}
+.parallax-container {
+  height: 580px;
+}
+
+/* PORTOFOLIO */
+.portofolio {
+  margin-top: 60px;
+  margin-bottom: 60px;
+}
+.card-title-port {
+  background-color: #ffffff !important;
+}
+
 /* NGCLOAK */
 [ng\:cloak], [ng-cloak], .ng-cloak {
   display: none !important;
