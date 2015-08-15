@@ -58,6 +58,8 @@ node_modules/
 # media
 # */media/
 **/migrations/*.*
+**/staticfiles/CACHE/
 !__init__.py
+
 
 
