@@ -1,5 +1,6 @@
 {% load static %}
 {% load compress %}
+{% load django_seo_js %}
 
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
@@ -8,8 +9,8 @@
 <!--[if gt IE 8]><!-->
 <html class="no-js" ng-app="blog"> <!--<![endif]-->
 <head>
+  {% seo_js_head %}
   <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
-  <link rel="stylesheet" type="text/css" href="{% static 'css/material-icons.css' %}">
   <meta charset="utf-8"/>
   <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
   <title ng-bind=" title"></title>
@@ -23,18 +24,16 @@
   <link rel="stylesheet" type="text/css" href="{% static 'css/lightbox.css' %}">
   <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
   <link rel="stylesheet" type="text/css" href="{% static 'css/shi_default-light.min.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/material-icons.css' %}">
   {% endcompress %}
 
-  {% block extra_css %}
-    {# Override this in templates to add extra stylesheets #}
-  {% endblock %}
 </head>
 
 <body ng-cloak class="body" ng-controller="NavCtrl">
 
   <nav ng-hide="$route.current.activetab == 'home'">
-    <div class="nav-wrapper grey-mod">
-      <ul class="left">
+    <div class="nav-wrapper grey-mod row">
+      <ul class="nav-mod col s8 offset-s2">
         <li ng-class="{'active':$route.current.activetab == 'home'}"><a class="white-text" href="/#/home">Home</a></li>
         <li ng-class="{'active':$route.current.activetab == 'blog'}"><a class="white-text" href="/#/blog">Blog</a></li>
         <li ng-class="{'active':$route.current.activetab == 'portofolio'}"><a class="white-text" href="/#/portofolio">Portofolio</a></li>
@@ -55,9 +54,8 @@
 
   <footer class="page-footer transparent" ng-hide="$route.current.activetab == 'home'">
     <div class="footer-copyright grey-mod">
-      <div class="container-fluid white-text">
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Created by Abirafdi Raditya Putra
-      <a class="white-text right" href="/sitemap.xml">Sitemap&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+      <div class="container-fluid center-align">
+        <a href="http://www.abiraf.com" class="white-text">Created by Abirafdi Raditya Putra</a>
       </div>
     </div>
   </footer>

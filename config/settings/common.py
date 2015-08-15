@@ -59,7 +59,6 @@ WAGTAIL = (
     'wagtail.wagtailredirects',
     'wagtail.wagtailforms',
     'wagtail.contrib.wagtailapi',
-    'wagtail.contrib.wagtailsitemaps',
 )
 # Apps specific for this project go here.
 LOCAL_APPS = (
@@ -68,6 +67,7 @@ LOCAL_APPS = (
     'blog',
     'about',
     'portofolio',
+    'django_seo_js',
 )
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
@@ -88,6 +88,9 @@ MIDDLEWARE_CLASSES = (
 
     'wagtail.wagtailcore.middleware.SiteMiddleware',
     'wagtail.wagtailredirects.middleware.RedirectMiddleware',
+
+    'django_seo_js.middleware.EscapedFragmentMiddleware',
+    'django_seo_js.middleware.UserAgentMiddleware',
 )
 
 # MIGRATIONS CONFIGURATION
@@ -285,16 +288,24 @@ LOGGING = {
 
 # Your common stuff: Below this line define 3rd party library settings
 
-# Wagtail settings
+# Wagtail
+# -----------------------------------------------------------------------------
 WAGTAIL_SITE_NAME = "abiraf"
+
+# Wagtail API
+# -----------------------------------------------------------------------------
+WAGTAILAPI_LIMIT_MAX = 1000
 
 # Django Compressor
 # -----------------------------------------------------------------------------
 COMPRESS_ENABLED = True
-COMPRESS_OFFLINE = True
 COMPRESS_ROOT = str(ROOT_DIR('staticfiles'))
 COMPRESS_CSS_FILTERS = ['compressor.filters.cssmin.rCSSMinFilter',
                         'compressor.filters.css_default.CssAbsoluteFilter',
                         ]
 COMPRESS_JS_FILTERS = ['compressor.filters.jsmin.JSMinFilter']
 
+
+# SEO JS prerender backend
+# -----------------------------------------------------------------------------
+SEO_JS_PRERENDER_TOKEN = env('PRERENDER_TOKEN')

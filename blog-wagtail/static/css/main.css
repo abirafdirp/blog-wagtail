@@ -114,9 +114,9 @@ table td, table th {
   background-color: rgba(20,20,20,0.8);
 }
 .left-nav {
-  position: fixed;
-  top: 150px;
-  left: 40px;
+  position: absolute;
+  top: 155px;
+  left: 5%;
   font-weight: 300;
 }
 .left-nav h5 {
@@ -203,7 +203,7 @@ main {
 .home-my-pic {
   position: absolute;
   width: 150px;
-  top: 530px;
+  top: 470px;
   left: 50%;
   padding: 10px;
   background-color: #ffffff;
@@ -280,7 +280,7 @@ img.bg {
   background-color: rgba(70,70,70,0.5);
   color: #ffffff;
   font-size: 12px;
-  top: 560px;
+  top: 510px;
   right: 0;
   z-index: 3;
 }
@@ -291,7 +291,7 @@ img.bg {
   display: inline-block;
 }
 .parallax-container {
-  height: 580px;
+  height: 530px;
 }
 
 /* PORTOFOLIO */
