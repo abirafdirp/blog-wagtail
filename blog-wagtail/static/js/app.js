@@ -50,25 +50,25 @@ blogApp.config(['$routeProvider', '$httpProvider',
 	function($routeProvider, $httpProvider) {
 	    $routeProvider.
 	    	when('/home', {
-				templateUrl: '/home-page',
+				templateUrl: 'home-page',
 				activetab: 'home',
 				title: 'Home',
 				controller: 'HomeCtrl'
 			}).
 	    	when('/blog', {
-				templateUrl: '/blog',
+				templateUrl: 'blog',
 				controller: 'BlogIndexCtrl',
 				activetab: 'blog',
 				title: 'Blog',
 				category: 'all'
 			}).
 			when('/blog?category=:category', {
-				templateUrl: '/blog',
+				templateUrl: 'blog',
 				title: 'Blog',
 				controller: 'BlogIndexCtrl'
 			}).
 			when('/blog?author=:author', {
-				templateUrl: '/blog',
+				templateUrl: 'blog',
 				title: 'Blog',
 				controller: 'BlogIndexCtrl'
 			}).
@@ -80,12 +80,12 @@ blogApp.config(['$routeProvider', '$httpProvider',
 				postTitle: function (params) {return params.postTitle}
 			}).
 			when('/about', {
-				templateUrl: '/about',
+				templateUrl: 'about',
 				controller: 'AboutCtrl',
 				activetab: 'about',
 			}).
 			when('/portofolio', {
-				templateUrl: '/portofolio',
+				templateUrl: 'portofolio',
 				controller: 'PortofolioCtrl',
 				title: 'Portofolio',
 				activetab: 'portofolio',
