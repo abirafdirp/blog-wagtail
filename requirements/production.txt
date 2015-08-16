@@ -17,3 +17,4 @@ Collectfast==0.2.3
 # ---------------
 django-mailgun==0.2.2
 mysql-python==1.2.5
+dj-static==0.0.6
