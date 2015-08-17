@@ -70,7 +70,7 @@
 }
 pre {
   display: block;
-  padding: 9.5px;
+  padding: 9px;
   margin: 0 0 10px;
   font-size: 18px;
   line-height: 1.42857143;
@@ -84,6 +84,9 @@ table {
 }
 table td, table th {
   border: 1px solid black;
+}
+.content ul li {
+  list-style-type: disc;
 }
 /* INDEX */
 #search {
@@ -302,7 +305,9 @@ img.bg {
 .card-title-port {
   background-color: #ffffff !important;
 }
-
+.portofolio ul li {
+  list-style-type: disc;
+}
 /* NGCLOAK */
 [ng\:cloak], [ng-cloak], .ng-cloak {
   display: none !important;
