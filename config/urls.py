@@ -2,7 +2,6 @@ from django.conf.urls import include, url
 from django.conf import settings
 from django.contrib import admin
 from django.views.generic import TemplateView
-from django.shortcuts import Re
 
 from wagtail.wagtailadmin import urls as wagtailadmin_urls
 from wagtail.wagtaildocs import urls as wagtaildocs_urls
@@ -31,7 +30,7 @@ urlpatterns = [
 
     url(r'', include(wagtail_urls)),
 
-    url('^sitemap\.xml$', HttpResponse()),
+    url('^sitemap\.xml$', sitemap),
 
 ]
 
