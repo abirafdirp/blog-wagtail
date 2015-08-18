@@ -5,7 +5,7 @@
 			<li><a ng-class="{'active':params_category == null}" href="/#/blog">All</a></li>
 		</ul>
 		<ul ng-repeat="category in getCategories()">
-			<li><a ng-class="{'active':params_category == category}" href="{$ '#blog?category=' + category $}">{$ category $}</a></li>
+			<li><a ng-class="{'active':params_category == category}" href="{$ '/blog?category=' + category $}">{$ category $}</a></li>
 		</ul>
 	</div>
 
@@ -24,7 +24,7 @@
 
 		  <div ng-repeat="post in posts.pages | orderBy:'-id' | filter:search | filter:author | limitTo: postLimit" ng-cloak>
 		    <div ng-show="filterCategory(post.id)" class="col s12 index-post animated fadeIn">
-		      <a href="{$ '#/blog/' + slugify(post.title) $}" ng-mouseenter="hover=true" ng-mouseleave="hover=false">
+		      <a href="{$ '/blog/' + slugify(post.title) $}" ng-mouseenter="hover=true" ng-mouseleave="hover=false">
 
 		        <div class="card hoverable z-depth-2">
 

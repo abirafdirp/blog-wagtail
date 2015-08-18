@@ -46,8 +46,8 @@ blogApp.filter('orderObjectBy', function(){
  }
 });
 
-blogApp.config(['$routeProvider', '$httpProvider', 
-	function($routeProvider, $httpProvider) {
+blogApp.config(['$routeProvider', '$locationProvider',
+	function($routeProvider, $locationProvider) {
 	    $routeProvider.
 	    	when('/home', {
 				templateUrl: 'home-page',
@@ -56,24 +56,24 @@ blogApp.config(['$routeProvider', '$httpProvider',
 				controller: 'HomeCtrl'
 			}).
 	    	when('/blog', {
-				templateUrl: 'blog',
+				templateUrl: 'blog_page',
 				controller: 'BlogIndexCtrl',
 				activetab: 'blog',
 				title: 'Blog',
 				category: 'all'
 			}).
 			when('/blog?category=:category', {
-				templateUrl: 'blog',
+				templateUrl: 'blog_page',
 				title: 'Blog',
 				controller: 'BlogIndexCtrl'
 			}).
 			when('/blog?author=:author', {
-				templateUrl: 'blog',
+				templateUrl: 'blog_page',
 				title: 'Blog',
 				controller: 'BlogIndexCtrl'
 			}).
 			when('/blog/:postTitle', {
-				templateUrl: function (params) {return 'blog/'+params.postTitle},
+				templateUrl: function (params) {return 'blog_page/'+params.postTitle},
 				controller: 'PostCtrl',
 				title: 'Blog',
 				activetab: 'blog',
@@ -85,17 +85,18 @@ blogApp.config(['$routeProvider', '$httpProvider',
 				activetab: 'about',
 			}).
 			when('/portofolio', {
-				templateUrl: 'portofolio',
+				templateUrl: 'portofolio_page',
 				controller: 'PortofolioCtrl',
 				title: 'Portofolio',
 				activetab: 'portofolio',
 			}).
 			otherwise({
 				redirectTo: '/home'
-			})
-
-	
-}]);
+			});
+			$locationProvider
+			.html5Mode(true);
+	}
+]);
 
 blogApp.run(['$rootScope', '$routeParams',
 	function($rootScope, $routeParams) {

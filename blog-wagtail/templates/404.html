@@ -1,9 +1,90 @@
-{% extends "base.html" %}
+{% load static %}
+{% load compress %}
+{% load django_seo_js %}
 
-{% block body_class %}template-404{% endblock %}
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" ng-app="blog"> <!--<![endif]-->
+<head>
+  {% seo_js_head %}
+  <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+  <title ng-bind=" title"></title>
+  <meta name="description" content=""/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <link rel="icon"
+        type="image/png"
+        href="/static/images/favicon.ico">
+  <base href="/">
 
-{% block content %}
-    <h1>Page not found</h1>
+  {# Global stylesheets #}
+  {% compress css %}
+  <link rel="stylesheet" type="text/css" href="{% static 'css/materialize.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/animate.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/lightbox.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/shi_default-light.min.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/material-icons.css' %}">
+  {% endcompress %}
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-    <h2>Sorry, this page could not be found.</h2>
-{% endblock %}
+</head>
+
+<body ng-cloak class="body" ng-controller="NavCtrl">
+
+  <nav ng-hide="$route.current.activetab == 'home'">
+    <div class="nav-wrapper grey-mod row">
+      <ul class="nav-mod col s8 offset-s2">
+        <li ng-class="{'active':$route.current.activetab == 'home'}"><a class="white-text" href="/home">Home</a></li>
+        <li ng-class="{'active':$route.current.activetab == 'blog'}"><a class="white-text" href="/blog">Blog</a></li>
+        <li ng-class="{'active':$route.current.activetab == 'portofolio'}"><a class="white-text" href="/#/portofolio">Portofolio</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="nav-home animated fadeIn" ng-show="$route.current.activetab == 'home'">
+    <div class="nav-home-wrapper">
+      <ul class="nav-container">
+        <li ng-class="{'active':$route.current.activetab == 'blog'}"><a href="/blog">Blog</a></li>
+        <li ng-class="{'active':$route.current.activetab == 'portofolio'}"><a href="/portofolio">Portofolio</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <main ng-view></main>
+
+  <footer class="page-footer transparent" ng-hide="$route.current.activetab == 'home'">
+    <div class="footer-copyright grey-mod">
+      <div class="container-fluid center-align">
+        <a href="http://www.abiraf.com" class="white-text">Created by Abirafdi Raditya Putra</a>
+      </div>
+    </div>
+  </footer>
+
+  {# Global javascript #}
+  {% compress js %}
+  <script type="text/javascript" src="{% static 'js/jquery-2.1.4.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/materialize.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/lightbox.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
+
+  <script type="text/javascript" src="{% static 'js/angular.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/angular-disqus.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/angular-resource.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/angular-route.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/angular-sanitize.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/ng-infinite-scroll.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/app.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/controllers.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/services.js' %}"></script>
+
+  {#  Syntax Highlighter #}
+  <script type="text/javascript" src="{% static 'js/shi_jquery.min.js' %}"></script>
+  {% endcompress %}
+
+</body>
+</html>

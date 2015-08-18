@@ -19,6 +19,7 @@
   <link rel="icon"
         type="image/png"
         href="/static/images/favicon.ico">
+  <base href="/">
 
   {# Global stylesheets #}
   {% compress css %}
@@ -38,8 +39,8 @@
   <nav ng-hide="$route.current.activetab == 'home'">
     <div class="nav-wrapper grey-mod row">
       <ul class="nav-mod col s8 offset-s2">
-        <li ng-class="{'active':$route.current.activetab == 'home'}"><a class="white-text" href="/#/home">Home</a></li>
-        <li ng-class="{'active':$route.current.activetab == 'blog'}"><a class="white-text" href="/#/blog">Blog</a></li>
+        <li ng-class="{'active':$route.current.activetab == 'home'}"><a class="white-text" href="/home">Home</a></li>
+        <li ng-class="{'active':$route.current.activetab == 'blog'}"><a class="white-text" href="/blog">Blog</a></li>
         <li ng-class="{'active':$route.current.activetab == 'portofolio'}"><a class="white-text" href="/#/portofolio">Portofolio</a></li>
       </ul>
     </div>
@@ -48,8 +49,8 @@
   <div class="nav-home animated fadeIn" ng-show="$route.current.activetab == 'home'">
     <div class="nav-home-wrapper">
       <ul class="nav-container">
-        <li ng-class="{'active':$route.current.activetab == 'blog'}"><a href="/#/blog">Blog</a></li>
-        <li ng-class="{'active':$route.current.activetab == 'portofolio'}"><a href="/#/portofolio">Portofolio</a></li>
+        <li ng-class="{'active':$route.current.activetab == 'blog'}"><a href="/blog">Blog</a></li>
+        <li ng-class="{'active':$route.current.activetab == 'portofolio'}"><a href="/portofolio">Portofolio</a></li>
       </ul>
     </div>
   </div>
