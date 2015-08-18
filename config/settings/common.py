@@ -88,6 +88,9 @@ MIDDLEWARE_CLASSES = (
 
     'wagtail.wagtailcore.middleware.SiteMiddleware',
     'wagtail.wagtailredirects.middleware.RedirectMiddleware',
+
+    'django_seo_js.middleware.EscapedFragmentMiddleware',
+    'django_seo_js.middleware.UserAgentMiddleware',
 )
 
 # MIGRATIONS CONFIGURATION
@@ -252,3 +255,7 @@ COMPRESS_CSS_FILTERS = ['compressor.filters.cssmin.rCSSMinFilter',
                         'compressor.filters.css_default.CssAbsoluteFilter',
                         ]
 COMPRESS_JS_FILTERS = ['compressor.filters.jsmin.JSMinFilter']
+
+
+# SEO JS prerender backend
+# -----------------------------------------------------------------------------
