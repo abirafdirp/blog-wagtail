@@ -24,8 +24,6 @@ urlpatterns = [
         name='home'),
     url(r'^about/$',  TemplateView.as_view(template_name='about/about_page.html'),
         name='about'),
-    url(r'^portofolio/$',  TemplateView.as_view(template_name='portofolio/portofolio_page.html'),
-        name='portofolio'),
     url(r'^$',  TemplateView.as_view(template_name='base.html'), name='base'),
 
     url(r'', include(wagtail_urls)),
