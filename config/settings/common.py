@@ -88,9 +88,6 @@ MIDDLEWARE_CLASSES = (
 
     'wagtail.wagtailcore.middleware.SiteMiddleware',
     'wagtail.wagtailredirects.middleware.RedirectMiddleware',
-
-    'django_seo_js.middleware.EscapedFragmentMiddleware',
-    'django_seo_js.middleware.UserAgentMiddleware',
 )
 
 # MIGRATIONS CONFIGURATION
