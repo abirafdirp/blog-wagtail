@@ -20,10 +20,10 @@
             <i class="material-icons">today</i>{$ post.date | date : 'd  MMMM  yyyy' $}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <i class="material-icons">view_list</i>
             <span ng-repeat="category in post.categories">
-              <span class="meta-tag"><a href="{$ '#/blog?category=' + category.value $}"> &nbsp;{$ category.value $}&nbsp;</a></span>
+              <span class="meta-tag"><a href="{$ '/blog?category=' + category.value $}"> &nbsp;{$ category.value $}&nbsp;</a></span>
             </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <i class="material-icons">perm_contact_calendar</i>&nbsp;By
-              <a class="author-post" href="{$ '#/blog?author=' + post.author $}">
+              <a class="author-post" href="{$ '/blog?author=' + post.author $}">
                 &nbsp;{$ post.author $}
               </a>
           </div>
