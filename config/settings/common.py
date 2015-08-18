@@ -68,7 +68,6 @@ LOCAL_APPS = (
     'blog',
     'about',
     'portofolio',
-    'django_seo_js',
 )
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
