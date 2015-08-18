@@ -59,6 +59,7 @@ WAGTAIL = (
     'wagtail.wagtailredirects',
     'wagtail.wagtailforms',
     'wagtail.contrib.wagtailapi',
+    'wagtail.contrib.wagtailsitemaps',
 )
 # Apps specific for this project go here.
 LOCAL_APPS = (

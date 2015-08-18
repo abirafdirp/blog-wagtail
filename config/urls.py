@@ -2,11 +2,13 @@ from django.conf.urls import include, url
 from django.conf import settings
 from django.contrib import admin
 from django.views.generic import TemplateView
+from django.shortcuts import Re
 
 from wagtail.wagtailadmin import urls as wagtailadmin_urls
 from wagtail.wagtaildocs import urls as wagtaildocs_urls
 from wagtail.wagtailcore import urls as wagtail_urls
 from wagtail.contrib.wagtailapi import urls as wagtailapi_urls
+from wagtail.contrib.wagtailsitemaps.views import sitemap
 
 urlpatterns = [
     url(r'^django-admin/', include(admin.site.urls)),
@@ -26,7 +28,11 @@ urlpatterns = [
     url(r'^portofolio/$',  TemplateView.as_view(template_name='portofolio/portofolio_page.html'),
         name='portofolio'),
     url(r'^$',  TemplateView.as_view(template_name='base.html'), name='base'),
+
     url(r'', include(wagtail_urls)),
+
+    url('^sitemap\.xml$', HttpResponse()),
+
 ]
 
 
