@@ -65,6 +65,7 @@ blogApp.config(['$routeProvider', '$locationProvider',
 			when('/blog?category=:category', {
 				templateUrl: 'blog_page',
 				title: 'Blog',
+				category: 'filtering',
 				controller: 'BlogIndexCtrl'
 			}).
 			when('/blog?author=:author', {
