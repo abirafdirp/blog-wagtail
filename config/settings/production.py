@@ -52,3 +52,7 @@ CACHES = {
 }
 
 # Your production stuff: Below this line define 3rd party library settings
+
+# SEO JS prerender backend
+# -----------------------------------------------------------------------------
+SEO_JS_PRERENDER_TOKEN = env('PRERENDER_TOKEN')
