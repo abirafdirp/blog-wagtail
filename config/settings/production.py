@@ -55,4 +55,4 @@ CACHES = {
 
 # SEO JS prerender backend
 # -----------------------------------------------------------------------------
-SEO_JS_PRERENDER_TOKEN = env('PRERENDER_TOKEN')
+# SEO_JS_PRERENDER_TOKEN = env('PRERENDER_TOKEN')
