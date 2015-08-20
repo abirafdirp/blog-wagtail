@@ -16,6 +16,11 @@ blogApp.config(function($disqusProvider) {
     $disqusProvider.setShortname('pythonified');
 });
 
+blogApp.config(['$compileProvider', function ($compileProvider) {
+  // disable debug info
+  $compileProvider.debugInfoEnabled(false);
+}]);
+
 blogApp.filter('unsafe', function($sce) { return $sce.trustAsHtml; });
 
 blogApp.filter('object2Array', function() {
