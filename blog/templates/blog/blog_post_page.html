@@ -1,15 +1,13 @@
 <div ng-repeat="post in post.pages" class="container">
-    {$ setPageTitle(post.title) $}
-
     <div class="row">
 
       <div class="col s12 m10 offset-m1 main-heading animated fadeIn">
 
         <div ng-if="post.main_image" class="row">
           <div class="col s12 main-img-cont">
-            <a ng-href="{$ getImage(post.main_image.id) $}" data-lightbox="image">
-              <img ng-src="{$ getImage(post.main_image.id) $}" class="responsive-img z-depth-2">
-              <span class="main-img-disc">{$ post.main_img_disc $}</span>
+            <a ng-href="{$ (all_images | filter:{id:post.main_image.id}:true)[0].file $}" data-lightbox="image">
+              <img ng-src="{$ (all_images | filter:{id:post.main_image.id}:true)[0].file $}" class="responsive-img z-depth-2">
+              <span ng-if="post.main_img_disc" class="main-img-disc">{$ post.main_img_disc $}</span>
             </a>
           </div>
         </div>
@@ -33,7 +31,7 @@
 
     <div ng-if="post.main_background_image">
       <div class="main-background">
-        <img ng-src="{$ getImage(post.main_background_image.id) $}" class="responsive-img .main-background">
+        <img ng-src="{$ (all_images | filter:{id:content.value}:true)[0].file $}" class="responsive-img .main-background">
       </div>
     </div>
 
@@ -85,14 +83,14 @@
 
       <div ng-if="content.type == 'subheading_background'">
         <div class="subheading-background animated fadeIn">
-           <img ng-src="{$ getImage(content.value) $}" class="responsive-img">
+           <img ng-src="{$ (all_images | filter:{id:content.value}:true)[0].file $}" class="responsive-img">
         </div>
       </div>
 
       <div ng-if="content.type == 'full_image'" class="center-align">
         <div class="animated fadeIn">
           <div class="col s12 m10 offset-m1 full-image-cont">
-            <a ng-href="{$ getImage(content.value) $}" data-lightbox="image"><img ng-src="{$ getImage(content.value) $}" class="responsive-img full-img"></a>
+            <a ng-href="{$ (all_images | filter:{id:content.value}:true)[0].file $}" data-lightbox="image"><img ng-src="{$ (all_images | filter:{id:content.value}:true)[0].file $}" class="responsive-img full-img"></a>
           </div>
         </div>
       </div>

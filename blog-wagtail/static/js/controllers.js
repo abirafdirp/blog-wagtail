@@ -30,21 +30,29 @@ blogControllers.controller('PortofolioCtrl', ['$scope', 'Portofolio',
 
 blogControllers.controller('BlogIndexCtrl', ['$scope', '$route', '$routeParams', 'BlogIndex',
   function($scope, $route, $routeParams, BlogIndex) {
-    $scope.posts = BlogIndex.posts.query();
+    $scope.categories = [];
+    $scope.posts = BlogIndex.posts.query(function() {
+      for(var i = 0; i < $scope.posts.pages.length; i++){
+        for(var j = 0; j < $scope.posts.pages[i].categories.length; j++){
+          if($scope.categories.indexOf($scope.posts.pages[i].categories[j].value) == -1){
+            $scope.categories.push($scope.posts.pages[i].categories[j].value);
+          }
+        }
+      }
+    });
     $scope.images = BlogIndex.images.query();
     $scope.$route = $route;
     $scope.params = $routeParams;
     $scope.params_category = $scope.params.category;
     $scope.author = $scope.params.author;
-    $scope.categories = [];
 
-    $scope.getImage = function(id) {
+
+    $scope.all_images = [];
+    $scope.images = BlogIndex.images.query(function() {
       for(var i = 0; i < $scope.images.images.length; i++){
-        if($scope.images.images[i].id === id){
-          return $scope.images.images[i].file;
-        }
+        $scope.all_images.push($scope.images.images[i])
       }
-    };
+    });
     
     $scope.slugify = function(url) {
         return url
@@ -54,26 +62,13 @@ blogControllers.controller('BlogIndexCtrl', ['$scope', '$route', '$routeParams',
         ;
     };
 
-    $scope.getCategories = function() {
-      categories = [];
-      for(var i = 0; i < $scope.posts.pages.length; i++){
-        for(var j = 0; j < $scope.posts.pages[i].categories.length; j++){
-          if(categories.indexOf($scope.posts.pages[i].categories[j].value) == -1){
-            categories.push($scope.posts.pages[i].categories[j].value);
-          }
-        }
-      }
-      return categories;
-    };
-
     $scope.filterCategory = function(postID) {
-      var index = $scope.posts.pages.map(function(el) {
-        return el.id;
-      }).indexOf(postID);
-
       if($scope.params_category == null) {
         return true;
       }
+      var index = $scope.posts.pages.map(function(el) {
+        return el.id;
+      }).indexOf(postID);
 
       for(var i = 0; i < $scope.posts.pages[index].categories.length; i++) {
         if($scope.posts.pages[index].categories[i].value == $scope.params_category) {
@@ -100,14 +95,12 @@ blogControllers.controller('PostCtrl', ['$scope', '$route', '$routeParams', 'Pos
 
     $scope.post = Post.post.query({angular_url:$scope.title});
 
-    $scope.images = Post.images.query();
-    $scope.getImage = function(id) {
+    $scope.all_images = [];
+    $scope.images = Post.images.query(function() {
       for(var i = 0; i < $scope.images.images.length; i++){
-        if($scope.images.images[i].id === id){
-          return $scope.images.images[i].file;
-        }
+        $scope.all_images.push($scope.images.images[i])
       }
-    };
+    });
     $scope.slugify = function(url) {
         return url
         .toLowerCase()
