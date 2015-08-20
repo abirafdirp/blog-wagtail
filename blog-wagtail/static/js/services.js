@@ -12,9 +12,6 @@ blogServices.factory('BlogIndex', ['$resource',
       images : $resource('/api/v1/images/?fields=file&tags=index', {}, {
         query: {method: 'GET', isArray: false, cache: true}
       }),
-      featured_posts : $resource('/api/v1/pages/?type=blog.BlogIndexPage&fields=featured_posts', {}, {
-        query: {method: 'GET', isArray: false}
-      })
     }
   }
 ]);

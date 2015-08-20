@@ -98,9 +98,11 @@ blogControllers.controller('PostCtrl', ['$scope', '$route', '$routeParams', 'Pos
     $scope.all_images = [];
     $scope.images = Post.images.query(function() {
       for(var i = 0; i < $scope.images.images.length; i++){
-        $scope.all_images.push($scope.images.images[i])
+        $scope.images.images[i].file = $scope.images.images[i].file.replace('http','https');
+        $scope.all_images.push($scope.images.images[i]);
       }
     });
+
     $scope.slugify = function(url) {
         return url
         .toLowerCase()
