@@ -7,32 +7,9 @@ from wagtail.wagtailadmin import urls as wagtailadmin_urls
 from wagtail.wagtaildocs import urls as wagtaildocs_urls
 from wagtail.wagtailcore import urls as wagtail_urls
 from wagtail.contrib.wagtailapi import urls as wagtailapi_urls
+from wagtail.contrib.wagtailsitemaps.views import sitemap
 
-urlpatterns = [
-    url(r'^django-admin/', include(admin.site.urls)),
-
-    url(r'^admin/', include(wagtailadmin_urls)),
-    url(r'^documents/', include(wagtaildocs_urls)),
-
-    url(r'^search/$', 'search.views.search', name='search'),
-
-    url(r'^api/', include(wagtailapi_urls)),
-
-    # partials initilization
-    url(r'^home-page/$',  TemplateView.as_view(template_name='home/home_page.html'),
-        name='home'),
-    url(r'^about/$',  TemplateView.as_view(template_name='about/about_page.html'),
-        name='about'),
-    url(r'^portofolio/$',  TemplateView.as_view(template_name='portofolio/portofolio_page.html'),
-        name='portofolio'),
-    url(r'^$',  TemplateView.as_view(template_name='base.html'), name='base'),
-
-    url(r'', include(wagtail_urls)),
-
-
-]
-
-
+urlpatterns = []
 if settings.DEBUG:
     from django.conf.urls.static import static
     from django.contrib.staticfiles.urls import staticfiles_urlpatterns
@@ -47,3 +24,25 @@ if settings.DEBUG:
         url(r'^404/$', 'django.views.defaults.page_not_found'),
         url(r'^500/$', 'django.views.defaults.server_error'),
     ]
+
+urlpatterns += [
+    url(r'^django-admin/', include(admin.site.urls)),
+
+    url(r'^admin/', include(wagtailadmin_urls)),
+    url(r'^documents/', include(wagtaildocs_urls)),
+
+    url(r'^search/$', 'search.views.search', name='search'),
+
+    url(r'^api/', include(wagtailapi_urls)),
+
+    url('^sitemap\.xml$', sitemap),
+
+    # partials initilization
+    url(r'^((?!_page).)*$',
+            TemplateView.as_view(template_name='base.html'),
+            name='base'),
+    url(r'', include(wagtail_urls)),
+]
+
+
+

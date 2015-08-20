@@ -1,6 +1,5 @@
 {% load static %}
 {% load compress %}
-{% load django_seo_js %}
 
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
@@ -9,7 +8,6 @@
 <!--[if gt IE 8]><!-->
 <html class="no-js" ng-app="blog"> <!--<![endif]-->
 <head>
-  {% seo_js_head %}
   <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
   <meta charset="utf-8"/>
   <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -19,6 +17,9 @@
   <link rel="icon"
         type="image/png"
         href="/static/images/favicon.ico">
+  <base href="/">
+  <!-- <meta name="fragment" content="!"> -->
+  <meta name="google-site-verification" content="VVHRogeSNoqDmor8rrdzPLL9FUuP0ktE5EAWOd9B9VY" />
 
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
@@ -31,16 +32,17 @@
   <link rel="stylesheet" type="text/css" href="{% static 'css/shi_default-light.min.css' %}">
   <link rel="stylesheet" type="text/css" href="{% static 'css/material-icons.css' %}">
   {% endcompress %}
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 </head>
 
-<body ng-cloak class="body" ng-controller="NavCtrl">
+<body ng-cloak class="body grey lighten-5" ng-controller="NavCtrl">
 
   <nav ng-hide="$route.current.activetab == 'home'">
     <div class="nav-wrapper grey-mod row">
-      <ul class="nav-mod col s8 offset-s2">
-        <li ng-class="{'active':$route.current.activetab == 'home'}"><a class="white-text" href="/#/home">Home</a></li>
-        <li ng-class="{'active':$route.current.activetab == 'blog'}"><a class="white-text" href="/#/blog">Blog</a></li>
+      <ul class="nav-mod col s12 m10 offset-m2">
+        <li ng-class="{'active':$route.current.activetab == 'home'}"><a class="white-text" href="/home">Home</a></li>
+        <li ng-class="{'active':$route.current.activetab == 'blog'}"><a class="white-text" href="/blog">Blog</a></li>
         <li ng-class="{'active':$route.current.activetab == 'portofolio'}"><a class="white-text" href="/#/portofolio">Portofolio</a></li>
       </ul>
     </div>
@@ -49,8 +51,8 @@
   <div class="nav-home animated fadeIn" ng-show="$route.current.activetab == 'home'">
     <div class="nav-home-wrapper">
       <ul class="nav-container">
-        <li ng-class="{'active':$route.current.activetab == 'blog'}"><a href="/#/blog">Blog</a></li>
-        <li ng-class="{'active':$route.current.activetab == 'portofolio'}"><a href="/#/portofolio">Portofolio</a></li>
+        <li ng-class="{'active':$route.current.activetab == 'blog'}"><a href="/blog">Blog</a></li>
+        <li ng-class="{'active':$route.current.activetab == 'portofolio'}"><a href="/portofolio">Portofolio</a></li>
       </ul>
     </div>
   </div>

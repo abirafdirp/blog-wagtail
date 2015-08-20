@@ -59,6 +59,7 @@ WAGTAIL = (
     'wagtail.wagtailredirects',
     'wagtail.wagtailforms',
     'wagtail.contrib.wagtailapi',
+    'wagtail.contrib.wagtailsitemaps',
 )
 # Apps specific for this project go here.
 LOCAL_APPS = (
@@ -67,7 +68,6 @@ LOCAL_APPS = (
     'blog',
     'about',
     'portofolio',
-    'django_seo_js',
 )
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
@@ -88,9 +88,6 @@ MIDDLEWARE_CLASSES = (
 
     'wagtail.wagtailcore.middleware.SiteMiddleware',
     'wagtail.wagtailredirects.middleware.RedirectMiddleware',
-
-    'django_seo_js.middleware.EscapedFragmentMiddleware',
-    'django_seo_js.middleware.UserAgentMiddleware',
 )
 
 # MIGRATIONS CONFIGURATION
@@ -259,4 +256,3 @@ COMPRESS_JS_FILTERS = ['compressor.filters.jsmin.JSMinFilter']
 
 # SEO JS prerender backend
 # -----------------------------------------------------------------------------
-SEO_JS_PRERENDER_TOKEN = env('PRERENDER_TOKEN')

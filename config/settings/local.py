@@ -53,7 +53,9 @@ CACHES = {
 
 # django-extensions
 # ------------------------------------------------------------------------------
-INSTALLED_APPS += ('django_extensions', )
+INSTALLED_APPS += ('django_extensions',
+                   'debug_toolbar',
+                   )
 
 # TESTING
 # ------------------------------------------------------------------------------
@@ -63,3 +65,8 @@ TEST_RUNNER = 'django.test.runner.DiscoverRunner'
 
 COMPRESS_ENABLED = False
 SSLIFY_DISABLE = True
+
+SEO_JS_ENABLED = True
+SEO_JS_BACKEND = "django_seo_js.backends.PrerenderHosted"
+SEO_JS_PRERENDER_URL = "http://127.0.0.1:3000/"
+SEO_JS_PRERENDER_RECACHE_URL = "http://127.0.0.1:3000/recache"
