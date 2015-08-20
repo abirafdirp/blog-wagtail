@@ -38,10 +38,10 @@ blogServices.factory('About', ['$resource',
       }),
       images : $resource('/api/v1/images/?fields=file,title&tags=about', {}, {
         query: {method: 'GET', isArray: false}
-      }),
+      })
     }
   }
-])
+]);
 blogServices.factory('Portofolio', ['$resource',
   function($resource) {
     return {
@@ -50,7 +50,7 @@ blogServices.factory('Portofolio', ['$resource',
       }),
       images : $resource('/api/v1/images/?fields=file,title&tags=portofolio', {}, {
         query: {method: 'GET', isArray: false}
-      }),
+      })
     }
   }
-])
+]);

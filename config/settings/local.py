@@ -53,7 +53,9 @@ CACHES = {
 
 # django-extensions
 # ------------------------------------------------------------------------------
-INSTALLED_APPS += ('django_extensions', )
+INSTALLED_APPS += ('django_extensions',
+                   'debug_toolbar',
+                   )
 
 # TESTING
 # ------------------------------------------------------------------------------
