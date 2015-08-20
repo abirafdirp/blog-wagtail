@@ -49,7 +49,7 @@ blogApp.filter('orderObjectBy', function(){
 blogApp.config(['$routeProvider', '$locationProvider',
 	function($routeProvider, $locationProvider) {
 	    $routeProvider.
-	    	when('/', {
+	    	when('/home', {
 				templateUrl: 'home_page',
 				activetab: 'home',
 				title: 'Home',
@@ -92,7 +92,7 @@ blogApp.config(['$routeProvider', '$locationProvider',
 				activetab: 'portofolio',
 			}).
 			otherwise({
-				redirectTo: '/'
+				redirectTo: '/home'
 			});
 			$locationProvider
 			.html5Mode(true);
