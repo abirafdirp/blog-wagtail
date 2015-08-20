@@ -71,7 +71,7 @@
               <div class="card hoverable z-depth-2">
 
                 <div ng-show="post.thumbnail_image" class="card-image">
-                  <img ng-src="{$ getImage(post.thumbnail_image.id) $}" alt="" class="index-img">
+                  <img ng-src="{$ (all_images | filter:{id:post.thumbnail_image.id}:true)[0].file $}" alt="" class="index-img">
                   <span class="card-title">{$ post.title $}</span>
                 </div>
 

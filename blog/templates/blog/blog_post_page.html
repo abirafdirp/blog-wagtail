@@ -13,7 +13,7 @@
         </div>
 
         <h2 id="title" class="center-align">{$ post.title $}</h2>
-        <div class="post-meta">
+        <div class="post-meta col hide-on-small-only">
           <div class="valign-wrapper">
             <i class="material-icons">today</i>{$ post.date | date : 'd  MMMM  yyyy' $}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <i class="material-icons">view_list</i>
@@ -37,7 +37,7 @@
 
     <div ng-repeat="content in post.content">
       <div ng-if="content.type == 'content'">
-        <div class="content animated fadeIn flow-text ">
+        <div class="content animated fadeIn ">
             <div class="col s10 offset-s1" ng-bind-html="content.value">
             </div>
         </div>

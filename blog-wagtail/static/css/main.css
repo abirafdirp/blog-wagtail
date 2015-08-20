@@ -28,6 +28,15 @@
   font-weight: 500;
   font-size: 18px;
 }
+.content {
+  font-size: 22px;
+  font-weight: 400;
+}
+@media (max-width: 800px) {
+  .content {
+    font-size: 18px;
+  }
+}
 .content li {
   margin-bottom: 5px;
 }
@@ -223,6 +232,15 @@ main {
   margin-top: 20px;
   z-index: 1;
 }
+@media (max-width: 800px) {
+  .nav-home {
+    position: absolute;
+    left: 50%;
+    margin-left: -157px;
+    margin-top: 0px;
+    z-index: 1;
+  }
+}
 .nav-home li {
   display: inline-block;
   padding-left: 50px;
@@ -282,10 +300,15 @@ img.bg {
   padding: 3px;
   background-color: rgba(70,70,70,0.5);
   color: #ffffff;
-  font-size: 12px;
+  font-size: 10px;
   top: 510px;
   right: 0;
   z-index: 3;
+}
+@media (max-width: 800px) {
+  .top-section {
+    margin-top: 80px;
+  }
 }
 .contact-wrapper {
   text-align: center;
