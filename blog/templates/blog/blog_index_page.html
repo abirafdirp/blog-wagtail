@@ -1,5 +1,5 @@
 <div class="row">
-	<div class="left-nav animated fadeIn hide-on-small-only">
+	<div class="card-panel z-depth-1 white left-nav animated fadeIn hide-on-small-only">
 		<h5>Categories</h5>
 		<ul class="all-category">
 			<li><a ng-class="{'active':params_category == null}" href="/#/blog">All</a></li>
@@ -10,15 +10,17 @@
 	</div>
 
 	<div class="col s12 m8 offset-m2">
-	  <form class="col s12 m8 offset-m2" id="search">
-	    <div class="row animated fadeIn">
-	      <div class="input-field animated fadeIn">
-	        <i class="material-icons prefix">search</i>
-	        <input id="icon_prefix" type="text" class="validate" ng-model="search">
-	        <label for="icon_prefix">Search Blog</label>
-	      </div>
-	    </div>
-	  </form>
+    <div class="col s12">
+      <form class="col s12 white card-panel" id="search">
+        <div class="row animated fadeIn">
+          <div class="input-field animated fadeIn valign-wrapper">
+            <i class="material-icons prefix">search</i>
+            <input id="icon_prefix" type="text" class="validate" ng-model="search">
+            <label for="icon_prefix"></label>
+          </div>
+        </div>
+      </form>
+    </div>
     <div ng-if="params_category == null">
 		  <div class="row" id="index-posts" infinite-scroll="loadMore()">
 
@@ -30,14 +32,14 @@
 
                 <div ng-show="post.thumbnail_image" class="card-image">
                   <img ng-src="{$ (all_images | filter:{id:post.thumbnail_image.id}:true)[0].file $}" alt="" class="index-img">
-                  <span class="card-title">{$ post.title $}</span>
                 </div>
 
                 <div ng-hide="post.thumbnail_image" class="index-title-noimage">
-                  <span class="title">{$ post.title $}</span>
                 </div>
 
-                <div class="card-content card-content-mod black-text" style="padding-top: 10px">
+
+                <div class="card-content grey-text text-darken-3" style="padding-top: 10px">
+                  <span class="card-title">{$ post.title $}</span>
                   <div ng-hide="hover" class="post-meta-container">
                     <div class="post-meta">
                       <div class="valign-wrapper animated fadeIn">
@@ -50,7 +52,7 @@
                       </div>
                     </div>
                   </div>
-                  <div ng-show="hover" class="animated fadeIn flow-text" ng-bind-html=" post.intro"></div>
+                  <p ng-show="hover" class="animated fadeIn intro" ng-bind-html=" post.intro"></p>
                 </div>
 
               </div>

@@ -34,11 +34,11 @@
 
 </head>
 
-<body ng-cloak class="body" ng-controller="NavCtrl">
+<body ng-cloak class="body grey lighten-5" ng-controller="NavCtrl">
 
   <nav ng-hide="$route.current.activetab == 'home'">
     <div class="nav-wrapper grey-mod row">
-      <ul class="nav-mod col s10 offset-s2">
+      <ul class="nav-mod col s12 m10 offset-m2">
         <li ng-class="{'active':$route.current.activetab == 'home'}"><a class="white-text" href="/home">Home</a></li>
         <li ng-class="{'active':$route.current.activetab == 'blog'}"><a class="white-text" href="/blog">Blog</a></li>
         <li ng-class="{'active':$route.current.activetab == 'portofolio'}"><a class="white-text" href="/#/portofolio">Portofolio</a></li>
