@@ -17,14 +17,14 @@ blogControllers.controller('HomeCtrl', ['$scope',
 blogControllers.controller('PortofolioCtrl', ['$scope', 'Portofolio',
   function($scope, Portofolio){
     $scope.items = Portofolio.portofolio.query();
-    $scope.images = Portofolio.images.query();
-    $scope.getImage = function(id) {
+
+    $scope.all_images = [];
+    $scope.images = Portofolio.images.query(function() {
       for(var i = 0; i < $scope.images.images.length; i++){
-        if($scope.images.images[i].id === id){
-          return $scope.images.images[i].file;
-        }
+        $scope.images.images[i].file = $scope.images.images[i].file.replace('http','https');
+        $scope.all_images.push($scope.images.images[i])
       }
-    };
+    });
   }
 ]);
 
