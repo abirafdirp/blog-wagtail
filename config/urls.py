@@ -35,14 +35,13 @@ urlpatterns += [
 
     url(r'^api/', include(wagtailapi_urls)),
 
+    url('^sitemap\.xml$', sitemap),
+
     # partials initilization
     url(r'^((?!_page).)*$',
             TemplateView.as_view(template_name='base.html'),
             name='base'),
     url(r'', include(wagtail_urls)),
-
-    url('^sitemap\.xml$', sitemap),
-
 ]
 
 
