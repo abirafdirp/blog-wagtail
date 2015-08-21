@@ -216,6 +216,7 @@ iframe {
   display: block;
   margin-left: auto;
   margin-right: auto;
+  margin-bottom: 30px;
 }
 .post-meta-container {
   text-align: left;
