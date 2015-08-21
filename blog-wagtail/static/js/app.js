@@ -122,3 +122,12 @@ blogApp.run(['$rootScope', '$routeParams',
 		});
 	}
 ]);
+
+blogApp.directive('loadPretty',
+	function() {
+		return {
+				restrict: 'A',
+				template: '<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?lang=css&amp;skin=desert"></script>',
+		}
+	}
+);
