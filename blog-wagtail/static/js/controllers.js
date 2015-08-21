@@ -21,6 +21,7 @@ blogControllers.controller('PortofolioCtrl', ['$scope', 'Portofolio',
     $scope.all_images = [];
     $scope.images = Portofolio.images.query(function() {
       for(var i = 0; i < $scope.images.images.length; i++){
+        $scope.images.images[i].file = $scope.images.images[i].file.replace('http','https');
         $scope.all_images.push($scope.images.images[i])
       }
     });
@@ -49,6 +50,7 @@ blogControllers.controller('BlogIndexCtrl', ['$scope', '$route', '$routeParams',
     $scope.all_images = [];
     $scope.images = BlogIndex.images.query(function() {
       for(var i = 0; i < $scope.images.images.length; i++){
+        $scope.images.images[i].file = $scope.images.images[i].file.replace('http','https');
         $scope.all_images.push($scope.images.images[i])
       }
     });
@@ -97,7 +99,7 @@ blogControllers.controller('PostCtrl', ['$scope', '$route', '$routeParams', 'Pos
     $scope.all_images = [];
     $scope.images = Post.images.query(function() {
       for(var i = 0; i < $scope.images.images.length; i++){
-        $scope.images.images[i].file = $scope.images.images[i].file.replace('http','http');
+        $scope.images.images[i].file = $scope.images.images[i].file.replace('http','https');
         $scope.all_images.push($scope.images.images[i]);
       }
     });

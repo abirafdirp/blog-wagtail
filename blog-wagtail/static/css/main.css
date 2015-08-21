@@ -1,28 +1,37 @@
-.card-panel-post {
-  margin-left: auto;
-  margin-right: auto;
+.post-container {
+  margin-top: 30px;
+  margin-left: 5% !important;
+  margin-right: 5% !important;
+}
+.main-img {
+  margin-top: 25px;
+  margin-bottom: -20px; 
+}
+#title {
+  font-weight: 300;
 }
 .main-heading {
-  margin-top: 50px;
+  margin-top: 0;
   text-align: center;
   margin-bottom: 20px;
 }
 .main-heading h5 {
   font-weight: 300;
+  margin-top: 0;
 }
-.main-img-cont {
+.meta-wrapper {
   position: relative;
-  top: 20px;
+  top: -60px;
 }
 .main-img-disc {
-  position: absolute;
+  position: relative;
   display: inline-block;
   background-color: rgba(20,20,20,0.7);
   padding: 3px;
   color: #ffffff;
   font-size: 10px;
-  left: 550px;
-  top: 1px;
+  left: 120px;
+  top: -30px;
 }
 .subheading {
   margin-top: 30px;
@@ -35,7 +44,7 @@
 }
 .content {
   font-size: 22px;
-  font-weight: 400;
+  font-weight: 300;
 }
 @media (max-width: 800px) {
   .content {
@@ -51,9 +60,11 @@
   font-weight: 500;
 }
 .related-post {
-  margin-top: 40px;
+  margin-top: 0;
+  margin-bottom: 10px;  
 }
-.related-post h5 {
+.related-post h4 {
+  font-weight: 300;
 }
 .related-post li {
   padding: 0;
@@ -73,8 +84,18 @@
   color: rgba(0, 0, 0, 0.87);
 }
 #comments {
-  margin-top: 80px;
+  margin-top: 0;
   margin-bottom: 20px;
+}
+#comments h4 {
+  margin-bottom: 40px;
+  font-weight: 300;
+}
+@media (max-width: 1365px){
+  .container-mod {
+    margin: 0; 
+    width: 100% !important;
+  }
 }
 .full-image-cont {
   margin-bottom: 20px;
@@ -105,7 +126,7 @@ table td, table th {
 /* INDEX */
 #search {
   margin-top: 30px;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
   height: 55px;
   padding-top: -40px;
 }
@@ -138,7 +159,7 @@ table td, table th {
 }
 .left-nav {
   position: fixed;
-  top: 188px;
+  top: 86px;
   left: 1.5%;
   font-weight: 300;
   padding-right: 7%;
@@ -208,7 +229,7 @@ iframe {
 .meta-tag {
   background-color: rgba(20,20,20,0.7);
   color: #ffffff;
-  padding: 1px 4px 1px 4px;
+  padding: 0.5px 4px 0.5px 4px;
   margin: 3px;
   font-size: 13px;
 }
