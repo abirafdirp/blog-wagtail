@@ -54,7 +54,7 @@ blogControllers.controller('BlogIndexCtrl', ['$scope', '$route', '$routeParams',
         $scope.all_images.push($scope.images.images[i])
       }
     });
-    
+
     $scope.slugify = function(url) {
         return url
         .toLowerCase()

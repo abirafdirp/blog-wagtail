@@ -5,10 +5,12 @@
 }
 .main-img {
   margin-top: 25px;
-  margin-bottom: -20px; 
+  margin-bottom: -20px;
+  z-index: -10;
 }
 #title {
   font-weight: 300;
+  margin-top: 0;
 }
 .main-heading {
   margin-top: 0;
@@ -30,7 +32,7 @@
   padding: 3px;
   color: #ffffff;
   font-size: 10px;
-  left: 120px;
+  left: 100px;
   top: -30px;
 }
 .subheading {

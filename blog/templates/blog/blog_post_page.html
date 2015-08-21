@@ -6,10 +6,10 @@
           <div class="col s12">
             <a ng-href="{$ (all_images | filter:{id:post.main_image.id}:true)[0].file $}" data-lightbox="image">
               <img ng-src="{$ (all_images | filter:{id:post.main_image.id}:true)[0].file $}" class="responsive-img">
-              <span ng-if="post.main_img_disc" class="main-img-disc">{$ post.main_img_disc $}</span>
             </a>
           </div>
         </div>
+        <span ng-if="post.main_img_disc" class="main-img-disc">{$ post.main_img_disc $}</span>
 
         <h2 id="title" class="center-align">{$ post.title $}</h2>
         <div class="post-meta hide-on-small-only">
