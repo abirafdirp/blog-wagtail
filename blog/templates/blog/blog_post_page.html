@@ -1,4 +1,5 @@
-<div ng-repeat="post in post.pages" class="container container-mod  ">
+<div load-pretty></div>
+<div ng-repeat="post in post.pages" class="container container-mod">
   <div class="row card-panel post-container no-padding">
     <div class="col s12 m10 offset-m1 main-heading animated fadeIn">
 
@@ -102,8 +103,6 @@
   </div>
 </div>
 
-<div load-pretty></div>
-
 <div ng-repeat="post in post.pages" ng-if="post.related_post.length > 0" class="container container-mod">
   <div class="row card-panel post-container">
 
@@ -111,7 +110,7 @@
       <h4>Related Post</h4>
       <div ng-repeat="related_post in post.related_post">
         <ul class="all-category" ng-repeat="posT in posts.pages" class="col s12 m10 offset-m1 flow-text">
-          <li ng-if="related_post.value == posT.id"><a href="{$ '#/blog/' + slugify(posT.title) $}">{$ posT.title $}</a></li>
+          <li ng-if="related_post.value == posT.id"><a href="{$ '/blog/' + slugify(posT.title) $}">{$ posT.title $}</a></li>
         </ul>
       </div>
     </div>

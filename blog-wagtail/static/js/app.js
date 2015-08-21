@@ -4,7 +4,8 @@ var blogApp = angular.module('blog', [
   'ngRoute',
 	'ngDisqus',
   'ngSanitize',
-	'infinite-scroll'
+	'infinite-scroll',
+	'angularLoad'
 ]);
 
 blogApp.config(function($interpolateProvider) {
@@ -123,8 +124,10 @@ blogApp.run(['$rootScope', '$routeParams',
 	}
 ]);
 
-blogApp.directive('loadPretty', function($filter) {
-        return function($scope, elem, attrs) {
-            elem.append('<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?lang=css&amp;skin=desert"></script>');
+blogApp.directive('loadPretty', function($timeout) {
+        return {
+					link : function($scope, element, attrs) {
+						element.append('<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?lang=css&amp;skin=desert"></script>');
+					}
         };
     });

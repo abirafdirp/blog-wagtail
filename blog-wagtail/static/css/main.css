@@ -107,7 +107,7 @@
 }
 pre {
   display: block;
-  padding: 9px;
+  padding: 9px !important;
   margin: 0 0 10px;
   font-size: 18px;
   line-height: 1.42857143;
