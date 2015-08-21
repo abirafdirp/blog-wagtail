@@ -60,6 +60,22 @@
           </div>
         </div>
 
+        <div ng-if="content.type == 'pre_tag_general'">
+          <div class="code-block animated fadeIn">
+            <div class="col s12 m10 offset-m1">
+              <div hljs source="content.value" language="bash"></div>
+            </div>
+          </div>
+        </div>
+
+        <div ng-if="content.type == 'pre_tag_python'">
+          <div class="code-block animated fadeIn">
+            <div class="col s12 m10 offset-m1">
+              <div hljs source="content.value" language="python"></div>
+            </div>
+          </div>
+        </div>
+
         <div ng-if="content.type == 'raw_html'">
           <div class="animated fadeIn">
             <div class="col s12 m10 offset-m1" ng-bind-html="content.value | unsafe">

@@ -40,6 +40,8 @@ class ContentBlock(blocks.StreamBlock):
                                    help_text='Full Image')
     code_block = blocks.RawHTMLBlock(help_text="Must Use http://syntaxhighlight.in/")
     pre_tag = blocks.TextBlock()
+    pre_tag_general = blocks.TextBlock()
+    pre_tag_python = blocks.TextBlock()
     smaller_subheading = blocks.CharBlock(help_text='Subheading')
     raw_html = blocks.RawHTMLBlock()
 
