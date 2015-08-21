@@ -1,4 +1,3 @@
-<div load-pretty></div>
 <div ng-repeat="post in post.pages" class="container container-mod">
   <div class="row card-panel post-container no-padding">
     <div class="col s12 m10 offset-m1 main-heading animated fadeIn">
@@ -56,7 +55,7 @@
         <div ng-if="content.type == 'pre_tag'">
           <div class="code-block animated fadeIn">
             <div class="col s12 m10 offset-m1">
-              <pre class="prettyprint">{$ content.value $}</pre>
+              <div hljs source="content.value"></div>
             </div>
           </div>
         </div>

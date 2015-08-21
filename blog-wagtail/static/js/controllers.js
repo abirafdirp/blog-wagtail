@@ -114,7 +114,6 @@ blogControllers.controller('PostCtrl', ['$scope', '$route', '$routeParams', 'Pos
 
 
     $scope.$on('$viewContentLoaded', function() {
-      angularLoad.loadScript('https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?lang=css&amp;skin=desert');
     });
 
     angular.element(document).ready(function () {

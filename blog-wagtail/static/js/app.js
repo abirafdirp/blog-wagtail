@@ -5,7 +5,8 @@ var blogApp = angular.module('blog', [
 	'ngDisqus',
   'ngSanitize',
 	'infinite-scroll',
-	'angularLoad'
+	'angularLoad',
+	'hljs',
 ]);
 
 blogApp.config(function($interpolateProvider) {
@@ -131,3 +132,10 @@ blogApp.directive('loadPretty', function($timeout) {
 					}
         };
     });
+
+blogApp.config(function (hljsServiceProvider) {
+  hljsServiceProvider.setOptions({
+    // replace tab with 4 spaces
+    tabReplace: '    '
+  });
+});
