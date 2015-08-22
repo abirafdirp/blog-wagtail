@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row" ng-cloak>
 	<div class="card-panel z-depth-1 white left-nav animated fadeIn hide-on-small-only hoverable">
 		<h5>Categories</h5>
 		<ul class="all-category">
@@ -11,7 +11,7 @@
 
 	<div class="col s12 m8 offset-m2">
     <div class="col s12">
-      <form class="col s12 white card-panel hoverable" id="search">
+      <form class="col s12 white card-panel hoverable z-depth-1" id="search">
         <div class="row animated fadeIn">
           <div class="input-field animated fadeIn">
             <i class="material-icons prefix">search</i>
@@ -28,7 +28,7 @@
           <div ng-show="filterCategory(post.id)" class="col s12 index-post animated fadeIn">
             <a href="{$ '/blog/' + slugify(post.title) $}" ng-mouseenter="hover=true" ng-mouseleave="hover=false">
 
-              <div class="card hoverable z-depth-2 hoverable">
+              <div class="card hoverable z-depth-1 hoverable">
 
                 <div ng-show="post.thumbnail_image" class="card-image">
                   <img ng-src="{$ (all_images | filter:{id:post.thumbnail_image.id}:true)[0].file $}" alt="" class="index-img">
@@ -69,7 +69,7 @@
           <div ng-show="filterCategory(post.id)" class="col s12 index-post animated fadeIn">
             <a href="{$ '/blog/' + slugify(post.title) $}" ng-mouseenter="hover=true" ng-mouseleave="hover=false">
 
-              <div class="card hoverable z-depth-2 hoverable">
+              <div class="card hoverable z-depth-1 hoverable">
 
                 <div ng-show="post.thumbnail_image" class="card-image">
                   <img ng-src="{$ (all_images | filter:{id:post.thumbnail_image.id}:true)[0].file $}" alt="" class="index-img">

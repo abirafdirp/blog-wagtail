@@ -1,7 +1,7 @@
 <div class="container portofolio animated fadeIn">
   <div class="row">
     <div ng-repeat="item in items.pages[0].item" class="col s12 m4">
-     <div class="card">
+     <div class="card hoverable">
         <div class="card-image waves-effect waves-block waves-light">
           <img class="activator" ng-src="{$ (all_images | filter:{id:post.main_image.id}:true)[0].file $}">
         </div>
