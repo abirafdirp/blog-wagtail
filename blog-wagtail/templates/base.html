@@ -23,9 +23,6 @@
 
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.7/styles/monokai_sublime.min.css">
-  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.3/highlight.min.js"></script>
-
   {# Global stylesheets #}
   {% compress css %}
   <link rel="stylesheet" type="text/css" href="{% static 'css/materialize.css' %}">
@@ -35,7 +32,9 @@
   <link rel="stylesheet" type="text/css" href="{% static 'css/shi_default-light.min.css' %}">
   <link rel="stylesheet" type="text/css" href="{% static 'css/material-icons.css' %}">
   {% endcompress %}
+
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.7/styles/monokai_sublime.min.css">
 
 </head>
 
@@ -52,7 +51,7 @@
   </nav>
 
   <div class="nav-home animated fadeIn" ng-show="$route.current.activetab == 'home'">
-    <div class="nav-home-wrapper">
+    <div class="nav-home-wrapper col s12">
       <ul class="nav-container">
         <li ng-class="{'active':$route.current.activetab == 'blog'}"><a href="/blog">Blog</a></li>
         <li ng-class="{'active':$route.current.activetab == 'portofolio'}"><a href="/portofolio">Portofolio</a></li>
@@ -69,6 +68,10 @@
       </div>
     </div>
   </footer>
+
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.3/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-highlightjs/0.4.3/angular-highlightjs.min.js"></script>
 
   {% compress js %}
   <script type="text/javascript" src="{% static 'js/jquery-2.1.4.min.js' %}"></script>
@@ -90,8 +93,6 @@
   {#  Syntax Highlighter #}
   <script type="text/javascript" src="{% static 'js/shi_jquery.min.js' %}"></script>
   {% endcompress %}
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-highlightjs/0.4.3/angular-highlightjs.min.js"></script>
 
 </body>
 </html>
