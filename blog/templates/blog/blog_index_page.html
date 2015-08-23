@@ -1,26 +1,26 @@
 <div class="row" ng-cloak>
-	<div class="card-panel z-depth-1 white left-nav animated fadeIn hide-on-small-only hoverable">
-		<h5>Categories</h5>
-		<ul class="all-category">
-			<li><a ng-class="{'active':params_category == null}" href="/#/blog">All</a></li>
-		</ul>
-		<ul ng-repeat="category in categories">
-			<li><a ng-class="{'active':params_category == category}" href="{$ '/blog?category=' + category $}">{$ category $}</a></li>
-		</ul>
-	</div>
-
-	<div class="col s12 m8 offset-m2">
-    <div class="col s12">
-      <form class="col s12 white card-panel hoverable z-depth-1" id="search">
-        <div class="row animated fadeIn">
-          <div class="input-field animated fadeIn">
-            <i class="material-icons prefix">search</i>
-            <input id="icon_prefix" type="text" class="validate" ng-model="search">
-            <label for="icon_prefix"></label>
-          </div>
+  <div class="col s12 m2 left-nav-cont">
+    <form class="col s12 white card-panel hoverable z-depth-1" id="search">
+      <div class="row animated fadeIn">
+        <div class="input-field animated fadeIn">
+          <i class="material-icons prefix">search</i>
+          <input id="icon_prefix" type="text" class="validate" ng-model="search">
+          <label for="icon_prefix"></label>
         </div>
-      </form>
+      </div>
+    </form>
+    <div class="card-panel z-depth-1 white left-nav animated fadeIn hide-on-small-only hoverable no-padding col s12">
+      <h5 class="grey-mod">Categories</h5>
+      <ul class="all-category">
+        <li><a ng-class="{'active':params_category == null}" href="/#/blog">All</a></li>
+      </ul>
+      <ul ng-repeat="category in categories">
+        <li><a ng-class="{'active':params_category == category}" href="{$ '/blog?category=' + category $}">{$ category $}</a></li>
+      </ul>
     </div>
+  </div>
+
+	<div class="col s12 m8 posts">
     <div ng-if="params_category == null">
 		  <div class="row" id="index-posts" infinite-scroll="loadMore()">
 
@@ -40,14 +40,20 @@
 
                 <div class="card-content grey-text text-darken-3" style="padding-top: 10px">
                   <span class="card-title">{$ post.title $}</span>
-                  <div ng-hide="hover" class="post-meta-container">
-                    <div class="post-meta">
-                      <div class="valign-wrapper animated fadeIn">
-                        <i class="material-icons">today</i>&nbsp;
-                        {$ post.date | date : 'd  MMMM  yyyy' $}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <i class="material-icons">view_list</i>
-                        <span ng-repeat="category in post.categories">
+                  <div ng-hide="hover">
+                    <div class="animated fadeIn">
+                      <div class="col s5 m4 l2 post-meta no-padding">
+                        <span class="valign-wrapper">
+                          <i class="material-icons meta-date">today</i>
+                          <span>&nbsp;{$ post.date | date : 'd  MMMM  yyyy' $}</span>
+                        </span>
+                      </div>
+                      <div class="col s6 post-meta no-padding">
+                        <span class="valign-wrapper">
+                          <i class="material-icons meta-category">view_list</i>
+                          <span ng-repeat="category in post.categories">
                           <span class="meta-tag">{$ category.value $}</span>
+                          </span>
                         </span>
                       </div>
                     </div>

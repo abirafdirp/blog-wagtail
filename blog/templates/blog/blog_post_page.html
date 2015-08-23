@@ -1,5 +1,5 @@
 <div ng-repeat="post in post.pages" class="container container-mod">
-  <div class="row card-panel post-container no-padding">
+  <div class="row card-panel heading-container no-padding">
     <div class="col s12 m10 offset-m1 main-heading animated fadeIn">
 
         <div ng-if="post.main_image" class="row main-img">
@@ -12,7 +12,7 @@
         <span ng-if="post.main_img_disc" class="main-img-disc">{$ post.main_img_disc $}</span>
 
         <h2 id="title" class="center-align">{$ post.title $}</h2>
-        <div class="post-meta hide-on-small-only">
+        <div class="post-meta-post hide-on-small-only">
           <div class="valign-wrapper">
             <i class="material-icons">today</i>{$ post.date | date : 'd  MMMM  yyyy' $}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <i class="material-icons">view_list</i>
@@ -40,8 +40,8 @@
       <div ng-repeat="content in post.content">
         <div ng-if="content.type == 'content'">
           <div class="content animated fadeIn ">
-              <div class="col s12 m10 offset-m1" ng-bind-html="content.value">
-              </div>
+            <div class="col s12 m10 offset-m1" ng-bind-html="content.value">
+            </div>
           </div>
         </div>
 

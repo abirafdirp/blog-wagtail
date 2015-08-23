@@ -2,6 +2,15 @@
   margin-top: 30px;
   margin-left: 5% !important;
   margin-right: 5% !important;
+  padding-bottom: 60px !important;
+}
+.heading-container {
+  margin-top: 30px;
+  margin-left: 5% !important;
+  margin-right: 5% !important;
+}
+.post-meta-post {
+  display: inline-block;
 }
 .main-img {
   margin-top: 25px;
@@ -48,6 +57,7 @@
   font-size: 22px;
   font-weight: 300;
   padding-bottom: 15px;
+  line-height: 33px;
 }
 @media (max-width: 800px) {
   .content {
@@ -126,11 +136,19 @@ table td, table th {
   margin-left: 1.3em;
 }
 /* INDEX */
+.posts {
+  margin-top: 20px;
+}
 #search {
   margin-top: 30px;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
   height: 55px;
-  padding-top: -40px;
+}
+.validate {
+  margin-left: 35px !important;
+  font-size: 20px !important;
+  top: -8px !important;
+  position: relative;
 }
 .card {
   color: rgba(0, 0, 0, 0.87);
@@ -159,28 +177,28 @@ table td, table th {
   color: #ffffff;
   background-color: rgba(20,20,20,0.8);
 }
+.left-nav-cont {
+  padding-right: 0 !important;
+}
 .left-nav {
-  position: fixed;
-  top: 168px;
-  left: 1.5%;
+  display: inline-block;
   font-weight: 300;
-  padding-right: 7%;
-  padding-left: 20px;
-  padding-top: 10px;
-  padding-bottom: 0;
   min-height: 280px;
 }
 @media (max-width: 1444px) {
   .left-nav {
-    padding-right: 4%;
   }
 }
 .left-nav h5 {
-  padding: 0;
+  display: block;
+  background-color: #333333;
+  color: #ffffff;
   font-weight: 300;
+  margin: 0;
+  padding: 15px 20px 15px 20px;
 }
 .left-nav li {
-  padding-left: 20px;
+  padding-left: 30px;
   padding-bottom: 6px;
 }
 .left-nav li a {
@@ -221,14 +239,8 @@ iframe {
   margin-right: auto;
   margin-bottom: 30px;
 }
-.post-meta-container {
-  text-align: left;
-}
 .post-meta {
-  display: inline-block;
-  position: relative;
-  top: -5px;
-  left: -2px;
+  margin-bottom: 15px;
 }
 .meta-tag {
   background-color: rgba(20,20,20,0.7);
