@@ -1,7 +1,9 @@
 blog
 ==============================
 
-my blog with wagtail + rest
+My personal blog with modified wagtail to include image URL path in the API and modified the sitemap module to correctly generate angular urls.
+
+Current implementation of my image API URL is still a mess. Please do not follow this. Modified wagtail repo https://github.com/abirafdirp/wagtail-fork
 
 
 LICENSE: BSD
@@ -9,7 +11,7 @@ LICENSE: BSD
 Settings
 ------------
 
-blog relies extensively on environment settings which **will not work with Apache/mod_wsgi setups**. It has been deployed successfully with both Gunicorn/Nginx and even uWSGI/Nginx.
+This project relies extensively on environment settings which **will not work with Apache/mod_wsgi setups**. It has been deployed successfully with both Gunicorn/Nginx and even uWSGI/Nginx.
 
 For configuration purposes, the following table maps the 'blog' environment variables to their Django setting:
 
