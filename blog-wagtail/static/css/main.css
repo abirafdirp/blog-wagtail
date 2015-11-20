@@ -46,6 +46,7 @@
 }
 .subheading {
   margin-top: 30px;
+  font-weight: 400;
 }
 .subheading-smaller {
   margin-top: 20px;
@@ -104,7 +105,7 @@
   margin-bottom: 40px;
   font-weight: 300;
 }
-@media (max-width: 1365px){
+@media (max-width: 1367px){
   .container-mod {
     margin: 0; 
     width: 100% !important;
