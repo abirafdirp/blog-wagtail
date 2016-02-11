@@ -465,8 +465,8 @@ html {
 }
 
 .post-list-date {
-  position: relative;
-  height: 100px;
+  margin-top: 55px;
+  margin-bottom: 55px;
   background-color: rgba(20,20,20,0.8);
   color: white;
   text-align: center;

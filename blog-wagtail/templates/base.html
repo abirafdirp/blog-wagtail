@@ -147,11 +147,9 @@
            flex="100">
         <div layout="row" ng-show="filterCategory(post.id)" class="index-post">
           <span flex-offset="5" flex="10" layout="column" layout-padding hide-xs hide-sm hide-md>
-            <div flex></div>
             <span class="post-list-date" flex layout-align="center center" layout="row">
               {$ post.date | date : 'd  MMMM  yyyy' $}
             </span>
-            <div flex></div>
           </span>
           <div flex-offset="5" flex-gt-md="75" flex="100" layout="column">
             <a href="{$ '/blog/' + slugify(post.title) $}" ng-mouseenter="hover=true" ng-mouseleave="hover=false"><h2 class="index-post-title">{$ post.title $}</h2>
