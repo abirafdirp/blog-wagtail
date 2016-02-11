@@ -250,10 +250,11 @@
                 <img ng-src="{$ (all_images | filter:{id:item.value.image}:true)[0].file $}" class="responsive-img" alt="Washed Out">
               </div>
               <div flex="50">
+                  <a href="//{$item.value.link$}">
                 <md-button flex class="md-raised portofolio-button" style="margin-top: 15px">
                   Project page &nbsp;<ng-md-icon icon="exit_to_app" style="fill:white; position: relative; top: 6px;"></ng-md-icon>
                 </md-button>
-
+                      </a>
               </div>
             </md-content>
           </md-tab>
