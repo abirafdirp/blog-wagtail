@@ -1,35 +1,48 @@
 var blogControllers = angular.module('blogControllers', []);
 
-blogControllers.controller('NavCtrl', ['$scope', '$route',
-  function($scope, $route){
+blogControllers.controller('NavCtrl', ['$scope', '$route','$location', '$mdSidenav',
+  function($scope, $route, $location, $mdSidenav){
     $scope.$route = $route;
+    $scope.changeUrl = function(url) {
+      if (url){
+        $location.path(url);
+      }
+    };
+    $scope.toggleLeftMenu = function() {
+      $mdSidenav('left').toggle();
+    };
+    $scope.closeLeftMenu = function() {
+      $mdSidenav('left').close();
+    };
   }
 ]);
 
 blogControllers.controller('HomeCtrl', ['$scope',
   function($scope){
-    angular.element(document).ready(function () {
-        $(".parallax").parallax();
-    });
   }
 ]);
 
 blogControllers.controller('PortofolioCtrl', ['$scope', 'Portofolio',
   function($scope, Portofolio){
+    $scope.show_loading = true;
     $scope.items = Portofolio.portofolio.query();
 
     $scope.all_images = [];
     $scope.images = Portofolio.images.query(function() {
       for(var i = 0; i < $scope.images.images.length; i++){
-        $scope.images.images[i].file = $scope.images.images[i].file.replace('http','https');
+        $scope.images.images[i].file = $scope.images.images[i].file.replace('https','http');
         $scope.all_images.push($scope.images.images[i])
       }
+      $scope.show_loading = false;
     });
   }
 ]);
 
-blogControllers.controller('BlogIndexCtrl', ['$scope', '$route', '$routeParams', 'BlogIndex',
-  function($scope, $route, $routeParams, BlogIndex) {
+blogControllers.controller('BlogIndexCtrl', ['$scope', '$route', '$routeParams', 'BlogIndex', '$filter', '$timeout',
+  function($scope, $route, $routeParams, BlogIndex, $filter, $timeout) {
+    $scope.show_loading = true;
+    $scope.params = $routeParams;
+    $scope.params_category = $scope.params.category;
     $scope.categories = [];
     $scope.posts = BlogIndex.posts.query(function() {
       for(var i = 0; i < $scope.posts.pages.length; i++){
@@ -39,28 +52,36 @@ blogControllers.controller('BlogIndexCtrl', ['$scope', '$route', '$routeParams',
           }
         }
       }
+      $scope.show_loading = false;
     });
     $scope.images = BlogIndex.images.query();
     $scope.$route = $route;
-    $scope.params = $routeParams;
-    $scope.params_category = $scope.params.category;
     $scope.author = $scope.params.author;
+
+    //$scope.$watch($scope.params_category, function(){
+    //  $timeout(function(){
+    //    if ($scope.params_category){
+    //      console.log($scope.posts);
+    //      $scope.posts = $filter('filter')($scope.posts.pages, $scope.params_category);
+    //    }
+    //  }, 0);
+    //});
 
 
     $scope.all_images = [];
     $scope.images = BlogIndex.images.query(function() {
       for(var i = 0; i < $scope.images.images.length; i++){
-        $scope.images.images[i].file = $scope.images.images[i].file.replace('http','https');
+        $scope.images.images[i].file = $scope.images.images[i].file.replace('https','http');
         $scope.all_images.push($scope.images.images[i])
       }
     });
 
     $scope.slugify = function(url) {
-        return url
-        .toLowerCase()
-        .replace(/ /g,'-')
-        .replace(/[^\w-]+/g,'')
-        ;
+      return url
+          .toLowerCase()
+          .replace(/ /g,'-')
+          .replace(/[^\w-]+/g,'')
+          ;
     };
 
     $scope.filterCategory = function(postID) {
@@ -78,10 +99,14 @@ blogControllers.controller('BlogIndexCtrl', ['$scope', '$route', '$routeParams',
       }
       return false;
     };
-
-    $scope.postLimit = 0;
+    if ($scope.params_category){
+      $scope.postLimit = 99;
+    }
+    else {
+      $scope.postLimit = 0;
+    }
     $scope.loadMore = function() {
-      $scope.postLimit += 4;
+      $scope.postLimit += 6;
     }
 
   }
@@ -89,7 +114,8 @@ blogControllers.controller('BlogIndexCtrl', ['$scope', '$route', '$routeParams',
 
 blogControllers.controller('PostCtrl', ['$scope', '$route', '$routeParams', 'Post', 'BlogIndex', 'angularLoad',
   function($scope, $route, $routeParams, Post, BlogIndex, angularLoad){
-    $scope.$route = $route
+    $scope.show_loading = true;
+    $scope.$route = $route;
     $scope.params = $routeParams;
     $scope.title = $scope.params.postTitle;
     $scope.posts = BlogIndex.posts_minimal.query();
@@ -99,17 +125,18 @@ blogControllers.controller('PostCtrl', ['$scope', '$route', '$routeParams', 'Pos
     $scope.all_images = [];
     $scope.images = Post.images.query(function() {
       for(var i = 0; i < $scope.images.images.length; i++){
-        $scope.images.images[i].file = $scope.images.images[i].file.replace('http','https');
+        $scope.images.images[i].file = $scope.images.images[i].file.replace('https','http');
         $scope.all_images.push($scope.images.images[i]);
       }
+      $scope.show_loading = false;
     });
 
     $scope.slugify = function(url) {
-        return url
-        .toLowerCase()
-        .replace(/ /g,'-')
-        .replace(/[^\w-]+/g,'')
-        ;
+      return url
+          .toLowerCase()
+          .replace(/ /g,'-')
+          .replace(/[^\w-]+/g,'')
+          ;
     };
 
 
@@ -136,5 +163,9 @@ blogControllers.controller('AboutCtrl', ['$scope', 'About',
     };
   }
 ]);
+
+blogControllers.controller('SideNavCtrl', function($scope, $mdSidenav) {
+
+});
 
 

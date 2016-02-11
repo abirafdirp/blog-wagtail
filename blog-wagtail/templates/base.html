@@ -21,16 +21,15 @@
   <!-- <meta name="fragment" content="!"> -->
   <meta name="google-site-verification" content="VVHRogeSNoqDmor8rrdzPLL9FUuP0ktE5EAWOd9B9VY" />
 
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link src="http://overpass-30e2.kxcdn.com/overpass.css" rel="stylesheet" />
 
   {# Global stylesheets #}
   {% compress css %}
-  <link rel="stylesheet" type="text/css" href="{% static 'css/materialize.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/angular-material.min.css' %}">
   <link rel="stylesheet" type="text/css" href="{% static 'css/animate.css' %}">
   <link rel="stylesheet" type="text/css" href="{% static 'css/lightbox.css' %}">
   <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
   <link rel="stylesheet" type="text/css" href="{% static 'css/shi_default-light.min.css' %}">
-  <link rel="stylesheet" type="text/css" href="{% static 'css/material-icons.css' %}">
   {% endcompress %}
 
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -38,62 +37,387 @@
 
 </head>
 
-<body ng-cloak class="body grey lighten-4" ng-controller="NavCtrl">
+<body ng-cloak ng-controller="NavCtrl">
 
-  <nav ng-hide="$route.current.activetab == 'home'">
-    <div class="nav-wrapper grey-mod row">
-      <ul class="col s12 m10 offset-m2">
-        <li ng-class="{'active':$route.current.activetab == 'home'}"><a class="white-text" href="/home">Home</a></li>
-        <li ng-class="{'active':$route.current.activetab == 'blog'}"><a class="white-text" href="/blog">Blog</a></li>
-        <li ng-class="{'active':$route.current.activetab == 'portofolio'}"><a class="white-text" href="/#/portofolio">Projects</a></li>
+<div layout="row">
+  <md-sidenav md-component-id="left"
+              class="md-sidenav-left md-primary md-hue-3 md-whiteframe-15dp"
+              md-is-locked-open="$mdMedia('gt-md')"
+              class="md-primary"
+              layout="column"
+              flex="50"
+              flex-gt-md="20">
+    <md-toolbar class="md-accent material-teal">
+      <h3 class='md-toolbar-tools' layout="row" layout-align="center">abiraf.com</h3>
+    </md-toolbar>
+    <md-content layout="column">
+      <md-button
+              ng-click="changeUrl('/about');closeLeftMenu()"
+              ng-class="{'md-accent md-raised md-hue-3':$route.current.activetab == 'about', 'white-text':$route.current.activetab != 'about'}">
+        About
+      </md-button>
+      <md-button
+              ng-click="changeUrl('/blog');closeLeftMenu()"
+              ng-class="{'md-accent md-raised md-hue-3':$route.current.activetab == 'blog', 'white-text':$route.current.activetab != 'blog'}">
+        Blog
+      </md-button>
+      <md-button
+              ng-click="changeUrl('/portofolio');closeLeftMenu()"
+              ng-class="{'md-accent md-raised md-hue-3':$route.current.activetab == 'portofolio', 'white-text':$route.current.activetab != 'portofolio'}">
+        Projects
+      </md-button>
+    </md-content>
+  </md-sidenav>
+  <div flex-offset-gt-md="20" flex layout="column">
+    <section id="hamburger" size="28" hide-gt-md>
+      <md-button class="md-raised hamburger-btn" style="fill:white" ng-click="toggleLeftMenu()">
+        <ng-md-icon icon="menu" style="padding:0; position: relative; top: 6px; width: 20px !important"></ng-md-icon>
+      </md-button>
+    </section>
+    <main ng-view layout="column"></main>
+  </div>
+
+
+</div>
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.3/highlight.min.js"></script>
+
+{% compress js %}
+<script type="text/javascript" src="{% static 'js/jquery-2.1.4.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/lightbox.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/main.js' %}"></script>
+
+<script type="text/javascript" src="{% static 'js/angular.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/angular-animate.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/angular-aria.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/angular-material.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/angular-disqus.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/angular-load.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/angular-resource.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/angular-route.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/angular-sanitize.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/ng-infinite-scroll.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/app.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/controllers.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/services.js' %}"></script>
+
+{#  Syntax Highlighter #}
+<script type="text/javascript" src="{% static 'js/shi_jquery.min.js' %}"></script>
+{% endcompress %}
+<script src="//cdnjs.cloudflare.com/ajax/libs/angular-material-icons/0.6.0/angular-material-icons.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-highlightjs/0.4.3/angular-highlightjs.min.js"></script>
+
+<script type="text/ng-template" id="blog_index_page.html">
+  <div class="loading" ng-show="show_loading">
+    <md-progress-linear md-mode="indeterminate"></md-progress-linear>
+  </div>
+
+  <div id="post-list" ng-show="!show_loading" class="animated zoomIn">
+    <div layout="row" layout-xs="column" layout-sm="column" layout-md="column" style="margin-top: 15px" id="categories">
+      <div flex-offset="5" flex-gt-md="15" style="margin-right: 5px">
+        <h3 class="md-title">Categories</h3>
+      </div>
+      <div flex-offset="5" flex-offset-gt-md="0" style="margin-top: 17px; margin-bottom: 10px;">
+        <a href="/#/blog" style="margin-bottom: 5px;">
+          <span class="meta-tag" ng-class="{'active meta-tag':params_category == category, 'meta-tag':params_category != category}" style="margin-right: 15px;">
+            All
+          </span>
+        </a>
+        <a ng-repeat="category in categories" href="{$ '/blog?category=' + category $}" style="margin-bottom: 10px;">
+          <span
+                  ng-class="{'active meta-tag':params_category == category, 'meta-tag':params_category != category}"
+                  style="margin-right: 15px;">
+            {$ category $}
+          </span>
+        </a>
+      </div>
+    </div>
+    <md-divider></md-divider>
+
+    <section layout="column" infinite-scroll="loadMore()" infinite-scroll-distance='1'>
+
+      <div ng-repeat="post in posts.pages | orderBy:'-id' | filter:search | filter:author | limitTo: postLimit"
+           layout="column"
+           flex="100">
+        <div layout="row" ng-show="filterCategory(post.id)" class="index-post">
+          <span flex-offset="5" flex="10" layout="column" layout-padding hide-xs hide-sm hide-md>
+            <div flex></div>
+            <span class="post-list-date" flex layout-align="center center" layout="row">
+              {$ post.date | date : 'd  MMMM  yyyy' $}
+            </span>
+            <div flex></div>
+          </span>
+          <div flex-offset="5" flex-gt-md="75" flex="100" layout="column">
+            <a href="{$ '/blog/' + slugify(post.title) $}" ng-mouseenter="hover=true" ng-mouseleave="hover=false"><h2 class="index-post-title">{$ post.title $}</h2>
+            </a>
+            <span layout="row" layout-align-lt-lg="center center" hide-gt-md style="margin-top: 8px">
+              <ng-md-icon icon="today" style="fill: rgb(60,60,60)"></ng-md-icon>
+              <span flex>
+                {$ post.date | date : 'd  MMMM  yyyy' $}
+              </span>
+            </span>
+            <span layout="row" layout-align-lt-lg="center center" style="margin-top: 8px">
+              <ng-md-icon icon="folder" style="fill: rgb(60,60,60); padding-top: 3px"></ng-md-icon>
+              <span ng-repeat="category in post.categories">
+                <span class="meta-tag">{$ category.value $}</span>
+              </span>
+            </span>
+            <span ng-bind-html="post.intro">
+            </span>
+
+          </div>
+        </div>
+        <md-divider ng-show="filterCategory(post.id)" md-inset ng-if="!$last"></md-divider>
+      </div>
+      <hr/>
+      <hr/>
+    </section>
+  </div>
+
+
+</script>
+
+<script type="text/ng-template" id="home_page.html">
+  <div layout="row" layout-wrap id="home">
+    <div flex="90" flex-offset="5" flex-gt-md="70" flex-offset-gt-md="15" layout="column" style="margin-top: 70px">
+      <md-divider></md-divider>
+    </div>
+    <div flex="90" flex-offset="5" flex-gt-md="70" flex-offset-gt-md="15" layout="column" layout-align="center center" class="my-pic-container">
+      <img src="/media/original_images/square2.jpg" class="my-pic responsive-img">
+    </div>
+    <div flex="90" flex-offset="5" flex-gt-md="70" flex-offset-gt-md="15" layout="column" style="margin-top: 70px">
+      <h4 class="animated slideInLeft">Who Am I</h4>
+      <p class="animated slideInLeft">
+        My name is Abirafdi Raditya Putra, a computer science undergraduate student in Gunadarma. I mainly programs in Python.
+      </p>
+      <h4 class="animated slideInRight">What I Make</h4>
+      <ul class="animated slideInRight">
+        <li>
+          Web Services and SPAs
+        </li>
+        <li>
+          Websites
+        </li>
+      </ul>
+      <h4 class="animated slideInLeft">Hobby Projects</h4>
+      <ul class="animated slideInLeft">
+        <li>
+          Automation
+        </li>
+        <li>
+          Games
+        </li>
+        <li>
+          3D
+        </li>
       </ul>
     </div>
-  </nav>
+    <div flex="90" flex-offset="5" flex-gt-md="70" flex-offset-gt-md="15" layout="column">
+      <md-divider></md-divider>
+    </div>
+    <div flex="90" flex-offset="5" flex-gt-md="70" flex-offset-gt-md="15" layout="column" id="contact" class="animated slideInUp">
+      <div>
+        <h4>Contact and Profiles</h4>
+        <ng-md-icon icon="github-box" style="position: relative; top: 6px;;"></ng-md-icon> <a href="//github.com/abirafdirp">&nbsp;GitHub profile</a>
+      </div>
+      <div>
+        <img src="/media/original_images/steamIconcopy.jpg" height="23px" style="position: relative; top: 5px;"> <a href="//steamcommunity.com/id/ishouldhaveknown">&nbsp;Steam profile</a>
+      </div>
+      <div>
+        <ng-md-icon icon="email" size="24" style="position: relative; top: 8px;"></ng-md-icon><a href= "mailto:abc@example.com">&nbsp;abirafdiraditya@gmail.com</a>
+      </div>
+    </div>
+  </div>
+</script>
 
-  <div class="nav-home animated fadeIn" ng-show="$route.current.activetab == 'home'">
-    <div class="nav-home-wrapper col s12">
-      <ul class="nav-container">
-        <li ng-class="{'active':$route.current.activetab == 'blog'}"><a href="/blog">Blog</a></li>
-        <li ng-class="{'active':$route.current.activetab == 'portofolio'}"><a href="/portofolio">Projects</a></li>
-      </ul>
+<script type="text/ng-template" id="portofolio_page.html">
+  <div class="loading" ng-show="show_loading">
+    <md-progress-linear md-mode="indeterminate"></md-progress-linear>
+  </div>
+  <div class="animated zoomIn" layout="row" style="margin-top: 10px" id="portofolio" ng-show="!show_loading">
+    <div flex-offset-gt-md="15" flex-gt-md="75" flex-offset="5" flex="95" layout="row" layout-wrap layout-padding>
+      <div ng-repeat="item in items.pages[0].item" flex="100" flex-gt-md="100">
+        <md-tabs md-dynamic-height>
+          <md-tab label="{$item.value.title$}">
+            <md-content layout="row" layout-padding>
+              <div flex="50" class="port-img-container">
+                <img ng-src="{$ (all_images | filter:{id:item.value.image}:true)[0].file $}" class="responsive-img" alt="Washed Out">
+              </div>
+              <div flex="50">
+                <md-button flex class="md-raised portofolio-button" style="margin-top: 15px">
+                  Project page &nbsp;<ng-md-icon icon="exit_to_app" style="fill:white; position: relative; top: 6px;"></ng-md-icon>
+                </md-button>
+
+              </div>
+            </md-content>
+          </md-tab>
+          <md-tab label="description">
+            <p ng-bind-html="item.value.description" class="portofolio-desc">
+            </p>
+          </md-tab>
+        </md-tabs>
+      </div>
+    </div>
+
+  </div>
+</script>
+
+<script type="text/ng-template" id="blog_post_page.html">
+  <div class="loading" ng-show="show_loading">
+    <md-progress-linear md-mode="indeterminate"></md-progress-linear>
+  </div>
+  <div ng-repeat="post in post.pages" layout="row" layout-wrap ng-show="!show_loading" class="animated zoomIn">
+    <div flex-offset="5" flex="90" flex-gt-md="70" flex-offset-gt-md="15" layout="row" layout-wrap layout-align="start center">
+
+      <div layout="column" flex="100">
+        <h1 hide-xs hide-sm hide-md id="title" style="margin-bottom: 5px">{$ post.title $}</h1>
+        <h1 hide-gt-md id="title-mobile">{$ post.title $}</h1>
+        <div layout="row"
+             flex="100"
+             layout-md="column"
+             layout-sm="column"
+             layout-xs="column"
+             layout-align="start center"
+             layout-align-md="start center"
+             layout-align-sm="start center"
+             layout-align-xs="start center">
+      <span layout="row" layout-align="center center" style="margin-right: 25px">
+        <ng-md-icon icon="today" style="fill: rgb(60,60,60);padding-top: 10px"></ng-md-icon>{$ post.date | date : 'd  MMMM  yyyy' $}
+      </span>
+      <span layout="row" style="margin-right: 25px">
+        <ng-md-icon icon="folder" style="fill: rgb(60,60,60); padding-top: 6px"></ng-md-icon>
+            <span ng-repeat="category in post.categories" style="padding-top: 3px">
+              <span class="meta-tag"><a href="{$ '/blog?category=' + category.value $}"> &nbsp;{$ category.value $}&nbsp;</a></span>
+            </span>
+      </span>
+      <span layout="row" layout-align="center center">
+        <ng-md-icon icon="perm_contact_cal" style="fill: rgb(60,60,60); padding-top: 10px"></ng-md-icon>By
+      <a class="author-post" href="{$ '/blog?author=' + post.author $}">
+        &nbsp;{$ post.author $}
+      </a>
+      </span>
+        </div>
+        <md-divider></md-divider>
+      </div>
+
+      <div ng-if="post.main_image" flex="100" style="margin-top:40px; margin-bottom: 25px" layout="row" layout-align="center center">
+        <a ng-href="{$ (all_images | filter:{id:post.main_image.id}:true)[0].file $}" data-lightbox="image" layout="row" layout-align="center center">
+          <img ng-src="{$ (all_images | filter:{id:post.main_image.id}:true)[0].file $}" class="responsive-img md-whiteframe-15dp">
+        </a>
+      </div>
+      <span ng-if="post.main_img_disc" class="main-img-disc">{$ post.main_img_disc $}</span>
+
+    </div>
+    <div flex-offset="5" flex="90" flex-gt-md="70" flex-offset-gt-md="15" layout="column">
+
+      <div ng-if="post.main_background_image">
+        <div class="main-background">
+          <img ng-src="{$ (all_images | filter:{id:content.value}:true)[0].file $}" class="responsive-img .main-background">
+        </div>
+      </div>
+
+      <div ng-repeat="content in post.content">
+        <div ng-if="content.type == 'content'">
+          <div class="" ng-bind-html="content.value">
+          </div>
+        </div>
+
+        <div ng-if="content.type == 'code_block'">
+          <div class="code-block">
+            <div class="" ng-bind-html="content.value | unsafe">
+            </div>
+          </div>
+        </div>
+
+        <div ng-if="content.type == 'pre_tag'">
+          <div class="code-block">
+            <div class="">
+              <div hljs source="content.value"></div>
+            </div>
+          </div>
+        </div>
+
+        <div ng-if="content.type == 'pre_tag_general'">
+          <div class="code-block">
+            <div class="">
+              <div hljs source="content.value" language="bash"></div>
+            </div>
+          </div>
+        </div>
+
+        <div ng-if="content.type == 'pre_tag_python'">
+          <div class="code-block">
+            <div class="">
+              <div hljs source="content.value" language="python"></div>
+            </div>
+          </div>
+        </div>
+
+        <div ng-if="content.type == 'raw_html'">
+          <div class="animated fadeIn">
+            <div class="col s12 m10 offset-m1" ng-bind-html="content.value | unsafe">
+            </div>
+          </div>
+        </div>
+
+        <div ng-if="content.type == 'subheading'">
+          <div class="subheading">
+            <h2 ng-bind-html="content.value"></h2>
+          </div>
+        </div>
+
+        <div ng-if="content.type == 'smaller_subheading'">
+          <div class="subheading-smaller">
+            <h4 ng-bind-html="content.value"></h4>
+          </div>
+        </div>
+
+        <div ng-if="content.type == 'subheading_background'">
+          <div class="subheading-background">
+            <img ng-src="{$ (all_images | filter:{id:content.value}:true)[0].file $}" class="responsive-img">
+          </div>
+        </div>
+
+        <div ng-if="content.type == 'full_image'" layout="row" layout-align="center center">
+          <div class="full-image-cont" flex layout="row" layout-align="center center">
+            <a ng-href="{$ (all_images | filter:{id:content.value}:true)[0].file $}" data-lightbox="image"><img ng-src="{$ (all_images | filter:{id:content.value}:true)[0].file $}" class="responsive-img full-img"></a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div flex-offset="5"
+       class="related-post"
+       flex="90"
+       flex-gt-md="70"
+       flex-offset-gt-md="15"
+       ng-repeat="post in post.pages" ng-if="post.related_post.length > 0">
+
+    <div class="related-post" ng-show="post.related_post.length > 0">
+      <h4>Related Post</h4>
+      <div ng-repeat="related_post in post.related_post">
+        <ul ng-repeat="posT in posts.pages">
+          <li ng-if="related_post.value == posT.id"><a href="{$ '/blog/' + slugify(posT.title) $}">{$ posT.title $}</a></li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+  <div ng-repeat="post in post.pages">
+    <div flex-offset="5" flex="90" flex-gt-md="70" flex-offset-gt-md="15">
+      <div id="comments">
+        <div disqus=" post.title "></div>
+      </div>
+
     </div>
   </div>
 
-  <main ng-view></main>
-
-  <footer class="page-footer transparent" ng-hide="$route.current.activetab == 'home'">
-    <div class="footer-copyright grey-mod">
-      <div class="container-fluid center-align">
-        <a href="http://www.abiraf.com" class="white-text">Created by Abirafdi Raditya Putra</a>
-      </div>
-    </div>
-  </footer>
 
 
-  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.3/highlight.min.js"></script>
-
-  {% compress js %}
-  <script type="text/javascript" src="{% static 'js/jquery-2.1.4.min.js' %}"></script>
-  <script type="text/javascript" src="{% static 'js/materialize.min.js' %}"></script>
-  <script type="text/javascript" src="{% static 'js/lightbox.js' %}"></script>
-  <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
-
-  <script type="text/javascript" src="{% static 'js/angular.js' %}"></script>
-  <script type="text/javascript" src="{% static 'js/angular-disqus.js' %}"></script>
-  <script type="text/javascript" src="{% static 'js/angular-load.min.js' %}"></script>
-  <script type="text/javascript" src="{% static 'js/angular-resource.js' %}"></script>
-  <script type="text/javascript" src="{% static 'js/angular-route.min.js' %}"></script>
-  <script type="text/javascript" src="{% static 'js/angular-sanitize.min.js' %}"></script>
-  <script type="text/javascript" src="{% static 'js/ng-infinite-scroll.min.js' %}"></script>
-  <script type="text/javascript" src="{% static 'js/app.js' %}"></script>
-  <script type="text/javascript" src="{% static 'js/controllers.js' %}"></script>
-  <script type="text/javascript" src="{% static 'js/services.js' %}"></script>
-
-  {#  Syntax Highlighter #}
-  <script type="text/javascript" src="{% static 'js/shi_jquery.min.js' %}"></script>
-  {% endcompress %}
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-highlightjs/0.4.3/angular-highlightjs.min.js"></script>
+</script>
 
 </body>
 </html>

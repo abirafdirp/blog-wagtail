@@ -1,20 +1,29 @@
-<div class="container portofolio animated fadeIn">
-  <div class="row">
-    <div ng-repeat="item in items.pages[0].item" class="col s12 m4">
-     <div class="card hoverable">
-        <div class="card-image waves-effect waves-block waves-light">
-          <img class="activator" ng-src="{$ (all_images | filter:{id:item.value.image}:true)[0].file $}">
+<div class="loading" ng-show="show_loading">
+  <md-progress-linear md-mode="indeterminate"></md-progress-linear>
+</div>
+<div class="animated zoomIn" layout="row" style="margin-top: 10px" id="portofolio" ng-show="!show_loading">
+    <div flex-offset-gt-md="15" flex-gt-md="75" flex-offset="5" flex="95" layout="row" layout-wrap layout-padding>
+        <div ng-repeat="item in items.pages[0].item" flex="100" flex-gt-md="100">
+            <md-tabs md-dynamic-height>
+                <md-tab label="{$item.value.title$}">
+                    <md-content layout="row" layout-padding>
+                        <div flex="50" class="port-img-container">
+                            <img ng-src="{$ (all_images | filter:{id:item.value.image}:true)[0].file $}" class="responsive-img" alt="Washed Out">
+                        </div>
+                        <div flex="50">
+                                <md-button flex class="md-raised portofolio-button" style="margin-top: 15px">
+                                    Project page &nbsp;<ng-md-icon icon="exit_to_app" style="fill:white; position: relative; top: 6px;"></ng-md-icon>
+                                </md-button>
+
+                        </div>
+                    </md-content>
+                </md-tab>
+                <md-tab label="description">
+                    <p ng-bind-html="item.value.description" class="portofolio-desc">
+                    </p>
+                </md-tab>
+            </md-tabs>
         </div>
-        <div class="card-content">
-          <span class="card-title card-title-port activator grey-text text-darken-4">{$ item.value.title $}<i class="material-icons right">more_vert</i></span>
-          <p><a href="{$ item.value.link $}">Project Page</a></p>
-        </div>
-        <div class="card-reveal">
-          <span class="card-title card-title-port grey-text text-darken-4">{$ item.value.title $}<i class="material-icons right">close</i></span>
-          <p ng-bind-html="item.value.description"></p>
-        </div>
-      </div>
     </div>
-  </div>
 
 </div>

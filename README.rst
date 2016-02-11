@@ -19,7 +19,7 @@ For configuration purposes, the following table maps the 'blog' environment vari
 Environment Variable                    Django Setting              Development Default                            Production Default
 ======================================= =========================== ============================================== ======================================================================
 DJANGO_CACHES                           CACHES (default)            memcached                                      memcached
-DJANGO_DATABASES                        DATABASES (default)         See code                                       See code
+DATABASE_URL                            DATABASES (default)         See code                                       See code
 DJANGO_DEBUG                            DEBUG                       True                                           False
 DJANGO_SECRET_KEY                       SECRET_KEY                  CHANGEME!!!                                    raises error
 ======================================= =========================== ============================================== ======================================================================
@@ -55,7 +55,3 @@ You can now run the ``runserver_plus`` command::
     $ python manage.py runserver_plus
 
 Open up your browser to http://127.0.0.1:8000/ to see the site running locally.
-
-for linux
-sudo apt-get install $(grep -vE "^\s*#" requirements.apt  | tr "\n" " ")
-pip install -I --no-cache-dir -v Pillow

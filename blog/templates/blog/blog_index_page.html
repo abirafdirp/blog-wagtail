@@ -1,114 +1,66 @@
-<div class="row" ng-cloak>
-  <div class="col s12 m2 left-nav-cont">
-    <form class="col s12 white card-panel hoverable z-depth-1" id="search">
-      <div class="row animated fadeIn">
-        <div class="input-field animated fadeIn">
-          <i class="material-icons prefix">search</i>
-          <input id="icon_prefix" type="text" class="validate" ng-model="search">
-          <label for="icon_prefix"></label>
-        </div>
-      </div>
-    </form>
-    <div class="card-panel z-depth-1 white left-nav animated fadeIn hide-on-small-only hoverable no-padding col s12">
-      <h5 class="grey-mod">Categories</h5>
-      <ul class="all-category">
-        <li><a ng-class="{'active':params_category == null}" href="/#/blog">All</a></li>
-      </ul>
-      <ul ng-repeat="category in categories">
-        <li><a ng-class="{'active':params_category == category}" href="{$ '/blog?category=' + category $}">{$ category $}</a></li>
-      </ul>
+<div class="loading" ng-show="show_loading">
+  <md-progress-linear md-mode="indeterminate"></md-progress-linear>
+</div>
+
+<div id="post-list" ng-show="!show_loading" class="animated zoomIn">
+  <div layout="row" layout-xs="column" layout-sm="column" layout-md="column" style="margin-top: 15px" id="categories">
+    <div flex-offset="5" flex-gt-md="15" style="margin-right: 5px">
+      <h3 class="md-title">Categories</h3>
+    </div>
+    <div flex-offset="5" flex-offset-gt-md="0" style="margin-top: 17px; margin-bottom: 10px;">
+      <a href="/#/blog" style="margin-bottom: 5px;">
+          <span class="meta-tag" ng-class="{'active meta-tag':params_category == category, 'meta-tag':params_category != category}" style="margin-right: 15px;">
+            All
+          </span>
+      </a>
+      <a ng-repeat="category in categories" href="{$ '/blog?category=' + category $}" style="margin-bottom: 10px;">
+          <span
+                ng-class="{'active meta-tag':params_category == category, 'meta-tag':params_category != category}"
+                style="margin-right: 15px;">
+            {$ category $}
+          </span>
+      </a>
     </div>
   </div>
+  <md-divider></md-divider>
 
-	<div class="col s12 m8 posts">
-    <div ng-if="params_category == null">
-		  <div class="row" id="index-posts" infinite-scroll="loadMore()">
+    <section layout="column" infinite-scroll="loadMore()" infinite-scroll-distance='1'>
 
-        <div ng-repeat="post in posts.pages | orderBy:'-id' | filter:search | filter:author | limitTo: postLimit" ng-cloak>
-          <div ng-show="filterCategory(post.id)" class="col s12 index-post animated fadeIn">
-            <a href="{$ '/blog/' + slugify(post.title) $}" ng-mouseenter="hover=true" ng-mouseleave="hover=false">
-
-              <div class="card hoverable z-depth-1 hoverable">
-
-                <div ng-show="post.thumbnail_image" class="card-image">
-                  <img ng-src="{$ (all_images | filter:{id:post.thumbnail_image.id}:true)[0].file $}" alt="" class="index-img">
-                </div>
-
-                <div ng-hide="post.thumbnail_image" class="index-title-noimage">
-                </div>
-
-
-                <div class="card-content grey-text text-darken-3" style="padding-top: 10px">
-                  <span class="card-title">{$ post.title $}</span>
-                  <div ng-hide="hover">
-                    <div class="animated fadeIn">
-                      <div class="col s5 m5 l3 post-meta no-padding">
-                        <span class="valign-wrapper">
-                          <i class="material-icons meta-date">today</i>
-                          <span>&nbsp;{$ post.date | date : 'd  MMMM  yyyy' $}</span>
-                        </span>
-                      </div>
-                      <div class="col s6 post-meta no-padding">
-                        <span class="valign-wrapper">
-                          <i class="material-icons meta-category">view_list</i>
-                          <span ng-repeat="category in post.categories">
-                          <span class="meta-tag">{$ category.value $}</span>
-                          </span>
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                  <p ng-show="hover" class="animated fadeIn intro" ng-bind-html=" post.intro"></p>
-                </div>
-
-              </div>
+      <div ng-repeat="post in posts.pages | orderBy:'-id' | filter:search | filter:author | limitTo: postLimit"
+           layout="column"
+           flex="100">
+        <div layout="row" ng-show="filterCategory(post.id)" class="index-post">
+          <span flex-offset="5" flex="10" layout="column" layout-padding hide-xs hide-sm hide-md>
+            <div flex></div>
+            <span class="post-list-date" flex layout-align="center center" layout="row">
+              {$ post.date | date : 'd  MMMM  yyyy' $}
+            </span>
+            <div flex></div>
+          </span>
+          <div flex-offset="5" flex-gt-md="75" flex="100" layout="column">
+            <a href="{$ '/blog/' + slugify(post.title) $}" ng-mouseenter="hover=true" ng-mouseleave="hover=false"><h2 class="index-post-title">{$ post.title $}</h2>
             </a>
+            <span layout="row" layout-align-lt-lg="center center" hide-gt-md style="margin-top: 8px">
+              <ng-md-icon icon="today" style="fill: rgb(60,60,60)"></ng-md-icon>
+              <span flex>
+                {$ post.date | date : 'd  MMMM  yyyy' $}
+              </span>
+            </span>
+            <span layout="row" layout-align-lt-lg="center center" style="margin-top: 8px">
+              <ng-md-icon icon="folder" style="fill: rgb(60,60,60); padding-top: 3px"></ng-md-icon>
+              <span ng-repeat="category in post.categories">
+                <span class="meta-tag">{$ category.value $}</span>
+              </span>
+            </span>
+            <span ng-bind-html="post.intro">
+            </span>
+
           </div>
         </div>
+        <md-divider ng-show="filterCategory(post.id)" md-inset ng-if="!$last"></md-divider>
       </div>
-		</div> <!-- endrow -->
-
-    <div ng-if="params_category != null">
-		  <div class="row" id="index-posts" infinite-scroll="loadMore()">
-
-        <div ng-repeat="post in posts.pages | orderBy:'-id' | filter:search | filter:author" ng-cloak>
-          <div ng-show="filterCategory(post.id)" class="col s12 index-post animated fadeIn">
-            <a href="{$ '/blog/' + slugify(post.title) $}" ng-mouseenter="hover=true" ng-mouseleave="hover=false">
-
-              <div class="card hoverable z-depth-1 hoverable">
-
-                <div ng-show="post.thumbnail_image" class="card-image">
-                  <img ng-src="{$ (all_images | filter:{id:post.thumbnail_image.id}:true)[0].file $}" alt="" class="index-img">
-                </div>
-
-                <div ng-hide="post.thumbnail_image" class="index-title-noimage">
-                </div>
-
-
-                <div class="card-content grey-text text-darken-3" style="padding-top: 10px">
-                  <span class="card-title">{$ post.title $}</span>
-                  <div ng-hide="hover" class="post-meta-container">
-                    <div class="post-meta">
-                      <div class="valign-wrapper animated fadeIn">
-                        <i class="material-icons">today</i>&nbsp;
-                        {$ post.date | date : 'd  MMMM  yyyy' $}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <i class="material-icons">view_list</i>
-                        <span ng-repeat="category in post.categories">
-                          <span class="meta-tag">{$ category.value $}</span>
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                  <p ng-show="hover" class="animated fadeIn intro" ng-bind-html=" post.intro"></p>
-                </div>
-
-              </div>
-            </a>
-          </div>
-        </div>
-      </div>
-		</div> <!-- endrow -->
-
-	</div>
-
+      <hr/>
+    <hr/>
+    </section>
 </div>
+

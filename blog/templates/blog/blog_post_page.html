@@ -1,142 +1,147 @@
-<div ng-repeat="post in post.pages" class="container container-mod">
-  <div class="row card-panel heading-container no-padding">
-    <div class="col s12 m10 offset-m1 main-heading animated fadeIn">
+<div class="loading" ng-show="show_loading">
+  <md-progress-linear md-mode="indeterminate"></md-progress-linear>
+</div>
+<div ng-repeat="post in post.pages" layout="row" layout-wrap ng-show="!show_loading" class="animated zoomIn">
+  <div flex-offset="5" flex="90" flex-gt-md="70" flex-offset-gt-md="15" layout="row" layout-wrap layout-align="start center">
 
-        <div ng-if="post.main_image" class="row main-img">
-          <div class="col s12">
-            <a ng-href="{$ (all_images | filter:{id:post.main_image.id}:true)[0].file $}" data-lightbox="image">
-              <img ng-src="{$ (all_images | filter:{id:post.main_image.id}:true)[0].file $}" class="responsive-img">
-            </a>
-          </div>
-        </div>
-        <span ng-if="post.main_img_disc" class="main-img-disc">{$ post.main_img_disc $}</span>
-
-        <h2 id="title" class="center-align">{$ post.title $}</h2>
-        <div class="post-meta-post hide-on-small-only">
-          <div class="valign-wrapper">
-            <i class="material-icons">today</i>{$ post.date | date : 'd  MMMM  yyyy' $}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <i class="material-icons">view_list</i>
-            <span ng-repeat="category in post.categories">
+    <div layout="column" flex="100">
+      <h1 hide-xs hide-sm hide-md id="title" style="margin-bottom: 5px">{$ post.title $}</h1>
+      <h1 hide-gt-md id="title-mobile">{$ post.title $}</h1>
+      <div layout="row"
+         flex="100"
+         layout-md="column"
+         layout-sm="column"
+         layout-xs="column"
+         layout-align="start center"
+         layout-align-md="start center"
+         layout-align-sm="start center"
+         layout-align-xs="start center">
+      <span layout="row" layout-align="center center" style="margin-right: 25px">
+        <ng-md-icon icon="today" style="fill: rgb(60,60,60);padding-top: 10px"></ng-md-icon>{$ post.date | date : 'd  MMMM  yyyy' $}
+      </span>
+      <span layout="row" style="margin-right: 25px">
+        <ng-md-icon icon="folder" style="fill: rgb(60,60,60); padding-top: 6px"></ng-md-icon>
+            <span ng-repeat="category in post.categories" style="padding-top: 3px">
               <span class="meta-tag"><a href="{$ '/blog?category=' + category.value $}"> &nbsp;{$ category.value $}&nbsp;</a></span>
-            </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <i class="material-icons">perm_contact_calendar</i>&nbsp;By
-              <a class="author-post" href="{$ '/blog?author=' + post.author $}">
-                &nbsp;{$ post.author $}
-              </a>
-          </div>
-        </div>
-      </div>
+            </span>
+      </span>
+      <span layout="row" layout-align="center center">
+        <ng-md-icon icon="perm_contact_cal" style="fill: rgb(60,60,60); padding-top: 10px"></ng-md-icon>By
+      <a class="author-post" href="{$ '/blog?author=' + post.author $}">
+        &nbsp;{$ post.author $}
+      </a>
+      </span>
+    </div>
+      <md-divider></md-divider>
+    </div>
+
+    <div ng-if="post.main_image" flex="100" style="margin-top:40px; margin-bottom: 25px" layout="row" layout-align="center center">
+        <a ng-href="{$ (all_images | filter:{id:post.main_image.id}:true)[0].file $}" data-lightbox="image" layout="row" layout-align="center center">
+          <img ng-src="{$ (all_images | filter:{id:post.main_image.id}:true)[0].file $}" class="responsive-img md-whiteframe-15dp">
+        </a>
+    </div>
+    <span ng-if="post.main_img_disc" class="main-img-disc">{$ post.main_img_disc $}</span>
 
   </div>
-  <div class="row card-panel post-container">
-    <div class="">
+  <div flex-offset="5" flex="90" flex-gt-md="70" flex-offset-gt-md="15" layout="column">
 
-      <div ng-if="post.main_background_image">
-        <div class="main-background">
-          <img ng-src="{$ (all_images | filter:{id:content.value}:true)[0].file $}" class="responsive-img .main-background">
-        </div>
+    <div ng-if="post.main_background_image">
+      <div class="main-background">
+        <img ng-src="{$ (all_images | filter:{id:content.value}:true)[0].file $}" class="responsive-img .main-background">
       </div>
-
-      <div ng-repeat="content in post.content">
-        <div ng-if="content.type == 'content'">
-          <div class="content animated fadeIn ">
-            <div class="col s12 m10 offset-m1" ng-bind-html="content.value">
-            </div>
-          </div>
-        </div>
-
-        <div ng-if="content.type == 'code_block'">
-          <div class="code-block animated fadeIn">
-            <div class="col s12 m10 offset-m1" ng-bind-html="content.value | unsafe">
-            </div>
-          </div>
-        </div>
-
-        <div ng-if="content.type == 'pre_tag'">
-          <div class="code-block animated fadeIn">
-            <div class="col s12 m10 offset-m1">
-              <div hljs source="content.value"></div>
-            </div>
-          </div>
-        </div>
-
-        <div ng-if="content.type == 'pre_tag_general'">
-          <div class="code-block animated fadeIn">
-            <div class="col s12 m10 offset-m1">
-              <div hljs source="content.value" language="bash"></div>
-            </div>
-          </div>
-        </div>
-
-        <div ng-if="content.type == 'pre_tag_python'">
-          <div class="code-block animated fadeIn">
-            <div class="col s12 m10 offset-m1">
-              <div hljs source="content.value" language="python"></div>
-            </div>
-          </div>
-        </div>
-
-        <div ng-if="content.type == 'raw_html'">
-          <div class="animated fadeIn">
-            <div class="col s12 m10 offset-m1" ng-bind-html="content.value | unsafe">
-            </div>
-          </div>
-        </div>
-
-        <div ng-if="content.type == 'subheading'">
-          <div class="animated fadeIn flow-text">
-            <div class="col s12 m10 offset-m1 subheading">
-              <h2 ng-bind-html="content.value"></h2>
-            </div>
-          </div>
-        </div>
-
-        <div ng-if="content.type == 'smaller_subheading'">
-          <div class="animated fadeIn">
-            <div class="col s12 m10 offset-m1 center-align subheading-smaller">
-              <div ng-bind-html="content.value"></div>
-            </div>
-          </div>
-        </div>
-
-        <div ng-if="content.type == 'subheading_background'">
-          <div class="subheading-background animated fadeIn">
-             <img ng-src="{$ (all_images | filter:{id:content.value}:true)[0].file $}" class="responsive-img">
-          </div>
-        </div>
-
-        <div ng-if="content.type == 'full_image'" class="center-align">
-          <div class="animated fadeIn">
-            <div class="col s12 m10 offset-m1 full-image-cont">
-              <a ng-href="{$ (all_images | filter:{id:content.value}:true)[0].file $}" data-lightbox="image"><img ng-src="{$ (all_images | filter:{id:content.value}:true)[0].file $}" class="responsive-img full-img"></a>
-            </div>
-          </div>
-        </div>
-      </div>
-
     </div>
+
+    <div ng-repeat="content in post.content">
+      <div ng-if="content.type == 'content'">
+        <div class="" ng-bind-html="content.value">
+        </div>
+      </div>
+
+      <div ng-if="content.type == 'code_block'">
+        <div class="code-block">
+          <div class="" ng-bind-html="content.value | unsafe">
+          </div>
+        </div>
+      </div>
+
+      <div ng-if="content.type == 'pre_tag'">
+        <div class="code-block">
+          <div class="">
+            <div hljs source="content.value"></div>
+          </div>
+        </div>
+      </div>
+
+      <div ng-if="content.type == 'pre_tag_general'">
+        <div class="code-block">
+          <div class="">
+            <div hljs source="content.value" language="bash"></div>
+          </div>
+        </div>
+      </div>
+
+      <div ng-if="content.type == 'pre_tag_python'">
+        <div class="code-block">
+          <div class="">
+            <div hljs source="content.value" language="python"></div>
+          </div>
+        </div>
+      </div>
+
+      <div ng-if="content.type == 'raw_html'">
+        <div class="animated fadeIn">
+          <div class="col s12 m10 offset-m1" ng-bind-html="content.value | unsafe">
+          </div>
+        </div>
+      </div>
+
+      <div ng-if="content.type == 'subheading'">
+          <div class="subheading">
+            <h2 ng-bind-html="content.value"></h2>
+          </div>
+      </div>
+
+      <div ng-if="content.type == 'smaller_subheading'">
+          <div class="subheading-smaller">
+            <h4 ng-bind-html="content.value"></h4>
+          </div>
+      </div>
+
+      <div ng-if="content.type == 'subheading_background'">
+        <div class="subheading-background">
+          <img ng-src="{$ (all_images | filter:{id:content.value}:true)[0].file $}" class="responsive-img">
+        </div>
+      </div>
+
+      <div ng-if="content.type == 'full_image'" layout="row" layout-align="center center">
+        <div class="full-image-cont" flex layout="row" layout-align="center center">
+          <a ng-href="{$ (all_images | filter:{id:content.value}:true)[0].file $}" data-lightbox="image"><img ng-src="{$ (all_images | filter:{id:content.value}:true)[0].file $}" class="responsive-img full-img"></a>
+        </div>
+      </div>
+    </div>
+
   </div>
 </div>
+<div flex-offset="5"
+     class="related-post"
+     flex="90"
+     flex-gt-md="70"
+     flex-offset-gt-md="15"
+     ng-repeat="post in post.pages" ng-if="post.related_post.length > 0">
 
-<div ng-repeat="post in post.pages" ng-if="post.related_post.length > 0" class="container container-mod">
-  <div class="row card-panel post-container">
-
-    <div class="col s12 m10 offset-m1 related-post flow-text" ng-show="post.related_post.length > 0">
+    <div class="related-post" ng-show="post.related_post.length > 0">
       <h4>Related Post</h4>
       <div ng-repeat="related_post in post.related_post">
-        <ul class="all-category" ng-repeat="posT in posts.pages" class="col s12 m10 offset-m1 flow-text">
+        <ul ng-repeat="posT in posts.pages">
           <li ng-if="related_post.value == posT.id"><a href="{$ '/blog/' + slugify(posT.title) $}">{$ posT.title $}</a></li>
         </ul>
       </div>
     </div>
 
   </div>
-</div>
-
-<div ng-repeat="post in post.pages" class="container container-mod">
-  <div class="row card-panel post-container">
-    <div class="col s12 m10 offset-m1" id="comments">
-      <h4>Comments</h4>
+<div ng-repeat="post in post.pages">
+  <div flex-offset="5" flex="90" flex-gt-md="70" flex-offset-gt-md="15">
+    <div id="comments">
       <div disqus=" post.title "></div>
     </div>
 
