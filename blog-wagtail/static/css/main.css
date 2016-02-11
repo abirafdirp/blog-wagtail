@@ -554,6 +554,7 @@ a {
 #hamburger {
   position: fixed;
   right: 10px;
+  z-index: 1;
 }
 
 .hamburger-btn {
@@ -591,4 +592,14 @@ a {
   position: fixed;
   bottom: 10px;
   left: 38%;
+}
+
+
+
+@media (min-width: 1441px) {
+  .loading {
+  position: relative;
+  left: -30px;
+  z-index: 100000;
+}
 }

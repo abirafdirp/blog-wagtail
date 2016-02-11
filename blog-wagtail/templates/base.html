@@ -73,11 +73,11 @@
     </md-content>
   </md-sidenav>
   <div flex-offset-gt-md="20" flex layout="column">
-    <section id="hamburger" size="28" hide-gt-md>
+    <div id="hamburger" hide-gt-md>
       <md-button class="md-raised hamburger-btn" style="fill:white" ng-click="toggleLeftMenu()">
         <ng-md-icon icon="menu" style="padding:0; position: relative; top: 6px; width: 20px !important"></ng-md-icon>
       </md-button>
-    </section>
+    </div>
     <main ng-view layout="column"></main>
   </div>
 
