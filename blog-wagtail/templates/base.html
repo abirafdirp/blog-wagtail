@@ -47,7 +47,7 @@
               layout="column"
               flex="50"
               flex-gt-md="20">
-    <md-toolbar class="md-accent material-teal" style="height: 85px;">
+    <md-toolbar class="md-accent material-teal" style="height: 95px;">
       <div class='md-toolbar-tools'><img src="/static/images/Abiraf.png" class="responsive-img" style="margin-top: 30px;"></div>
     </md-toolbar>
     <md-content layout="column">
@@ -247,7 +247,7 @@
           <md-tab label="{$item.value.title$}">
             <md-content layout="row" layout-padding>
               <div flex="50" class="port-img-container">
-                <img ng-src="{$ (all_images | filter:{id:item.value.image}:true)[0].file $}" class="responsive-img" alt="Washed Out">
+                <img ng-src="{$ (all_images | filter:{id:item.value.image}:true)[0].file $}" class="responsive-img">
               </div>
               <div flex="50">
                   <a href="//{$item.value.link$}">

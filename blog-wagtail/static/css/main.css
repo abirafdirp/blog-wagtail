@@ -598,8 +598,8 @@ a {
 
 @media (min-width: 1441px) {
   .loading {
-  position: relative;
-  left: -30px;
-  z-index: 100000;
-}
+    position: relative;
+    left: -70px;
+    z-index: 1;
+  }
 }
