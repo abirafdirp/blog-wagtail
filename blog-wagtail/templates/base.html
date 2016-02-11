@@ -66,10 +66,6 @@
               ng-class="{'md-accent md-raised md-hue-3':$route.current.activetab == 'portofolio', 'white-text':$route.current.activetab != 'portofolio'}">
         Projects
       </md-button>
-      <div id="contact-sidenav" layout="row" layout-align="center">
-        <a target="_blank" href="//github.com/abirafdirp"><ng-md-icon icon="github-box" style="position: relative; top: 6px; fill:white;"> </a></ng-md-icon>
-        <a target="_blank" href="//steamcommunity.com/id/ishouldhaveknown"><img src="/static/images/steam_02.png" height="35px" style="position: relative; top: 1px;"></a>
-      </div>
     </md-content>
   </md-sidenav>
   <div flex-offset-gt-md="20" flex layout="column">
@@ -80,6 +76,10 @@
     </div>
     <main ng-view layout="column"></main>
   </div>
+    <div id="contact-sidenav" layout="row" layout-align="center" hide-xs hide-sm hide-md>
+        <a target="_blank" href="//github.com/abirafdirp"><ng-md-icon icon="github-box" style="position: relative; top: 6px; fill:white;"> </a></ng-md-icon>
+        <a target="_blank" href="//steamcommunity.com/id/ishouldhaveknown"><img src="/static/images/steam_02.png" height="35px" style="position: relative; top: 1px;"></a>
+      </div>
 
 
 </div>
@@ -191,10 +191,10 @@
     <div flex="90" flex-offset="5" flex-gt-md="70" flex-offset-gt-md="15" layout="column" layout-align="center center" class="my-pic-container">
         <img src="/media/original_images/square2.jpg" class="my-pic responsive-img">
     </div>
-    <div flex="90" flex-offset="5" flex-gt-md="70" flex-offset-gt-md="15" layout="column" style="margin-top: 70px">
+    <div flex="90" flex-offset="5" flex-gt-md="70" flex-offset-gt-md="15" layout="column" style="margin-top: 0">
         <h4 class="animated slideInLeft">Who Am I</h4>
         <p class="animated slideInLeft">
-            My name is Abirafdi Raditya Putra, a computer science undergraduate student in Gunadarma. I mainly programs in Python.
+            My name is Abirafdi Raditya Putra, a computer science undergraduate student in Gunadarma, a gamer and a PC hardware enthusiast. I mainly programs in Python.
         </p>
         <h4 class="animated slideInRight">What I Make</h4>
         <ul class="animated slideInRight">
