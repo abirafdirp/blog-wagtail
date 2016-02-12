@@ -500,6 +500,10 @@ a {
 #post-list a {
   text-decoration: none;
 }
+#post-list a:active {
+  text-decoration: underline;
+}
+
 .index-post-title {
   font-size: 32px;
   margin-top: 10px;
