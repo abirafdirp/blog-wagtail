@@ -285,23 +285,23 @@
              layout-align-md="start center"
              layout-align-sm="start center"
              layout-align-xs="start center">
-      <span layout="row" layout-align="center center" style="margin-right: 25px">
-        <ng-md-icon icon="today" style="fill: rgb(60,60,60);padding-top: 10px"></ng-md-icon>{$ post.date | date : 'd  MMMM  yyyy' $}
-      </span>
-      <span layout="row" style="margin-right: 25px">
-        <ng-md-icon icon="folder" style="fill: rgb(60,60,60); padding-top: 6px"></ng-md-icon>
-            <span ng-repeat="category in post.categories" style="padding-top: 3px">
-              <span class="meta-tag"><a href="{$ '/blog?category=' + category.value $}"> &nbsp;{$ category.value $}&nbsp;</a></span>
-            </span>
-      </span>
-      <span layout="row" layout-align="center center">
-        <ng-md-icon icon="perm_contact_cal" style="fill: rgb(60,60,60); padding-top: 10px"></ng-md-icon>By
-      <a class="author-post" href="{$ '/blog?author=' + post.author $}">
-        &nbsp;{$ post.author $}
-      </a>
-      </span>
+          <div layout="row" layout-align="center center" style="margin-right: 25px">
+            <ng-md-icon icon="today" style="fill: rgb(60,60,60);padding-top: 10px"></ng-md-icon>{$ post.date | date : 'd  MMMM  yyyy' $}
+          </div>
+          <div layout="row" style="margin-right: 25px">
+            <ng-md-icon icon="folder" style="fill: rgb(60,60,60); padding-top: 6px"></ng-md-icon>
+                <span ng-repeat="category in post.categories" style="padding-top: 3px">
+                  <span class="meta-tag"><a href="{$ '/blog?category=' + category.value $}"> &nbsp;{$ category.value $}&nbsp;</a></span>
+                </span>
+          </div>
+          <div layout="row" layout-align="center center">
+            <ng-md-icon icon="perm_contact_cal" style="fill: rgb(60,60,60); padding-top: 10px"></ng-md-icon>By
+          <a class="author-post" href="{$ '/blog?author=' + post.author $}">
+            &nbsp;{$ post.author $}
+          </a>
+          </div>
         </div>
-        <md-divider></md-divider>
+            <md-divider></md-divider>
       </div>
 
       <div ng-if="post.main_image" flex="100" style="margin-top:40px; margin-bottom: 25px" layout="row" layout-align="center center">
