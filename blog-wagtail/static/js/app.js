@@ -85,7 +85,7 @@ blogApp.config(['$routeProvider', '$locationProvider',
 					controller: 'BlogIndexCtrl'
 				}).
 				when('/blog/:postTitle', {
-					templateUrl: function (params) {return 'blog_page/'+params.postTitle},
+					templateUrl: 'blog_post_page.html',
 					controller: 'PostCtrl',
 					title: 'Blog',
 					activetab: 'blog',
