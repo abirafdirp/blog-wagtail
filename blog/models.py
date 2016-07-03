@@ -57,7 +57,7 @@ class CategoryBlock(blocks.StreamBlock):
 
 class BlogPostPage(Page):
     angular_url = models.CharField\
-        (max_length=100,
+        (max_length=200,
          help_text="Format must be underscored and lowercased title"
          )
     title_extended = models.CharField(max_length=60, blank=True, null=True)
