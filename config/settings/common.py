@@ -112,7 +112,7 @@ FIXTURE_DIRS = (
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#databases
 DATABASES = {
     # Raises ImproperlyConfigured exception if DATABASE_URL not in os.environ
-    'default': env.db("DATABASE_URL", default="postgres://localhost/blog-wagtail"),
+    'default': env.db("DATABASE_URL", default="sqlite:///db.sqlite"),
 }
 DATABASES['default']['ATOMIC_REQUESTS'] = True
 

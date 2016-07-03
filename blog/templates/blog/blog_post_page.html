@@ -115,7 +115,7 @@
 
       <div ng-if="content.type == 'full_image'" layout="row" layout-align="center center">
         <div class="full-image-cont" flex layout="row" layout-align="center center">
-          <a ng-href="{$ (all_images | filter:{id:content.value}:true)[0].file $}" data-lightbox="image"><img ng-src="{$ (all_images | filter:{id:content.value}:true)[0].file $}" class="responsive-img full-img"></a>
+          <a ng-href="{$ (all_images | filter:{id:content.value}:true)[0].file $}" data-lightbox="image"><img ng-src="{$ (all_images | filter:{id:content.value}:true)[0].file $}" class="responsive-img"></a>
         </div>
       </div>
     </div>
