@@ -143,10 +143,10 @@
     <section layout="column" infinite-scroll="loadMore()" infinite-scroll-distance='1'>
 
       <div ng-repeat="post in posts.pages | orderBy:'-id' | filter:search | filter:author | limitTo: postLimit"
-           layout="column">
+           layout="column" style="margin-bottom: 20px">
         <div layout="row" ng-show="filterCategory(post.id)" class="index-post">
           <span flex-offset="5" flex="10" layout="column" layout-padding hide-xs hide-sm hide-md>
-            <span class="post-list-date" flex layout-align="center center" layout="row">
+            <span class="post-list-date" flex layout="row" layout-align="center center" style="position: relative; top: -47px;">
               {$ post.date | date : 'd  MMMM  yyyy' $}
             </span>
           </span>
@@ -159,13 +159,13 @@
                 {$ post.date | date : 'd  MMMM  yyyy' $}
               </span>
             </span>
-            <span layout="row" layout-align-lt-lg="center center" style="margin-top: 8px">
+            <span layout="row" layout-align-lt-lg="center center" style="margin-top: 15px">
               <ng-md-icon icon="folder" style="fill: rgb(60,60,60); padding-top: 3px"></ng-md-icon>
               <span ng-repeat="category in post.categories">
                 <span class="meta-tag">{$ category.value $}</span>
               </span>
             </span>
-            <span ng-bind-html="post.intro">
+            <span ng-bind-html="post.intro" style="margin-top: 15px">
             </span>
 
           </div>
