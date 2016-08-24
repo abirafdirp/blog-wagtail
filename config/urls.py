@@ -9,6 +9,8 @@ from wagtail.wagtailcore import urls as wagtail_urls
 from wagtail.contrib.wagtailapi import urls as wagtailapi_urls
 from wagtail.contrib.wagtailsitemaps.views import sitemap
 
+from blog.views import pdf_view
+
 urlpatterns = []
 if settings.DEBUG:
     from django.conf.urls.static import static
@@ -26,6 +28,8 @@ if settings.DEBUG:
     ]
 
 urlpatterns += [
+    url(r'^pdf/$', pdf_view),
+
     url(r'^django-admin/', include(admin.site.urls)),
 
     url(r'^admin/', include(wagtailadmin_urls)),
