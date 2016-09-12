@@ -595,7 +595,7 @@ a {
 #contact-sidenav {
   position: fixed;
   bottom: 10px;
-  left: 7%;
+  left: 3%;
   z-index: 100000;
 }
 

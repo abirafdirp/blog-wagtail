@@ -52,19 +52,19 @@
     </md-toolbar>
     <md-content layout="column">
       <md-button
-              ng-click="changeUrl('/about');closeLeftMenu()"
-              ng-class="{'md-accent md-raised md-hue-3':$route.current.activetab == 'about', 'white-text':$route.current.activetab != 'about'}">
+          ng-click="changeUrl('/about');closeLeftMenu()"
+          ng-class="{'md-accent md-raised md-hue-3':$route.current.activetab == 'about', 'white-text':$route.current.activetab != 'about'}">
         About
       </md-button>
       <md-button
-              ng-click="changeUrl('/blog');closeLeftMenu()"
-              ng-class="{'md-accent md-raised md-hue-3':$route.current.activetab == 'blog', 'white-text':$route.current.activetab != 'blog'}">
+          ng-click="changeUrl('/blog');closeLeftMenu()"
+          ng-class="{'md-accent md-raised md-hue-3':$route.current.activetab == 'blog', 'white-text':$route.current.activetab != 'blog'}">
         Blog
       </md-button>
       <!--<md-button-->
-              <!--ng-click="changeUrl('/portofolio');closeLeftMenu()"-->
-              <!--ng-class="{'md-accent md-raised md-hue-3':$route.current.activetab == 'portofolio', 'white-text':$route.current.activetab != 'portofolio'}">-->
-        <!--Projects-->
+      <!--ng-click="changeUrl('/portofolio');closeLeftMenu()"-->
+      <!--ng-class="{'md-accent md-raised md-hue-3':$route.current.activetab == 'portofolio', 'white-text':$route.current.activetab != 'portofolio'}">-->
+      <!--Projects-->
       <!--</md-button>-->
     </md-content>
   </md-sidenav>
@@ -76,12 +76,12 @@
     </div>
     <main ng-view layout="column"></main>
   </div>
-    <div id="contact-sidenav" layout="row" layout-align="center" hide-xs hide-sm hide-md>
-        <a target="_blank" href="//github.com/abirafdirp"><ng-md-icon icon="github-box" style="position: relative; top: 6px; fill:white;"> </a></ng-md-icon>
-        <a target="_blank" href="//steamcommunity.com/id/ishouldhaveknown"><img src="/static/images/steam_02.png" height="35px" style="position: relative; top: 1px;"></a>
-      </div>
-
-
+  <div id="contact-sidenav" layout="row" layout-align="center" hide-xs hide-sm hide-md>
+    <a target="_blank" href="//github.com/abirafdirp"><ng-md-icon icon="github-box" style="position: relative; top: 6px; fill:white;" size="44"></ng-md-icon></a>
+    <a target="_blank" href="//steamcommunity.com/id/ishouldhaveknown"><img src="/static/images/steam_02.png" height="55px" style="position: relative; top: 1px;"></a>
+    <a target="_blank" href="https://www.linkedin.com/in/abirafdi-raditya-putra-0a0259122"><ng-md-icon icon="linkedin-box" style="position: relative; top: 6px; fill: white;" size="44"></ng-md-icon></a>
+    <a target="_blank" href="https://www.abiraf.com/pdf/"><ng-md-icon icon="person" style="position: relative; top: 6px; fill: white; padding-left: 3px;" size="44"></ng-md-icon></a>
+  </div>
 </div>
 
 
@@ -131,8 +131,8 @@
         </a>
         <a ng-repeat="category in categories" href="{$ '/blog?category=' + category $}" style="margin-bottom: 10px;">
           <span
-                  ng-class="{'active meta-tag':params_category == category, 'meta-tag':params_category != category}"
-                  style="margin-right: 15px;">
+              ng-class="{'active meta-tag':params_category == category, 'meta-tag':params_category != category}"
+              style="margin-right: 15px;">
             {$ category $}
           </span>
         </a>
@@ -183,49 +183,52 @@
 <script type="text/ng-template" id="home_page.html">
   <div layout="row" layout-wrap id="home">
     <div flex="90" flex-offset="5" flex-gt-md="70" flex-offset-gt-md="15" layout="column" style="margin-top: 70px">
-        <md-divider></md-divider>
+      <md-divider></md-divider>
     </div>
     <div flex="90" flex-offset="5" flex-gt-md="70" flex-offset-gt-md="15" layout="column" layout-align="center center" class="my-pic-container">
-        <img src="/media/original_images/square2.jpg" class="my-pic responsive-img">
+      <img src="/media/original_images/square2.jpg" class="my-pic responsive-img">
     </div>
     <div flex="90" flex-offset="5" flex-gt-md="70" flex-offset-gt-md="15" layout="column" style="margin-top: 0">
-        <p>
-            My name is Abirafdi Raditya Putra, a full stack developer, currently studying informatics engineering in Gunadarma University, Indonesia. I'm an avid PC gamer since I was a kid and a PC hardware enthusiast.
-        </p>
-        <h4>Currently Working at</h4>
-        <ul>
-            <li>
-                JiGO, as a Remote Backend Developer, creating microservices and REST APIs - <a href="https://jigo.com">https://jigo.com</a>
-            </li>
-            <li>
-                Mekar, as a Remote Backend Developer - <a href="https://mekar.id">https://mekar.id/</a>
-            </li>
-        </ul>
-        <h4>Had worked at</h4>
-        <ul>
-            <li>
-                {Redacted company name}, as a QA Engineer of a PyQT application
-            </li>
-        </ul>
-        <h4>Resume</h4>
-        <p><a target="_blank" href="/pdf/">Resume</a></p>
+      <p>
+        My name is Abirafdi Raditya Putra, a full stack developer, currently studying informatics engineering in Gunadarma University, Indonesia. I'm an avid PC gamer since I was a kid and a PC hardware enthusiast.
+      </p>
+      <h4>Currently Working at</h4>
+      <ul>
+        <li>
+          JiGO, as a Remote Backend Developer, creating microservices and REST APIs - <a href="https://jigo.com">https://jigo.com</a>
+        </li>
+        <li>
+          Mekar, as a Remote Backend Developer - <a href="https://mekar.id">https://mekar.id/</a>
+        </li>
+      </ul>
+      <h4>Had worked at</h4>
+      <ul>
+        <li>
+          {Redacted company name}, as a QA Engineer of a PyQT application
+        </li>
+      </ul>
+      <h4>Resume</h4>
+      <p><a target="_blank" href="/pdf/">Resume</a></p>
     </div>
     <div flex="90" flex-offset="5" flex-gt-md="70" flex-offset-gt-md="15" layout="column">
-        <md-divider></md-divider>
+      <md-divider></md-divider>
     </div>
     <div flex="90" flex-offset="5" flex-gt-md="70" flex-offset-gt-md="15" layout="column" id="contact">
-        <div>
-            <h4>Contact and Profiles</h4>
+      <h4>Contact and Profiles</h4>
+      <div>
         <ng-md-icon icon="github-box" style="position: relative; top: 6px;;"></ng-md-icon> <a target="_blank" href="//github.com/abirafdirp">&nbsp;GitHub profile</a>
-        </div>
-        <div>
-            <img src="/media/original_images/steamIconcopy.jpg" height="23px" style="position: relative; top: 5px;"> <a target="_blank" href="//steamcommunity.com/id/ishouldhaveknown">&nbsp;Steam profile</a>
-        </div>
-        <div>
-            <ng-md-icon icon="email" size="24" style="position: relative; top: 8px;"></ng-md-icon><a href= "mailto:abirafdiraditya@gmail.com">&nbsp;abirafdiraditya@gmail.com</a>
-        </div>
+      </div>
+      <div>
+        <ng-md-icon icon="linkedin-box" style="position: relative; top: 6px;;"></ng-md-icon> <a target="_blank" href="https://www.linkedin.com/in/abirafdi-raditya-putra-0a0259122">&nbsp;LinkedIn</a>
+      </div>
+      <div>
+        <img src="/media/original_images/steamIconcopy.jpg" height="23px" style="position: relative; top: 5px;"> <a target="_blank" href="//steamcommunity.com/id/ishouldhaveknown">&nbsp;Steam profile</a>
+      </div>
+      <div>
+        <ng-md-icon icon="email" size="24" style="position: relative; top: 8px;"></ng-md-icon><a href= "mailto:abirafdiraditya@gmail.com">&nbsp;abirafdiraditya@gmail.com</a>
+      </div>
     </div>
-</div>
+  </div>
 </script>
 
 <script type="text/ng-template" id="portofolio_page.html">
@@ -242,11 +245,11 @@
                 <img ng-src="{$ (all_images | filter:{id:item.value.image}:true)[0].file $}" class="responsive-img">
               </div>
               <div flex="50">
-                  <a href="//{$item.value.link$}">
-                <md-button flex class="md-raised portofolio-button" style="margin-top: 15px">
-                  Project page &nbsp;<ng-md-icon icon="exit_to_app" style="fill:white; position: relative; top: 6px;"></ng-md-icon>
-                </md-button>
-                      </a>
+                <a href="//{$item.value.link$}">
+                  <md-button flex class="md-raised portofolio-button" style="margin-top: 15px">
+                    Project page &nbsp;<ng-md-icon icon="exit_to_app" style="fill:white; position: relative; top: 6px;"></ng-md-icon>
+                  </md-button>
+                </a>
               </div>
             </md-content>
           </md-tab>
@@ -285,18 +288,18 @@
           </div>
           <div layout="row" style="margin-right: 25px">
             <ng-md-icon icon="folder" style="fill: rgb(60,60,60); padding-top: 6px"></ng-md-icon>
-                <span ng-repeat="category in post.categories" style="padding-top: 3px">
+            <span ng-repeat="category in post.categories" style="padding-top: 3px">
                   <span class="meta-tag"><a href="{$ '/blog?category=' + category.value $}"> &nbsp;{$ category.value $}&nbsp;</a></span>
                 </span>
           </div>
           <div layout="row" layout-align="center center">
             <ng-md-icon icon="perm_contact_cal" style="fill: rgb(60,60,60); padding-top: 10px"></ng-md-icon>By
-          <a class="author-post" href="{$ '/blog?author=' + post.author $}">
-            &nbsp;{$ post.author $}
-          </a>
+            <a class="author-post" href="{$ '/blog?author=' + post.author $}">
+              &nbsp;{$ post.author $}
+            </a>
           </div>
         </div>
-            <md-divider></md-divider>
+        <md-divider></md-divider>
       </div>
 
       <div ng-if="post.main_image" flex="100" style="margin-top:40px; margin-bottom: 25px" layout="row" layout-align="center center">
