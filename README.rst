@@ -1,7 +1,9 @@
 blog
 ==============================
 
-My personal blog with modified wagtail to include image URL path in the API and modified the sitemap module to correctly generate angular urls.
+Warning, this project is one of my first projects. The code is a mess, docs are modest etc so I'm sorry if you get lost or anything. Especially because Wagtail (as of this project version) still doesn't spit the image URL in its API, I need to modify the wagtail source. Problem is, due to lack of my knowledge at that time, I didn't track the changes properly so what I did just publish the final version of the modified wagtail.
+
+This is my personal blog with modified wagtail to include image URL path in the API and modified the sitemap module to correctly generate angular urls.
 
 Current implementation of my image API URL is still a mess. Please do not follow this. Modified wagtail repo https://github.com/abirafdirp/wagtail-fork
 
