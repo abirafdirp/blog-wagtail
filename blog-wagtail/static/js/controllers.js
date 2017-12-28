@@ -120,7 +120,21 @@ blogControllers.controller('PostCtrl', ['$scope', '$route', '$routeParams', 'Pos
     $scope.title = $scope.params.postTitle;
     $scope.posts = BlogIndex.posts_minimal.query();
 
+    var ogTitle = angular.element(document.querySelector('[property="og:title"]'));
+    var ogDescription = angular.element(document.querySelector('[property="og:description"]'));
+    var title = angular.element(document.querySelector('[property="title"]'));
+    var description = angular.element(document.querySelector('[property="description"]'));
+
     $scope.post = Post.post.query({angular_url:$scope.title});
+
+    function htmlToPlaintext(text) {
+      return text ? String(text).replace(/<[^>]+>/gm, '') : '';
+    }
+
+    ogTitle.attr('content', htmlToPlaintext($scope.post.title));
+    ogDescription.attr('content', htmlToPlaintext($scope.post.intro));
+    title.attr('content', htmlToPlaintext($scope.post.title));
+    description.attr('content', htmlToPlaintext($scope.post.intro));
 
     $scope.all_images = [];
     $scope.images = Post.images.query(function() {

@@ -25,23 +25,21 @@
 
   {# Global stylesheets #}
   {% compress css %}
-  <link rel="stylesheet" type="text/css" href="{% static 'css/angular-material.min.css' %}">
-  <link rel="stylesheet" type="text/css" href="{% static 'css/animate.css' %}">
-  <link rel="stylesheet" type="text/css" href="{% static 'css/lightbox.css' %}">
-  <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
-  <link rel="stylesheet" type="text/css" href="{% static 'css/shi_default-light.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/angular-material.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/animate.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/lightbox.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/shi_default-light.min.css' %}">
   {% endcompress %}
 
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.7/styles/monokai_sublime.min.css">
 
   <meta property="og:image" content="https://www.sololearn.com/Icons/Courses/1073.png" />
-{#    no time for tailoring it to each view, just want to share this current article#}
-    <meta property="og:title" content="Some Solutions if Doing Multiprocessing in Your Django Project Doesn't Work">
-    <meta property="og:description" content="The time needed to complete a batch process in our APIs are increasing over time. Increasing the timeout get the job done (for now). So in preparation for the increasing amount of data to be processed, we decided to use multiprocessing. However, some problems occurred when I tried to implement it (which does not get mentioned anywhere else on the web as far as I know). Ranging from 'django.db.transaction.TransactionManagementError: An error occurred in the current transaction. You can't execute queries until the end of the 'atomic' block.' to 'mysql has gone away'." />
-
-
-
+  <meta property="og:title" content="">
+  <meta property="og:description" content="" />
+  <meta property="title" content="">
+  <meta property="description" content="" />
 </head>
 
 <body ng-cloak ng-controller="NavCtrl">
@@ -95,26 +93,26 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.3/highlight.min.js"></script>
 
 {% compress js %}
-<script type="text/javascript" src="{% static 'js/jquery-2.1.4.min.js' %}"></script>
-<script type="text/javascript" src="{% static 'js/lightbox.js' %}"></script>
-<script type="text/javascript" src="{% static 'js/main.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/jquery-2.1.4.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/lightbox.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
 
-<script type="text/javascript" src="{% static 'js/angular.js' %}"></script>
-<script type="text/javascript" src="{% static 'js/angular-animate.min.js' %}"></script>
-<script type="text/javascript" src="{% static 'js/angular-aria.min.js' %}"></script>
-<script type="text/javascript" src="{% static 'js/angular-material.min.js' %}"></script>
-<script type="text/javascript" src="{% static 'js/angular-disqus.js' %}"></script>
-<script type="text/javascript" src="{% static 'js/angular-load.min.js' %}"></script>
-<script type="text/javascript" src="{% static 'js/angular-resource.js' %}"></script>
-<script type="text/javascript" src="{% static 'js/angular-route.min.js' %}"></script>
-<script type="text/javascript" src="{% static 'js/angular-sanitize.min.js' %}"></script>
-<script type="text/javascript" src="{% static 'js/ng-infinite-scroll.min.js' %}"></script>
-<script type="text/javascript" src="{% static 'js/app.js' %}"></script>
-<script type="text/javascript" src="{% static 'js/controllers.js' %}"></script>
-<script type="text/javascript" src="{% static 'js/services.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/angular.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/angular-animate.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/angular-aria.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/angular-material.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/angular-disqus.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/angular-load.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/angular-resource.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/angular-route.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/angular-sanitize.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/ng-infinite-scroll.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/app.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/controllers.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/services.js' %}"></script>
 
-{#  Syntax Highlighter #}
-<script type="text/javascript" src="{% static 'js/shi_jquery.min.js' %}"></script>
+  {#  Syntax Highlighter #}
+  <script type="text/javascript" src="{% static 'js/shi_jquery.min.js' %}"></script>
 {% endcompress %}
 <script src="//cdnjs.cloudflare.com/ajax/libs/angular-material-icons/0.6.0/angular-material-icons.min.js"></script>
 
@@ -202,7 +200,7 @@
       <h4>Currently Working at</h4>
       <ul>
         <li>
-          <a href="https://mekar.id">Mekar.id</a>, as a Remote Full Stack Developer 
+          <a href="https://mekar.id">Mekar.id</a>, as a Remote Full Stack Developer
         </li>
         <li>
           <a href="https://www.unit9.com/">UNIT9</a>, as a Remote Freelance Collaborator (backend developer)
