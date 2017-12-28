@@ -120,6 +120,8 @@ blogControllers.controller('PostCtrl', ['$scope', '$route', '$routeParams', 'Pos
     $scope.title = $scope.params.postTitle;
     $scope.posts = BlogIndex.posts_minimal.query();
 
+    $scope.post = Post.post.query({angular_url:$scope.title});
+
     $scope.all_images = [];
     $scope.images = Post.images.query(function() {
       for(var i = 0; i < $scope.images.images.length; i++){
