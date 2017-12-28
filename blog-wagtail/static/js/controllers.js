@@ -120,10 +120,10 @@ blogControllers.controller('PostCtrl', ['$scope', '$route', '$routeParams', 'Pos
     $scope.title = $scope.params.postTitle;
     $scope.posts = BlogIndex.posts_minimal.query();
 
-    var ogTitle = angular.element(document.querySelector('[property="og:title"]'));
-    var ogDescription = angular.element(document.querySelector('[property="og:description"]'));
-    var title = angular.element(document.querySelector('[property="title"]'));
-    var description = angular.element(document.querySelector('[property="description"]'));
+    var ogTitle = angular.element(document.querySelectorAll('[property="og:title"]'));
+    var ogDescription = angular.element(document.querySelectorAll('[property="og:description"]'));
+    var title = angular.element(document.querySelectorAll('[property="title"]'));
+    var description = angular.element(document.querySelectorAll('[property="description"]'));
 
     $scope.post = Post.post.query({angular_url:$scope.title});
 
