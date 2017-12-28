@@ -161,16 +161,3 @@ blogControllers.controller('AboutCtrl', ['$scope', 'About',
     };
   }
 ]);
-
-blogControllers.controller('HeadCtrl', ['$scope',
-  function ($scope) {
-    $scope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams){
-      if ( angular.isDefined( toState.data.title ) ) {
-        $scope.pageTitle = toState.data.title;
-        $scope.pageDescription = toState.data.post.intro;
-      }
-    });
-  }
-]);
-
-
