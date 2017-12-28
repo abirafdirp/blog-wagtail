@@ -115,13 +115,8 @@ blogApp.run(['$rootScope', '$routeParams',
         ;
       };
 
-      function htmlToPlaintext(text) {
-        return text ? String(text).replace(/<[^>]+>/gm, '') : '';
-      }
-
       if(current.$$route.postTitle) {
         $rootScope.title = current.$$route.title + ' | ' + unSlugify($routeParams.postTitle);
-        $rootScope.description = htmlToPlaintext(current.$$route.post.intro);
       }
       else {
         $rootScope.title = current.$$route.title;
