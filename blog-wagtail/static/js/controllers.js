@@ -120,22 +120,6 @@ blogControllers.controller('PostCtrl', ['$scope', '$route', '$routeParams', 'Pos
     $scope.title = $scope.params.postTitle;
     $scope.posts = BlogIndex.posts_minimal.query();
 
-    var ogTitle = angular.element(document.querySelectorAll('[property="og:title"]'));
-    var ogDescription = angular.element(document.querySelectorAll('[property="og:description"]'));
-    var title = angular.element(document.querySelectorAll('[property="title"]'));
-    var description = angular.element(document.querySelectorAll('[property="description"]'));
-
-    $scope.post = Post.post.query({angular_url:$scope.title});
-
-    function htmlToPlaintext(text) {
-      return text ? String(text).replace(/<[^>]+>/gm, '') : '';
-    }
-
-    ogTitle.attr('content', htmlToPlaintext($scope.post.title));
-    ogDescription.attr('content', htmlToPlaintext($scope.post.intro));
-    title.attr('content', htmlToPlaintext($scope.post.title));
-    description.attr('content', htmlToPlaintext($scope.post.intro));
-
     $scope.all_images = [];
     $scope.images = Post.images.query(function() {
       for(var i = 0; i < $scope.images.images.length; i++){
@@ -178,8 +162,14 @@ blogControllers.controller('AboutCtrl', ['$scope', 'About',
   }
 ]);
 
-blogControllers.controller('SideNavCtrl', function($scope, $mdSidenav) {
-
+blogControllers.controller('HeadCtrl', function AppCtrl ( $scope, $location ) {
+  $scope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams){
+    if ( angular.isDefined( toState.data.pageTitle ) ) {
+      if (toState.data.hasOwnProperty('title'))
+        $scope.pageTitle = toState.data.title;
+        $scope.pageDescription = toState.data.post.intro;
+    }
+  });
 });
 
 

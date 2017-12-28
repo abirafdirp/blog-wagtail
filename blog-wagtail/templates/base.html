@@ -7,7 +7,7 @@
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!-->
 <html class="no-js" ng-app="blog"> <!--<![endif]-->
-<head>
+<head ng-controller="HeadCtrl">
   <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
   <meta charset="utf-8"/>
   <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -36,10 +36,10 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.7/styles/monokai_sublime.min.css">
 
   <meta property="og:image" content="https://www.sololearn.com/Icons/Courses/1073.png" />
-  <meta property="og:title" content="">
-  <meta property="og:description" content="" />
-  <meta property="title" content="">
-  <meta property="description" content="" />
+  <meta property="og:title" content="{$ pageTitle $}">
+  <meta property="og:description" content="{$ pageDescription $}" />
+  <meta property="title" content="{$ pageTitle $}">
+  <meta property="description" content="{$ pageDescription $}" />
 </head>
 
 <body ng-cloak ng-controller="NavCtrl">
