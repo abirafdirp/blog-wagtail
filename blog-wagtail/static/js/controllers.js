@@ -31,7 +31,10 @@ blogControllers.controller('HeadCtrl', ['$scope', '$location',
         .replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
     };
     var shareTitle = $location.search().share_title;
-    $scope.title = unSlugify(shareTitle);
+    if (shareTitle)
+      $scope.title = unSlugify(shareTitle);
+    else
+      $scope.title = 'Welcome to my personal blog'
   }
 ]);
 
