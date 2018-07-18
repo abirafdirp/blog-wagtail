@@ -27,6 +27,19 @@ if settings.DEBUG:
         url(r'^500/$', 'django.views.defaults.server_error'),
     ]
 
+
+class BaseView(TemplateView):
+    template_name = 'base.html'
+
+    def get_context_data(self, **kwargs):
+        ctx = super(BaseView, self).get_context_data(**kwargs)
+        share_title = self.request.GET.get('share_title', '')
+        if share_title:
+            ctx['title'] = share_title.replace('-', ' ').capitalize()
+        else:
+            ctx['title'] = 'Welcome to my personal blog'
+
+
 urlpatterns += [
     url(r'^pdf/$', pdf_view),
 
@@ -42,9 +55,8 @@ urlpatterns += [
     url('^sitemap\.xml$', sitemap),
 
     # partials initilization
-    url(r'^((?!_page).)*$',
-            TemplateView.as_view(template_name='base.html'),
-            name='base'),
+    url(r'^((?!_page).)*$', BaseView.as_view(), name='base')
+            ,
     url(r'', include(wagtail_urls)),
 ]
 

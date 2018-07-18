@@ -22,22 +22,6 @@ blogControllers.controller('HomeCtrl', ['$scope',
   }
 ]);
 
-
-blogControllers.controller('HeadCtrl', ['$scope', '$location',
-  function($scope, $location){
-    var unSlugify = function(title) {
-      return title
-        .replace(/-/g,' ')
-        .replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
-    };
-    var shareTitle = $location.search().share_title;
-    if (shareTitle)
-      $scope.title = unSlugify(shareTitle);
-    else
-      $scope.title = 'Welcome to my personal blog'
-  }
-]);
-
 blogControllers.controller('PortofolioCtrl', ['$scope', 'Portofolio',
   function($scope, Portofolio){
     $scope.show_loading = true;
