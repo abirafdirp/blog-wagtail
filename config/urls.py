@@ -38,6 +38,7 @@ class BaseView(TemplateView):
             ctx['title'] = share_title.replace('-', ' ').capitalize()
         else:
             ctx['title'] = 'Welcome to my personal blog'
+        return ctx
 
 
 urlpatterns += [
