@@ -98,7 +98,7 @@ blogApp.config(['$routeProvider', '$locationProvider',
       activetab: 'portofolio',
     }).
     otherwise({
-      redirectTo: '/blog'
+      redirectTo: '/about'
     });
     $locationProvider
       .html5Mode(true);
