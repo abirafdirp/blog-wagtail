@@ -51,12 +51,6 @@ CACHES = {
 #     'SHOW_TEMPLATE_CONTEXT': True,
 # }
 
-# django-extensions
-# ------------------------------------------------------------------------------
-INSTALLED_APPS += ('django_extensions',
-                   'debug_toolbar',
-                   )
-
 # TESTING
 # ------------------------------------------------------------------------------
 TEST_RUNNER = 'django.test.runner.DiscoverRunner'
